@@ -1,0 +1,43 @@
+C:\Users\User\source\repos\Part Three POE\Part Three POE\bin\Debug\Part Three POE.exe.config
+C:\Users\User\source\repos\Part Three POE\Part Three POE\bin\Debug\Part Three POE.exe
+C:\Users\User\source\repos\Part Three POE\Part Three POE\bin\Debug\Part Three POE.pdb
+C:\Users\User\source\repos\Part Three POE\Part Three POE\obj\Debug\Part Three POE.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\Part Three POE\Part Three POE\obj\Debug\Part Three POE.csproj.SuggestedBindingRedirects.cache
+C:\Users\User\source\repos\Part Three POE\Part Three POE\obj\Debug\Add Ingredients.g.cs
+C:\Users\User\source\repos\Part Three POE\Part Three POE\obj\Debug\Add Recipe.g.cs
+C:\Users\User\source\repos\Part Three POE\Part Three POE\obj\Debug\Choose a Recipe.g.cs
+C:\Users\User\source\repos\Part Three POE\Part Three POE\obj\Debug\Clear Recipe.g.cs
+C:\Users\User\source\repos\Part Three POE\Part Three POE\obj\Debug\Display Recipes.g.cs
+C:\Users\User\source\repos\Part Three POE\Part Three POE\obj\Debug\Filter Recipe.g.cs
+C:\Users\User\source\repos\Part Three POE\Part Three POE\obj\Debug\Home.g.cs
+C:\Users\User\source\repos\Part Three POE\Part Three POE\obj\Debug\MainWindow.g.cs
+C:\Users\User\source\repos\Part Three POE\Part Three POE\obj\Debug\Pie Chart.g.cs
+C:\Users\User\source\repos\Part Three POE\Part Three POE\obj\Debug\Reset Quantities.g.cs
+C:\Users\User\source\repos\Part Three POE\Part Three POE\obj\Debug\Scale Recipe.g.cs
+C:\Users\User\source\repos\Part Three POE\Part Three POE\obj\Debug\App.g.cs
+C:\Users\User\source\repos\Part Three POE\Part Three POE\obj\Debug\Part Three POE_MarkupCompile.cache
+C:\Users\User\source\repos\Part Three POE\Part Three POE\obj\Debug\Part Three POE_MarkupCompile.lref
+C:\Users\User\source\repos\Part Three POE\Part Three POE\obj\Debug\Add Ingredients.baml
+C:\Users\User\source\repos\Part Three POE\Part Three POE\obj\Debug\Add Recipe.baml
+C:\Users\User\source\repos\Part Three POE\Part Three POE\obj\Debug\Choose a Recipe.baml
+C:\Users\User\source\repos\Part Three POE\Part Three POE\obj\Debug\Clear Recipe.baml
+C:\Users\User\source\repos\Part Three POE\Part Three POE\obj\Debug\Display Recipes.baml
+C:\Users\User\source\repos\Part Three POE\Part Three POE\obj\Debug\Filter Recipe.baml
+C:\Users\User\source\repos\Part Three POE\Part Three POE\obj\Debug\Home.baml
+C:\Users\User\source\repos\Part Three POE\Part Three POE\obj\Debug\MainWindow.baml
+C:\Users\User\source\repos\Part Three POE\Part Three POE\obj\Debug\Pie Chart.baml
+C:\Users\User\source\repos\Part Three POE\Part Three POE\obj\Debug\Reset Quantities.baml
+C:\Users\User\source\repos\Part Three POE\Part Three POE\obj\Debug\Scale Recipe.baml
+C:\Users\User\source\repos\Part Three POE\Part Three POE\obj\Debug\Part Three POE.g.resources
+C:\Users\User\source\repos\Part Three POE\Part Three POE\obj\Debug\Part_Three_POE.Properties.Resources.resources
+C:\Users\User\source\repos\Part Three POE\Part Three POE\obj\Debug\Part Three POE.csproj.GenerateResource.cache
+C:\Users\User\source\repos\Part Three POE\Part Three POE\obj\Debug\Part Three POE.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\Part Three POE\Part Three POE\obj\Debug\Part Three POE.exe
+C:\Users\User\source\repos\Part Three POE\Part Three POE\obj\Debug\Part Three POE.pdb
+C:\Users\User\source\repos\Part Three POE\Part Three POE\bin\Debug\LiveCharts.dll
+C:\Users\User\source\repos\Part Three POE\Part Three POE\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\User\source\repos\Part Three POE\Part Three POE\bin\Debug\LiveCharts.pdb
+C:\Users\User\source\repos\Part Three POE\Part Three POE\bin\Debug\LiveCharts.xml
+C:\Users\User\source\repos\Part Three POE\Part Three POE\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\User\source\repos\Part Three POE\Part Three POE\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\User\source\repos\Part Three POE\Part Three POE\obj\Debug\Part Three POE.csproj.CopyComplete

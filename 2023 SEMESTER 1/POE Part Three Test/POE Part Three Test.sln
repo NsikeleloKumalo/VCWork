@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33627.172
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POE Part Three Test", "POE Part Three Test\POE Part Three Test.csproj", "{153AC4EC-B41A-4E8B-860C-4E86DC2D6731}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{153AC4EC-B41A-4E8B-860C-4E86DC2D6731}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{153AC4EC-B41A-4E8B-860C-4E86DC2D6731}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{153AC4EC-B41A-4E8B-860C-4E86DC2D6731}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{153AC4EC-B41A-4E8B-860C-4E86DC2D6731}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F30442F4-04F4-4D70-A606-B2F0964FB89C}
+	EndGlobalSection
+EndGlobal

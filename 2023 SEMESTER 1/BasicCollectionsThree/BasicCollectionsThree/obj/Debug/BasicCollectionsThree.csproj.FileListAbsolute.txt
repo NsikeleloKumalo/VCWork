@@ -1,0 +1,7 @@
+C:\Users\User\source\repos\BasicCollectionsThree\BasicCollectionsThree\bin\Debug\BasicCollectionsThree.exe.config
+C:\Users\User\source\repos\BasicCollectionsThree\BasicCollectionsThree\bin\Debug\BasicCollectionsThree.exe
+C:\Users\User\source\repos\BasicCollectionsThree\BasicCollectionsThree\bin\Debug\BasicCollectionsThree.pdb
+C:\Users\User\source\repos\BasicCollectionsThree\BasicCollectionsThree\obj\Debug\BasicCollectionsThree.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\BasicCollectionsThree\BasicCollectionsThree\obj\Debug\BasicCollectionsThree.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\BasicCollectionsThree\BasicCollectionsThree\obj\Debug\BasicCollectionsThree.exe
+C:\Users\User\source\repos\BasicCollectionsThree\BasicCollectionsThree\obj\Debug\BasicCollectionsThree.pdb

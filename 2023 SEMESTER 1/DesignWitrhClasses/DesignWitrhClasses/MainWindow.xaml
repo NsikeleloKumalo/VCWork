@@ -1,0 +1,35 @@
+﻿<Window x:Class="DesignWitrhClasses.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DesignWitrhClasses"
+        mc:Ignorable="d"
+        Title="MainWindow" FontSize="14" Background="Gray">
+    <Border Background="PowderBlue" 
+            CornerRadius="35" Margin="15">
+
+        <StackPanel Margin="15">
+
+
+            <TextBlock Text="Ingredient Quantity:"/>
+            <TextBox x:Name="ingredientQntyTextBox" />
+
+            <TextBlock Text="Ingredient Name:" />
+            <TextBox x:Name="ingredNameTextBox" />
+
+            <TextBlock Text="Ingredient Description:" />
+            <TextBox x:Name="ingredDescTextBox" />
+
+            <TextBlock Text="Scale:" />
+            <TextBox x:Name="scaleTextBox" />
+
+            <TextBlock x:Name="resultTextBlock" />
+            <Button Content="Capture Screen"
+                    Background="Black"
+                    Foreground="White"
+                    Click="Button_Click"  Height="40" Margin="0,0,233.333,0"/>
+       
+        </StackPanel>
+    </Border>
+</Window>

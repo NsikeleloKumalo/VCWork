@@ -1,0 +1,48 @@
+﻿<Window x:Class="UserInput4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UserInput4"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="550" Width="550"
+        FontSize="14" Background="Black"
+        >
+    <Border Background="Gray" CornerRadius="35" Margin="15">
+
+        <StackPanel Margin=" 15">
+
+            <Label Content="Capture Page" Foreground="Black"
+               FontSize="20" HorizontalAlignment="Center"/>
+            <Separator Background="Red" Margin="20"/>
+            <!--Input 1-->
+            <Label Content=" Ingredient Name: " Foreground="Black" FontSize="15"
+               HorizontalAlignment="Center"/>
+            <TextBox x:Name="txtIngredName" Background="Black"
+                 Foreground="White" FontSize="15"/>
+
+            <!--Input 2-->
+            <Label Content=" Ingredient Quantity: " Foreground="Black" FontSize="15"
+               HorizontalAlignment="Center"/>
+            <TextBox x:Name="txtIngredQnty" Background="Black"
+                 Foreground="White" FontSize="15"/>
+
+            <!--Input 3-->
+            <Label Content=" Scaling: " Foreground="Black" FontSize="15"
+               HorizontalAlignment="Center"/>
+            <TextBox x:Name="txtScaling" Background="Black"
+                 Foreground="White" FontSize="15"/>
+
+            <Separator Background="Red" Margin="20"/>
+            <Button x:Name="btnSave" Content="Save Info"
+                    Background="Black" Foreground="Red" FontSize="15" Margin="10" Click="btnSave_Click"/>
+
+            <!--Input 4-->
+            <Label Content="Ingredient Details: " Foreground="Black" FontSize="15"
+               HorizontalAlignment="Center"/>
+            <TextBlock x:Name="tblk" Background="Black"
+                 Foreground="White" FontSize="15"/>
+
+        </StackPanel>
+    </Border>
+</Window>

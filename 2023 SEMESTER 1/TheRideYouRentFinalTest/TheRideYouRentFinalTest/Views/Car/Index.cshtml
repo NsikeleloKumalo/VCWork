@@ -1,0 +1,63 @@
+﻿@model IEnumerable<TheRideYouRentFinalTest.Models.Car>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Car</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Car_Make)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BodyType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kilometres_Travelled)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Service_kilometres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Avaliable)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Car_Make)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BodyType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kilometres_Travelled)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Service_kilometres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Avaliable)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CarNo }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CarNo }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CarNo })
+        </td>
+    </tr>
+}
+
+</table>

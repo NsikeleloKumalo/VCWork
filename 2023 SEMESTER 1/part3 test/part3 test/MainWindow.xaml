@@ -1,0 +1,206 @@
+﻿<Window x:Class="part3_test.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:part3_test"
+        mc:Ignorable="d"
+         Title="MainWindow"
+        Height="960"
+        Width="960"
+        ResizeMode="NoResize"
+        Topmost="True"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <!--Visability="Collapsed"> Clue-->
+        <Grid >
+            <!--Comment-->
+            <Grid Background="Black">
+                <Grid x:Name="BG" Margin="-5,5,5,-5">
+                    <Grid.Background>
+                        <ImageBrush x:Name="imageBG"   
+                      ImageSource="/Recipe/Light Blue and Brown Modern 10 Holiday Food Recipe Menu.jpg"
+                                    Stretch="UniformToFill" />
+
+                    </Grid.Background>
+                    <!--Navigation Panel-->
+                    <Grid Name="navPanel"
+                      HorizontalAlignment="right"
+                      Width="258"
+                      Background="Transparent" />
+                    <!--Adding menu items to panel-->
+                    <StackPanel Name="stackPanel">
+                        <!--Menu Toggle Options-->
+                        <Grid Height="80">
+                            <!--Title-->
+                            <TextBlock Grid.Column="0"
+                                   Margin="0,-4,23,24"
+                                   Text="MENU"
+                                   Foreground="GhostWhite"
+                                   FontWeight="Bold"
+                                   FontSize="50"
+                                   HorizontalAlignment="Right"
+                                 >
+                            </TextBlock>
+                        </Grid>
+                        <!--Text and Icon-->
+                        <ListView Name="listView"
+                              Background="Transparent"
+                              BorderBrush="Transparent"
+                              HorizontalAlignment="Right">
+                            <!--First Icon Add Recipe -->
+                            <ListViewItem Selected="ListViewItem_Selected"
+                                      Margin="-3"
+                                      HorizontalAlignment="Right">
+                                <StackPanel Width="200"
+                                        Orientation="Vertical">
+                                    <Image Source="/Recipe/recipewineicon_109874.ico" 
+
+                                  Stretch="Fill"
+                                       Height="50"
+                                       Width="50" />
+                                    <TextBlock x:Name="Text1"
+                                           Text="ADD RECIPE"
+                                           Foreground="White"
+                                           FontSize="14"
+                                           FontWeight="Bold"
+                                           Width="120" />
+                                </StackPanel>
+                            </ListViewItem>
+                            <!--Display  button-->
+                            <ListViewItem Selected="ListViewItem_Selected_1"
+                                      Margin="5"
+                                      HorizontalAlignment="Right">
+                                <StackPanel Width="200"
+                                        Orientation="Vertical">
+                                    <Image Source="/Recipe/recipe_book_cook_cooking_kitchen_fork_spoon_icon_142001.ico"
+                                Stretch="Fill"
+                                       Height="50"
+                                       Width="50" />
+                                    <TextBlock x:Name="Text3"
+                                           Text="DISPLAY RECIPE"
+                                           Foreground="White"
+                                           FontSize="14"
+                                           FontWeight="Bold"
+                                           Width="120" />
+                                </StackPanel>
+                            </ListViewItem>
+
+                            <!--Choose recipe to display button-->
+                                <ListViewItem Selected="ListViewItem_Selected_2"
+                                      Margin="5"
+                                      HorizontalAlignment="Right">
+                                    <StackPanel Width="200"
+                                        Orientation="Vertical">
+                                        <Image Source="/Recipe/cook_well_food_heat_pot_hot_icon_145621.ico"
+                                Stretch="Fill"
+                                       Height="50"
+                                       Width="50" />
+                                        <TextBlock x:Name="Text4"
+                                           Text="CHOOSE RECIPE"
+                                           Foreground="White"
+                                           FontSize="14"
+                                           FontWeight="Bold"
+                                           Width="120" />
+                                    </StackPanel>
+                                </ListViewItem>
+
+                                <!--Scale Recipe  button-->
+                                <ListViewItem Selected="ListViewItem_Selected_3"
+                                      Margin="5"
+                                      HorizontalAlignment="Right">
+                                    <StackPanel Width="200"
+                                        Orientation="Vertical">
+                                        <Image Source="/Recipe/62975balancescale_109356.ico"
+                                Stretch="Fill"
+                                       Height="50"
+                                       Width="50" />
+                                        <TextBlock x:Name="Text5"
+                                           Text="SCALE RECIPE"
+                                           Foreground="White"
+                                           FontSize="14"
+                                           FontWeight="Bold"
+                                           Width="120" />
+                                    </StackPanel>
+                                </ListViewItem>
+                                <!--Reset Quantities button-->
+                                <ListViewItem Selected="ListViewItem_Selected_4"
+                                      Margin="5"
+                                      HorizontalAlignment="Right">
+                                    <StackPanel Width="200"
+                                        Orientation="Vertical">
+                                        <Image Source="/Recipe/reset_icon_132769.ico"
+                                Stretch="Fill"
+                                       Height="50"
+                                       Width="50" />
+                                        <TextBlock x:Name="Text6"
+                                           Text="RESET QUANTITIES"
+                                           Foreground="White"
+                                           FontSize="14"
+                                           FontWeight="Bold"
+                                           Width="110" />
+                                    </StackPanel>
+                                </ListViewItem>
+                                <!--Clear Recipe button-->
+                                <ListViewItem Selected="ListViewItem_Selected_5"
+                                      Margin="5"
+                                      HorizontalAlignment="Right">
+                                    <StackPanel Width="200"
+                                        Orientation="Vertical">
+                                        <Image Source="/Recipe/actions_edit_clear_15784.ico"
+                                Stretch="Fill"
+                                       Height="50"
+                                       Width="50" />
+                                        <TextBlock x:Name="Text7"
+                                           Text="CLEAR RECIPE"
+                                           Foreground="White"
+                                           FontSize="14"
+                                           FontWeight="Bold"
+                                           Width="120" />
+                                    </StackPanel>
+                                </ListViewItem>
+
+                                <!--ingredients  button-->
+                                <ListViewItem Selected="ListViewItem_Selected_6"
+                                      Margin="5"
+                                      HorizontalAlignment="Right">
+                                    <StackPanel Width="200"
+                                        Orientation="Vertical">
+                                        <Image Source="/Recipe/1492617960-yumminkyskyconsmix03_83460.ico"
+                                Stretch="Fill"
+                                       Height="50"
+                                       Width="50" />
+                                        <TextBlock x:Name="Text8"
+                                           Text="INGREDIENTS"
+                                           Foreground="White"
+                                           FontSize="14"
+                                           FontWeight="Bold"
+                                           Width="80" />
+                                    </StackPanel>
+                                    <!--exit button-->
+                                </ListViewItem>
+                            <ListViewItem Selected="ListViewItem_Selected_7"
+                                      Margin="5"
+                                      HorizontalAlignment="Center">
+                                <StackPanel Width="200"
+                                        Orientation="Vertical">
+                                    <Image Source="/Recipe/logout_exit_icon_176185.ico" 
+                                Stretch="UniformToFill"
+                                       Height="50"
+                                       Width="50" />
+                                    <TextBlock x:Name="Text9"
+                                           Text="EXIT"
+                                           Foreground="White"
+                                           FontSize="14"
+                                           FontWeight="Bold"
+                                           Width="30" />
+                                </StackPanel>
+                            </ListViewItem>
+                        </ListView>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

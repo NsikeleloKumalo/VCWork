@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\cldv6211TheRideYouRent.props" />
+</Project>

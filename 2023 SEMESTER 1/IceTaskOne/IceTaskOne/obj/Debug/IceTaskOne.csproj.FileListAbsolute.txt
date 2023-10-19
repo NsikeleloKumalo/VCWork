@@ -1,0 +1,7 @@
+C:\Users\User\source\repos\IceTaskOne\IceTaskOne\bin\Debug\IceTaskOne.exe.config
+C:\Users\User\source\repos\IceTaskOne\IceTaskOne\bin\Debug\IceTaskOne.exe
+C:\Users\User\source\repos\IceTaskOne\IceTaskOne\bin\Debug\IceTaskOne.pdb
+C:\Users\User\source\repos\IceTaskOne\IceTaskOne\obj\Debug\IceTaskOne.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\IceTaskOne\IceTaskOne\obj\Debug\IceTaskOne.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\IceTaskOne\IceTaskOne\obj\Debug\IceTaskOne.exe
+C:\Users\User\source\repos\IceTaskOne\IceTaskOne\obj\Debug\IceTaskOne.pdb

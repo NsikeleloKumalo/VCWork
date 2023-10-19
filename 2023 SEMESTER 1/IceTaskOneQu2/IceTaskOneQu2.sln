@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33328.57
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IceTaskOneQu2", "IceTaskOneQu2\IceTaskOneQu2.csproj", "{5D201A74-6933-4239-9906-A864AE322F3E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D201A74-6933-4239-9906-A864AE322F3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D201A74-6933-4239-9906-A864AE322F3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D201A74-6933-4239-9906-A864AE322F3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D201A74-6933-4239-9906-A864AE322F3E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {032EC97D-12DE-42F1-9F18-1518FB6F73C0}
+	EndGlobalSection
+EndGlobal

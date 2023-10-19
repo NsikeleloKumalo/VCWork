@@ -1,0 +1,6 @@
+C:\Users\User\source\repos\BasicsThree\BasicsThree\bin\Debug\BasicsThree.exe.config
+C:\Users\User\source\repos\BasicsThree\BasicsThree\bin\Debug\BasicsThree.exe
+C:\Users\User\source\repos\BasicsThree\BasicsThree\bin\Debug\BasicsThree.pdb
+C:\Users\User\source\repos\BasicsThree\BasicsThree\obj\Debug\BasicsThree.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\BasicsThree\BasicsThree\obj\Debug\BasicsThree.exe
+C:\Users\User\source\repos\BasicsThree\BasicsThree\obj\Debug\BasicsThree.pdb

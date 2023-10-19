@@ -1,0 +1,12 @@
+C:\Users\User\source\repos\PlacingOrders\PlacingOrders\bin\Debug\PlacingOrders.exe.config
+C:\Users\User\source\repos\PlacingOrders\PlacingOrders\bin\Debug\PlacingOrders.exe
+C:\Users\User\source\repos\PlacingOrders\PlacingOrders\bin\Debug\PlacingOrders.pdb
+C:\Users\User\source\repos\PlacingOrders\PlacingOrders\obj\Debug\PlacingOrders.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\PlacingOrders\PlacingOrders\obj\Debug\PlacingOrders.Form1.resources
+C:\Users\User\source\repos\PlacingOrders\PlacingOrders\obj\Debug\PlacingOrders.Properties.Resources.resources
+C:\Users\User\source\repos\PlacingOrders\PlacingOrders\obj\Debug\PlacingOrders.csproj.GenerateResource.cache
+C:\Users\User\source\repos\PlacingOrders\PlacingOrders\obj\Debug\PlacingOrders.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\PlacingOrders\PlacingOrders\obj\Debug\PlacingOrders.exe
+C:\Users\User\source\repos\PlacingOrders\PlacingOrders\obj\Debug\PlacingOrders.pdb
+C:\Users\User\source\repos\PlacingOrders\PlacingOrders\obj\Debug\PlacingOrders.MainPage.resources
+C:\Users\User\source\repos\PlacingOrders\PlacingOrders\obj\Debug\PlacingOrders.csproj.SuggestedBindingRedirects.cache

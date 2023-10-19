@@ -1,0 +1,7 @@
+C:\Users\User\source\repos\TestingOne\TestingOne\bin\Debug\TestingOne.exe.config
+C:\Users\User\source\repos\TestingOne\TestingOne\bin\Debug\TestingOne.exe
+C:\Users\User\source\repos\TestingOne\TestingOne\bin\Debug\TestingOne.pdb
+C:\Users\User\source\repos\TestingOne\TestingOne\obj\Debug\TestingOne.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\TestingOne\TestingOne\obj\Debug\TestingOne.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\TestingOne\TestingOne\obj\Debug\TestingOne.exe
+C:\Users\User\source\repos\TestingOne\TestingOne\obj\Debug\TestingOne.pdb

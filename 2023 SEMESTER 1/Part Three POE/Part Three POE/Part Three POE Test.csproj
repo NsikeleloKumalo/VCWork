@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{87260494-7870-4094-86A5-AD8F34D38BE4}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Part_Three_POE</RootNamespace>
+    <AssemblyName>Part Three POE</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Add Ingredients.xaml.cs">
+      <DependentUpon>Add Ingredients.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Clear Recipe.xaml.cs">
+      <DependentUpon>Clear Recipe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Filter Recipe.xaml.cs">
+      <DependentUpon>Filter Recipe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ingredient.cs" />
+    <Compile Include="Pie Chart.xaml.cs">
+      <DependentUpon>Pie Chart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Recipe.cs" />
+    <Compile Include="Reset Quantities.xaml.cs">
+      <DependentUpon>Reset Quantities.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Scale Recipe.xaml.cs">
+      <DependentUpon>Scale Recipe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RecipeStep.cs" />
+    <Page Include="Add Ingredients.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Add Recipe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Choose a Recipe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Clear Recipe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Display Recipes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Filter Recipe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="Add Recipe.xaml.cs">
+      <DependentUpon>Add Recipe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Choose a Recipe.xaml.cs">
+      <DependentUpon>Choose a Recipe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Display Recipes.xaml.cs">
+      <DependentUpon>Display Recipes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Pie Chart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reset Quantities.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Scale Recipe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Resource Include="Fonts\Roboto-Light.ttf" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recipe\1486506264-hamburger-list-menu-options-bars-stack_81469.ico" />
+    <Resource Include="Recipe\1492617960-yumminkyskyconsmix03_83460.ico" />
+    <Resource Include="Recipe\62975balancescale_109356.ico" />
+    <Resource Include="Recipe\actions_edit_clear_15784.ico" />
+    <Resource Include="Recipe\Black Simple Recipe Book Cover.jpg" />
+    <Resource Include="Recipe\CaloriesUnitTesting.png" />
+    <Resource Include="Recipe\cartoonrecipe.png" />
+    <Resource Include="Recipe\cooking_hot_cook_food_boiling_icon_140226.ico" />
+    <Resource Include="Recipe\cook_well_food_heat_pot_hot_icon_145621 %281%29.ico" />
+    <Resource Include="Recipe\cook_well_food_heat_pot_hot_icon_145621.ico" />
+    <Resource Include="Recipe\create_new_add_insert_icon_250743.ico" />
+    <Resource Include="Recipe\delete_96690.ico" />
+    <Resource Include="Recipe\elegant restaurant food social media template.jpg" />
+    <Resource Include="Recipe\filter_icon_192625.ico" />
+    <Resource Include="Recipe\filter_list_21446.ico" />
+    <Resource Include="Recipe\full_display_monitor_screen_icon_226575.ico" />
+    <Resource Include="Recipe\Gray And Brown Modern Scrapbook Food Photo Collage.jpg" />
+    <Resource Include="Recipe\hamburger_icon_125534.ico" />
+    <Resource Include="Recipe\Home.ico" />
+    <Resource Include="Recipe\home.png" />
+    <Resource Include="Recipe\Light Blue and Brown Modern 10 Holiday Food Recipe Menu.jpg" />
+    <Resource Include="Recipe\lines_menu_burger_icon_123889.ico" />
+    <Resource Include="Recipe\logoutoutlinedsymbol_81103.ico" />
+    <Resource Include="Recipe\logout_exit_icon_176185.ico" />
+    <Resource Include="Recipe\logout_off_exit_14655.ico" />
+    <Resource Include="Recipe\menu-bar.png" />
+    <Resource Include="Recipe\menu-three-outlined-rounded-lines-symbol_icon-icons.com_73215.ico" />
+    <Resource Include="Recipe\New Light Blue and Brown Modern 10 Holiday Food Recipe Menu.jpg" />
+    <Resource Include="Recipe\piechart_80941.ico" />
+    <Resource Include="Recipe\pie_chart_22137.ico" />
+    <Resource Include="Recipe\realisticrecipe.png" />
+    <Resource Include="Recipe\recipewineicon_109874.ico" />
+    <Resource Include="Recipe\recipe_book_cook_cooking_kitchen_fork_spoon_icon_142001 %281%29.ico" />
+    <Resource Include="Recipe\recipe_book_cook_cooking_kitchen_fork_spoon_icon_142001 %282%29.ico" />
+    <Resource Include="Recipe\recipe_book_cook_cooking_kitchen_fork_spoon_icon_142001 %283%29.ico" />
+    <Resource Include="Recipe\recipe_book_cook_cooking_kitchen_fork_spoon_icon_142001 %284%29.ico" />
+    <Resource Include="Recipe\recipe_book_cook_cooking_kitchen_fork_spoon_icon_142001 %285%29.ico" />
+    <Resource Include="Recipe\recipe_book_cook_cooking_kitchen_fork_spoon_icon_142001 %286%29.ico" />
+    <Resource Include="Recipe\recipe_book_cook_cooking_kitchen_fork_spoon_icon_142001.ico" />
+    <Resource Include="Recipe\reset_icon_132769.ico" />
+    <Resource Include="Recipe\screen_display_tv_desktop_monitor_lcd_icon_233381.ico" />
+    <Resource Include="Recipe\systemlogout_103410.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Fonts\LICENSE.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recipe\Brown Modern Korean Food Photo Collage.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

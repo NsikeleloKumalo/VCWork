@@ -1,0 +1,7 @@
+C:\Users\User\source\repos\DelAdvanced\DelAdvanced\bin\Debug\DelAdvanced.exe.config
+C:\Users\User\source\repos\DelAdvanced\DelAdvanced\bin\Debug\DelAdvanced.exe
+C:\Users\User\source\repos\DelAdvanced\DelAdvanced\bin\Debug\DelAdvanced.pdb
+C:\Users\User\source\repos\DelAdvanced\DelAdvanced\obj\Debug\DelAdvanced.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\DelAdvanced\DelAdvanced\obj\Debug\DelAdvanced.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\DelAdvanced\DelAdvanced\obj\Debug\DelAdvanced.exe
+C:\Users\User\source\repos\DelAdvanced\DelAdvanced\obj\Debug\DelAdvanced.pdb

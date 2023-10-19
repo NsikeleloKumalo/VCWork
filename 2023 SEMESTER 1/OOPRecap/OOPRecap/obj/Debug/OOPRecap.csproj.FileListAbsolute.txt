@@ -1,0 +1,7 @@
+C:\Users\User\source\repos\OOPRecap\OOPRecap\bin\Debug\OOPRecap.exe.config
+C:\Users\User\source\repos\OOPRecap\OOPRecap\bin\Debug\OOPRecap.exe
+C:\Users\User\source\repos\OOPRecap\OOPRecap\bin\Debug\OOPRecap.pdb
+C:\Users\User\source\repos\OOPRecap\OOPRecap\obj\Debug\OOPRecap.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\OOPRecap\OOPRecap\obj\Debug\OOPRecap.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\OOPRecap\OOPRecap\obj\Debug\OOPRecap.exe
+C:\Users\User\source\repos\OOPRecap\OOPRecap\obj\Debug\OOPRecap.pdb

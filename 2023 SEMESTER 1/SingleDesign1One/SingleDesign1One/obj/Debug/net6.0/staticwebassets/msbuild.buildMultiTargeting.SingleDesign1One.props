@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\SingleDesign1One.props" />
+</Project>

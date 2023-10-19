@@ -1,0 +1,15 @@
+C:\Users\User\source\repos\homework\homework\bin\Debug\homework.exe.config
+C:\Users\User\source\repos\homework\homework\bin\Debug\homework.exe
+C:\Users\User\source\repos\homework\homework\bin\Debug\homework.pdb
+C:\Users\User\source\repos\homework\homework\obj\Debug\homework.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\homework\homework\obj\Debug\MainWindow.g.cs
+C:\Users\User\source\repos\homework\homework\obj\Debug\App.g.cs
+C:\Users\User\source\repos\homework\homework\obj\Debug\homework_MarkupCompile.cache
+C:\Users\User\source\repos\homework\homework\obj\Debug\homework_MarkupCompile.lref
+C:\Users\User\source\repos\homework\homework\obj\Debug\MainWindow.baml
+C:\Users\User\source\repos\homework\homework\obj\Debug\homework.g.resources
+C:\Users\User\source\repos\homework\homework\obj\Debug\homework.Properties.Resources.resources
+C:\Users\User\source\repos\homework\homework\obj\Debug\homework.csproj.GenerateResource.cache
+C:\Users\User\source\repos\homework\homework\obj\Debug\homework.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\homework\homework\obj\Debug\homework.exe
+C:\Users\User\source\repos\homework\homework\obj\Debug\homework.pdb

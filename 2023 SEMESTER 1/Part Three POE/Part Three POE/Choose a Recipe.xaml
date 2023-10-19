@@ -1,0 +1,27 @@
+﻿<Window x:Class="Part_Three_POE.Choose_a_Recipe"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Part_Three_POE"
+        mc:Ignorable="d"
+        Background="Tan"
+        Title="Choose_a_Recipe" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="Enter the name of the recipe to display:" />
+            <TextBox x:Name="recipeNameTextBox" />
+            <Button Content="Display Recipe" Click="Button_Click" />
+
+            <TextBlock Text="Displayed Recipe:" FontWeight="Bold" />
+            <StackPanel x:Name="displayedRecipePanel" />
+            <Button x:Name="MainMenu"
+                Content="Main menu"
+                Background="Chocolate"
+                Margin="50"
+                Width="600"
+                Click="MainMenu_Click"/>
+        </StackPanel>
+    </Grid>
+
+</Window>

@@ -1,0 +1,17 @@
+C:\Users\User\source\repos\DemoProjectOne\DemoProjectOne\bin\Debug\DemoProjectOne.exe.config
+C:\Users\User\source\repos\DemoProjectOne\DemoProjectOne\bin\Debug\DemoProjectOne.exe
+C:\Users\User\source\repos\DemoProjectOne\DemoProjectOne\bin\Debug\DemoProjectOne.pdb
+C:\Users\User\source\repos\DemoProjectOne\DemoProjectOne\obj\Debug\DemoProjectOne.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\DemoProjectOne\DemoProjectOne\obj\Debug\MainWindow.g.cs
+C:\Users\User\source\repos\DemoProjectOne\DemoProjectOne\obj\Debug\App.g.cs
+C:\Users\User\source\repos\DemoProjectOne\DemoProjectOne\obj\Debug\DemoProjectOne_MarkupCompile.cache
+C:\Users\User\source\repos\DemoProjectOne\DemoProjectOne\obj\Debug\DemoProjectOne_MarkupCompile.lref
+C:\Users\User\source\repos\DemoProjectOne\DemoProjectOne\obj\Debug\MainWindow.baml
+C:\Users\User\source\repos\DemoProjectOne\DemoProjectOne\obj\Debug\DemoProjectOne.g.resources
+C:\Users\User\source\repos\DemoProjectOne\DemoProjectOne\obj\Debug\DemoProjectOne.Properties.Resources.resources
+C:\Users\User\source\repos\DemoProjectOne\DemoProjectOne\obj\Debug\DemoProjectOne.csproj.GenerateResource.cache
+C:\Users\User\source\repos\DemoProjectOne\DemoProjectOne\obj\Debug\DemoProjectOne.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\DemoProjectOne\DemoProjectOne\obj\Debug\DemoProjectOne.exe
+C:\Users\User\source\repos\DemoProjectOne\DemoProjectOne\obj\Debug\DemoProjectOne.pdb
+C:\Users\User\source\repos\DemoProjectOne\DemoProjectOne\obj\Debug\Second.g.cs
+C:\Users\User\source\repos\DemoProjectOne\DemoProjectOne\obj\Debug\Second.baml

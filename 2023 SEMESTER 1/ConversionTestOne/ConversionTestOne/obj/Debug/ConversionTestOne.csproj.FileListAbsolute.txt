@@ -1,0 +1,7 @@
+C:\Users\User\source\repos\ConversionTestOne\ConversionTestOne\bin\Debug\ConversionTestOne.exe.config
+C:\Users\User\source\repos\ConversionTestOne\ConversionTestOne\bin\Debug\ConversionTestOne.exe
+C:\Users\User\source\repos\ConversionTestOne\ConversionTestOne\bin\Debug\ConversionTestOne.pdb
+C:\Users\User\source\repos\ConversionTestOne\ConversionTestOne\obj\Debug\ConversionTestOne.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\ConversionTestOne\ConversionTestOne\obj\Debug\ConversionTestOne.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\ConversionTestOne\ConversionTestOne\obj\Debug\ConversionTestOne.exe
+C:\Users\User\source\repos\ConversionTestOne\ConversionTestOne\obj\Debug\ConversionTestOne.pdb

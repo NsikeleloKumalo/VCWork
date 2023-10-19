@@ -1,0 +1,7 @@
+C:\Users\User\source\repos\SecondDel\SecondDel\bin\Debug\SecondDel.exe.config
+C:\Users\User\source\repos\SecondDel\SecondDel\bin\Debug\SecondDel.exe
+C:\Users\User\source\repos\SecondDel\SecondDel\bin\Debug\SecondDel.pdb
+C:\Users\User\source\repos\SecondDel\SecondDel\obj\Debug\SecondDel.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\SecondDel\SecondDel\obj\Debug\SecondDel.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\SecondDel\SecondDel\obj\Debug\SecondDel.exe
+C:\Users\User\source\repos\SecondDel\SecondDel\obj\Debug\SecondDel.pdb

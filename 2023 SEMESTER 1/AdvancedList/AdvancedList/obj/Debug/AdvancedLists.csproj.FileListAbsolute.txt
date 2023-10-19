@@ -1,0 +1,7 @@
+C:\Users\User\source\repos\AdvancedList\AdvancedList\bin\Debug\AdvancedList.exe.config
+C:\Users\User\source\repos\AdvancedList\AdvancedList\bin\Debug\AdvancedList.exe
+C:\Users\User\source\repos\AdvancedList\AdvancedList\bin\Debug\AdvancedList.pdb
+C:\Users\User\source\repos\AdvancedList\AdvancedList\obj\Debug\AdvancedLists.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\AdvancedList\AdvancedList\obj\Debug\AdvancedLists.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\AdvancedList\AdvancedList\obj\Debug\AdvancedList.exe
+C:\Users\User\source\repos\AdvancedList\AdvancedList\obj\Debug\AdvancedList.pdb

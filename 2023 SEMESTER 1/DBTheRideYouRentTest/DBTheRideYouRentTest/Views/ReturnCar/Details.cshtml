@@ -1,0 +1,58 @@
+﻿@model DBTheRideYouRentTest.Models.ReturnCar
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ReturnCar</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Inspector.InspectorName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Inspector.InspectorName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rental.CarNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rental.CarNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReturnDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReturnDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ElapsedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ElapsedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fine)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fine)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Return_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

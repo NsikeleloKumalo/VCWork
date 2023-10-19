@@ -1,0 +1,7 @@
+C:\Users\User\source\repos\ProjectBeta\ProjectBeta\bin\Debug\ProjectBeta.exe.config
+C:\Users\User\source\repos\ProjectBeta\ProjectBeta\bin\Debug\ProjectBeta.exe
+C:\Users\User\source\repos\ProjectBeta\ProjectBeta\bin\Debug\ProjectBeta.pdb
+C:\Users\User\source\repos\ProjectBeta\ProjectBeta\obj\Debug\ProjectBeta.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\ProjectBeta\ProjectBeta\obj\Debug\ProjectBeta.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\ProjectBeta\ProjectBeta\obj\Debug\ProjectBeta.exe
+C:\Users\User\source\repos\ProjectBeta\ProjectBeta\obj\Debug\ProjectBeta.pdb

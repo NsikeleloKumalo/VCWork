@@ -1,0 +1,72 @@
+﻿<Window x:Class="TaskThreeOptional.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TaskThreeOptional"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid >
+
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="Auto"/>
+
+                <RowDefinition Height="*"/>
+
+                <RowDefinition Height="Auto"/>
+
+            </Grid.RowDefinitions>
+
+
+
+            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10">
+
+                <TextBlock Text="Ingredient count:" VerticalAlignment="Center"/>
+
+                <TextBox x:Name="IngredientCountTb" Width="50" Margin="5" Background="#FFFFFF" Foreground="#000000"/>
+
+                <Button Content="Add Ingredients" Click="Button_Click" Margin="5"/>
+
+                <TextBlock Text="Step count:" VerticalAlignment="Center" Margin="20,0,0,0"/>
+
+                <TextBox x:Name="stepCountTb" Width="50" Margin="5" Background="#FFFFFF" Foreground="#000000"/>
+
+                <Button Content="Add steps" Click="Button_Click_1" Margin="5"/>
+
+            </StackPanel>
+
+
+
+            <ScrollViewer Grid.Row="1">
+
+                <StackPanel x:Name="recipeDetails" Margin="10">
+
+                    <RichTextBox x:Name="recipeRichTextBox" Margin="10" IsReadOnly="True"/>
+
+                </StackPanel>
+
+            </ScrollViewer>
+
+
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+
+                <TextBlock Text="Scaling factor:" VerticalAlignment="Center"/>
+
+                <TextBox x:Name="scaleTb" Width="50" Margin="5" Background="#FFFFFF" Foreground="#000000"/>
+
+                <Button Content="Scale recipe" Click="Button_Click_2" Margin="5,5,5,0" Height="21" VerticalAlignment="Top"/>
+
+                <Button Content="Reset Quants" Click="Button_Click_3" Margin="5,5,5,0" Height="21" VerticalAlignment="Top"/>
+
+                <Button Content="Clear Data" Click="Button_Click_4" Margin="5"/>
+
+                <Button Content="Display recipe" Click="Button_Click_5" Margin="5"/>
+
+            </StackPanel>
+
+        </Grid>
+    </Grid>
+</Window>

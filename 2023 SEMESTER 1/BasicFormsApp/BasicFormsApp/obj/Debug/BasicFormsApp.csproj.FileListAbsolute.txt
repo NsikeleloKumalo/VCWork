@@ -1,0 +1,10 @@
+C:\Users\User\source\repos\BasicFormsApp\BasicFormsApp\bin\Debug\BasicFormsApp.exe.config
+C:\Users\User\source\repos\BasicFormsApp\BasicFormsApp\bin\Debug\BasicFormsApp.exe
+C:\Users\User\source\repos\BasicFormsApp\BasicFormsApp\bin\Debug\BasicFormsApp.pdb
+C:\Users\User\source\repos\BasicFormsApp\BasicFormsApp\obj\Debug\BasicFormsApp.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\BasicFormsApp\BasicFormsApp\obj\Debug\BasicFormsApp.Properties.Resources.resources
+C:\Users\User\source\repos\BasicFormsApp\BasicFormsApp\obj\Debug\BasicFormsApp.csproj.GenerateResource.cache
+C:\Users\User\source\repos\BasicFormsApp\BasicFormsApp\obj\Debug\BasicFormsApp.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\BasicFormsApp\BasicFormsApp\obj\Debug\BasicFormsApp.exe
+C:\Users\User\source\repos\BasicFormsApp\BasicFormsApp\obj\Debug\BasicFormsApp.pdb
+C:\Users\User\source\repos\BasicFormsApp\BasicFormsApp\obj\Debug\BasicFormsApp.Form1.resources

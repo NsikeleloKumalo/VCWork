@@ -1,0 +1,7 @@
+C:\Users\User\source\repos\BasicCollectionsFour\BasicCollectionsFour\bin\Debug\BasicCollectionsFour.exe.config
+C:\Users\User\source\repos\BasicCollectionsFour\BasicCollectionsFour\bin\Debug\BasicCollectionsFour.exe
+C:\Users\User\source\repos\BasicCollectionsFour\BasicCollectionsFour\bin\Debug\BasicCollectionsFour.pdb
+C:\Users\User\source\repos\BasicCollectionsFour\BasicCollectionsFour\obj\Debug\BasicCollectionsFour.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\BasicCollectionsFour\BasicCollectionsFour\obj\Debug\BasicCollectionsFour.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\BasicCollectionsFour\BasicCollectionsFour\obj\Debug\BasicCollectionsFour.exe
+C:\Users\User\source\repos\BasicCollectionsFour\BasicCollectionsFour\obj\Debug\BasicCollectionsFour.pdb

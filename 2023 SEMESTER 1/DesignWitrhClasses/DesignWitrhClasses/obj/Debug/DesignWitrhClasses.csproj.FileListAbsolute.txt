@@ -1,0 +1,16 @@
+C:\Users\User\source\repos\DesignWitrhClasses\DesignWitrhClasses\bin\Debug\DesignWitrhClasses.exe.config
+C:\Users\User\source\repos\DesignWitrhClasses\DesignWitrhClasses\bin\Debug\DesignWitrhClasses.exe
+C:\Users\User\source\repos\DesignWitrhClasses\DesignWitrhClasses\bin\Debug\DesignWitrhClasses.pdb
+C:\Users\User\source\repos\DesignWitrhClasses\DesignWitrhClasses\obj\Debug\DesignWitrhClasses.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\DesignWitrhClasses\DesignWitrhClasses\obj\Debug\MainWindow.g.cs
+C:\Users\User\source\repos\DesignWitrhClasses\DesignWitrhClasses\obj\Debug\App.g.cs
+C:\Users\User\source\repos\DesignWitrhClasses\DesignWitrhClasses\obj\Debug\DesignWitrhClasses_MarkupCompile.cache
+C:\Users\User\source\repos\DesignWitrhClasses\DesignWitrhClasses\obj\Debug\DesignWitrhClasses_MarkupCompile.lref
+C:\Users\User\source\repos\DesignWitrhClasses\DesignWitrhClasses\obj\Debug\MainWindow.baml
+C:\Users\User\source\repos\DesignWitrhClasses\DesignWitrhClasses\obj\Debug\DesignWitrhClasses.g.resources
+C:\Users\User\source\repos\DesignWitrhClasses\DesignWitrhClasses\obj\Debug\DesignWitrhClasses.Properties.Resources.resources
+C:\Users\User\source\repos\DesignWitrhClasses\DesignWitrhClasses\obj\Debug\DesignWitrhClasses.csproj.GenerateResource.cache
+C:\Users\User\source\repos\DesignWitrhClasses\DesignWitrhClasses\obj\Debug\DesignWitrhClasses.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\DesignWitrhClasses\DesignWitrhClasses\obj\Debug\DesignWitrhClasses.exe
+C:\Users\User\source\repos\DesignWitrhClasses\DesignWitrhClasses\obj\Debug\DesignWitrhClasses.pdb
+C:\Users\User\source\repos\DesignWitrhClasses\DesignWitrhClasses\obj\Debug\DesignWitrhClasses.csproj.SuggestedBindingRedirects.cache

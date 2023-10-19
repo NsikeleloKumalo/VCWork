@@ -1,0 +1,7 @@
+C:\Users\User\source\repos\BasicsOne\BasicsOne\bin\Debug\BasicsOne.exe.config
+C:\Users\User\source\repos\BasicsOne\BasicsOne\bin\Debug\BasicsOne.exe
+C:\Users\User\source\repos\BasicsOne\BasicsOne\bin\Debug\BasicsOne.pdb
+C:\Users\User\source\repos\BasicsOne\BasicsOne\obj\Debug\BasicsOne.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\BasicsOne\BasicsOne\obj\Debug\BasicsOne.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\BasicsOne\BasicsOne\obj\Debug\BasicsOne.exe
+C:\Users\User\source\repos\BasicsOne\BasicsOne\obj\Debug\BasicsOne.pdb

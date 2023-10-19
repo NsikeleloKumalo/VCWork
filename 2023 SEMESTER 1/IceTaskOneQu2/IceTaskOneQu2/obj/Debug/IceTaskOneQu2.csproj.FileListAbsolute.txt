@@ -1,0 +1,6 @@
+C:\Users\User\source\repos\IceTaskOneQu2\IceTaskOneQu2\bin\Debug\IceTaskOneQu2.exe.config
+C:\Users\User\source\repos\IceTaskOneQu2\IceTaskOneQu2\bin\Debug\IceTaskOneQu2.exe
+C:\Users\User\source\repos\IceTaskOneQu2\IceTaskOneQu2\bin\Debug\IceTaskOneQu2.pdb
+C:\Users\User\source\repos\IceTaskOneQu2\IceTaskOneQu2\obj\Debug\IceTaskOneQu2.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\IceTaskOneQu2\IceTaskOneQu2\obj\Debug\IceTaskOneQu2.exe
+C:\Users\User\source\repos\IceTaskOneQu2\IceTaskOneQu2\obj\Debug\IceTaskOneQu2.pdb

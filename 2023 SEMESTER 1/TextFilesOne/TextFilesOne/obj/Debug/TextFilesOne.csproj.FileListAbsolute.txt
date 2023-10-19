@@ -1,0 +1,10 @@
+C:\Users\User\source\repos\TextFilesOne\TextFilesOne\bin\Debug\TextFilesOne.exe.config
+C:\Users\User\source\repos\TextFilesOne\TextFilesOne\bin\Debug\TextFilesOne.exe
+C:\Users\User\source\repos\TextFilesOne\TextFilesOne\bin\Debug\TextFilesOne.pdb
+C:\Users\User\source\repos\TextFilesOne\TextFilesOne\obj\Debug\TextFilesOne.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\TextFilesOne\TextFilesOne\obj\Debug\TextFilesOne.Form1.resources
+C:\Users\User\source\repos\TextFilesOne\TextFilesOne\obj\Debug\TextFilesOne.Properties.Resources.resources
+C:\Users\User\source\repos\TextFilesOne\TextFilesOne\obj\Debug\TextFilesOne.csproj.GenerateResource.cache
+C:\Users\User\source\repos\TextFilesOne\TextFilesOne\obj\Debug\TextFilesOne.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\TextFilesOne\TextFilesOne\obj\Debug\TextFilesOne.exe
+C:\Users\User\source\repos\TextFilesOne\TextFilesOne\obj\Debug\TextFilesOne.pdb

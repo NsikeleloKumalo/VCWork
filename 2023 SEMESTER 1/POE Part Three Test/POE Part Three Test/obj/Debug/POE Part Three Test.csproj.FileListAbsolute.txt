@@ -1,0 +1,18 @@
+C:\Users\User\source\repos\POE Part Three Test\POE Part Three Test\obj\Debug\POE Part Three Test.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\POE Part Three Test\POE Part Three Test\obj\Debug\POE Part Three Test.csproj.SuggestedBindingRedirects.cache
+C:\Users\User\source\repos\POE Part Three Test\POE Part Three Test\obj\Debug\home.g.cs
+C:\Users\User\source\repos\POE Part Three Test\POE Part Three Test\obj\Debug\MainWindow.g.cs
+C:\Users\User\source\repos\POE Part Three Test\POE Part Three Test\obj\Debug\App.g.cs
+C:\Users\User\source\repos\POE Part Three Test\POE Part Three Test\obj\Debug\POE Part Three Test_MarkupCompile.cache
+C:\Users\User\source\repos\POE Part Three Test\POE Part Three Test\obj\Debug\POE Part Three Test_MarkupCompile.lref
+C:\Users\User\source\repos\POE Part Three Test\POE Part Three Test\bin\Debug\POE Part Three Test.exe.config
+C:\Users\User\source\repos\POE Part Three Test\POE Part Three Test\bin\Debug\POE Part Three Test.exe
+C:\Users\User\source\repos\POE Part Three Test\POE Part Three Test\bin\Debug\POE Part Three Test.pdb
+C:\Users\User\source\repos\POE Part Three Test\POE Part Three Test\obj\Debug\home.baml
+C:\Users\User\source\repos\POE Part Three Test\POE Part Three Test\obj\Debug\MainWindow.baml
+C:\Users\User\source\repos\POE Part Three Test\POE Part Three Test\obj\Debug\POE Part Three Test.g.resources
+C:\Users\User\source\repos\POE Part Three Test\POE Part Three Test\obj\Debug\POE_Part_Three_Test.Properties.Resources.resources
+C:\Users\User\source\repos\POE Part Three Test\POE Part Three Test\obj\Debug\POE Part Three Test.csproj.GenerateResource.cache
+C:\Users\User\source\repos\POE Part Three Test\POE Part Three Test\obj\Debug\POE Part Three Test.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\POE Part Three Test\POE Part Three Test\obj\Debug\POE Part Three Test.exe
+C:\Users\User\source\repos\POE Part Three Test\POE Part Three Test\obj\Debug\POE Part Three Test.pdb

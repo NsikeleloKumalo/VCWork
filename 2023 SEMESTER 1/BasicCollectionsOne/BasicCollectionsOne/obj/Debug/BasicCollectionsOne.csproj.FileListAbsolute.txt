@@ -1,0 +1,7 @@
+C:\Users\User\source\repos\BasicCollectionsOne\BasicCollectionsOne\bin\Debug\BasicCollectionsOne.exe.config
+C:\Users\User\source\repos\BasicCollectionsOne\BasicCollectionsOne\bin\Debug\BasicCollectionsOne.exe
+C:\Users\User\source\repos\BasicCollectionsOne\BasicCollectionsOne\bin\Debug\BasicCollectionsOne.pdb
+C:\Users\User\source\repos\BasicCollectionsOne\BasicCollectionsOne\obj\Debug\BasicCollectionsOne.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\BasicCollectionsOne\BasicCollectionsOne\obj\Debug\BasicCollectionsOne.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\BasicCollectionsOne\BasicCollectionsOne\obj\Debug\BasicCollectionsOne.exe
+C:\Users\User\source\repos\BasicCollectionsOne\BasicCollectionsOne\obj\Debug\BasicCollectionsOne.pdb

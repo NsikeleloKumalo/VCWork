@@ -1,0 +1,84 @@
+﻿<Window x:Class="Part_Three_POE.Add_Ingredients"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Part_Three_POE"
+        mc:Ignorable="d"
+        Background="Tan"
+        Title="Add_Ingredients" 
+        Height="600" Width="800">
+
+    <Grid>
+        <Border BorderBrush="Chocolate" BorderThickness="3" Margin="0">
+            <StackPanel>
+                <TextBlock Text="Enter the name of the recipe to add ingredients:" Margin="0 0 0 10"/>
+                <TextBox x:Name="recipeNameTextBox" BorderBrush="Chocolate" BorderThickness="5" Margin="0 0 0 10"/>
+
+                <TextBlock Text="Enter the name of the ingredient:" Margin="0 0 0 10"/>
+                <StackPanel x:Name="ingredientPanel">
+                    <TextBox x:Name="ingredientNameTextBox" BorderBrush="Chocolate" BorderThickness="5" Margin="0 0 0 10"/>
+                </StackPanel>
+
+                <TextBlock Text="Enter the quantity of the ingredient:" Margin="0 0 0 10"/>
+                <StackPanel x:Name="quantityPanel">
+                    <TextBox x:Name="quantityTextBox" BorderBrush="Chocolate" BorderThickness="5" Margin="0 0 0 10"/>
+                </StackPanel>
+
+                <!-- Add UI controls for selecting the unit, calories, and food group -->
+                <TextBlock Text="Choose the unit:" Margin="0 0 0 10"/>
+                <ComboBox x:Name="unitComboBox" BorderBrush="Chocolate" BorderThickness="5" Margin="0 0 0 10">
+                    <ComboBoxItem Content="tablespoon"/>
+                    <ComboBoxItem Content="teaspoon"/>
+                    <ComboBoxItem Content="ounce"/>
+                    <ComboBoxItem Content="fluid ounce"/>
+                    <ComboBoxItem Content="cup"/>
+                    <ComboBoxItem Content="quart"/>
+                    <ComboBoxItem Content="pint"/>
+                    <ComboBoxItem Content="gallon"/>
+                    <ComboBoxItem Content="pound"/>
+                    <ComboBoxItem Content="milliliter"/>
+                    <ComboBoxItem Content="gram"/>
+                    <ComboBoxItem Content="kilogram"/>
+                    <ComboBoxItem Content="liter"/>
+                </ComboBox>
+
+                <TextBlock Text="Enter the number of calories:" Margin="0 0 0 10"/>
+                <StackPanel x:Name="caloriesPanel">
+                    <TextBox x:Name="caloriesTextBox" BorderBrush="Chocolate" BorderThickness="5" Margin="0 0 0 10"/>
+                </StackPanel>
+
+                <TextBlock Text="Enter the food group:" Margin="0 0 0 10"/>
+                <ComboBox x:Name="foodGroupComboBox" BorderBrush="Chocolate" BorderThickness="5" Margin="0 0 0 10">
+                    <ComboBoxItem Content="Starchy Foods"/>
+                    <ComboBoxItem Content="Vegetables and Fruits"/>
+                    <ComboBoxItem Content="Dry Beans, Peas, Lentils, and Soya"/>
+                    <ComboBoxItem Content="Chicken, Fish, Meat, and Eggs"/>
+                    <ComboBoxItem Content="Milk and Dairy Products"/>
+                    <ComboBoxItem Content="Fats and Oil"/>
+                    <ComboBoxItem Content="Water"/>
+                </ComboBox>
+
+                <Button x:Name="AddIngredientButton" Content="Add Ingredient" Click="AddIngredientButton_Click"
+                Background="Chocolate" BorderBrush="Tan" BorderThickness="5" Width="600" Margin="0 0 0 10"/>
+
+                <TextBlock Text="Steps:" FontWeight="Bold" Margin="0 0 0 10"/>
+
+                <StackPanel x:Name="stepPanel">
+                    <TextBox x:Name="stepDescriptionTextBox" Width="300" Margin="0 0 10 0"/>
+                </StackPanel>
+
+                <Button x:Name="AddStepButton" Content="Add Step" Click="AddStepButton_Click" Background="Chocolate"
+                BorderBrush="Tan" BorderThickness="5" Width="600" Margin="0 0 0 10"/>
+
+                <StackPanel x:Name="resultPanel" Margin="0 0 0 -20"/>
+
+                <Button x:Name="MainMenu" Content="Main menu" Background="Chocolate" Margin="50" Width="600"
+                Click="MainMenu_Click"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+
+
+
+</Window>

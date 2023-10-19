@@ -1,0 +1,16 @@
+C:\Users\User\source\repos\TaskThreeOptional\TaskThreeOptional\bin\Debug\TaskThreeOptional.exe.config
+C:\Users\User\source\repos\TaskThreeOptional\TaskThreeOptional\bin\Debug\TaskThreeOptional.exe
+C:\Users\User\source\repos\TaskThreeOptional\TaskThreeOptional\bin\Debug\TaskThreeOptional.pdb
+C:\Users\User\source\repos\TaskThreeOptional\TaskThreeOptional\obj\Debug\TaskThreeOptional.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\TaskThreeOptional\TaskThreeOptional\obj\Debug\TaskThreeOptional.csproj.SuggestedBindingRedirects.cache
+C:\Users\User\source\repos\TaskThreeOptional\TaskThreeOptional\obj\Debug\MainWindow.g.cs
+C:\Users\User\source\repos\TaskThreeOptional\TaskThreeOptional\obj\Debug\App.g.cs
+C:\Users\User\source\repos\TaskThreeOptional\TaskThreeOptional\obj\Debug\TaskThreeOptional_MarkupCompile.cache
+C:\Users\User\source\repos\TaskThreeOptional\TaskThreeOptional\obj\Debug\TaskThreeOptional_MarkupCompile.lref
+C:\Users\User\source\repos\TaskThreeOptional\TaskThreeOptional\obj\Debug\MainWindow.baml
+C:\Users\User\source\repos\TaskThreeOptional\TaskThreeOptional\obj\Debug\TaskThreeOptional.g.resources
+C:\Users\User\source\repos\TaskThreeOptional\TaskThreeOptional\obj\Debug\TaskThreeOptional.Properties.Resources.resources
+C:\Users\User\source\repos\TaskThreeOptional\TaskThreeOptional\obj\Debug\TaskThreeOptional.csproj.GenerateResource.cache
+C:\Users\User\source\repos\TaskThreeOptional\TaskThreeOptional\obj\Debug\TaskThreeOptional.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\TaskThreeOptional\TaskThreeOptional\obj\Debug\TaskThreeOptional.exe
+C:\Users\User\source\repos\TaskThreeOptional\TaskThreeOptional\obj\Debug\TaskThreeOptional.pdb

@@ -1,0 +1,6 @@
+C:\Users\User\source\repos\BasicsTwo\BasicsTwo\bin\Debug\BasicsTwo.exe.config
+C:\Users\User\source\repos\BasicsTwo\BasicsTwo\bin\Debug\BasicsTwo.exe
+C:\Users\User\source\repos\BasicsTwo\BasicsTwo\bin\Debug\BasicsTwo.pdb
+C:\Users\User\source\repos\BasicsTwo\BasicsTwo\obj\Debug\BasicsTwo.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\BasicsTwo\BasicsTwo\obj\Debug\BasicsTwo.exe
+C:\Users\User\source\repos\BasicsTwo\BasicsTwo\obj\Debug\BasicsTwo.pdb

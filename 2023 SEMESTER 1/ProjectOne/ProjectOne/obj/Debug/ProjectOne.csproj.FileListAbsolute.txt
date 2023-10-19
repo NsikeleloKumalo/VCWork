@@ -1,0 +1,7 @@
+C:\Users\User\source\repos\ProjectOne\ProjectOne\bin\Debug\ProjectOne.exe.config
+C:\Users\User\source\repos\ProjectOne\ProjectOne\bin\Debug\ProjectOne.exe
+C:\Users\User\source\repos\ProjectOne\ProjectOne\bin\Debug\ProjectOne.pdb
+C:\Users\User\source\repos\ProjectOne\ProjectOne\obj\Debug\ProjectOne.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\ProjectOne\ProjectOne\obj\Debug\ProjectOne.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\ProjectOne\ProjectOne\obj\Debug\ProjectOne.exe
+C:\Users\User\source\repos\ProjectOne\ProjectOne\obj\Debug\ProjectOne.pdb

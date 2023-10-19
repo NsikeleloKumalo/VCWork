@@ -1,0 +1,7 @@
+C:\Users\User\source\repos\BasicCollectionsTwo\BasicCollectionsTwo\obj\Debug\BasicCollectionsTwo.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\BasicCollectionsTwo\BasicCollectionsTwo\obj\Debug\BasicCollectionsTwo.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\BasicCollectionsTwo\BasicCollectionsTwo\bin\Debug\BasicCollectionsTwo.exe.config
+C:\Users\User\source\repos\BasicCollectionsTwo\BasicCollectionsTwo\bin\Debug\BasicCollectionsTwo.exe
+C:\Users\User\source\repos\BasicCollectionsTwo\BasicCollectionsTwo\bin\Debug\BasicCollectionsTwo.pdb
+C:\Users\User\source\repos\BasicCollectionsTwo\BasicCollectionsTwo\obj\Debug\BasicCollectionsTwo.exe
+C:\Users\User\source\repos\BasicCollectionsTwo\BasicCollectionsTwo\obj\Debug\BasicCollectionsTwo.pdb

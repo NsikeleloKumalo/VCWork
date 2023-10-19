@@ -1,0 +1,45 @@
+﻿<Window x:Class="MoreXaml.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MoreXaml"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="550" Width="600"
+        Background="red">
+
+    <Border Background="Black"
+            CornerRadius="40">
+
+
+        <StackPanel Margin="30">
+
+            <TextBlock Text="Quantity:" Foreground="White"/>
+            <TextBox x:Name="QntyBox" Margin="20"/>
+
+            <TextBlock Text="Ingredient:" Foreground="White"/>
+            <TextBox x:Name="IngredBox" Margin="20"/>
+
+            <Button Content="Save"
+                    Background="Red" Width="242" Click="Button_Click" />
+
+            <Label Name="label1" Content="Scaling:" 
+                   Foreground="White"/>
+            <CheckBox x:Name="cb1" Content="Do you want to scale?"  d:LayoutOverrides="Width, Height" 
+                      Foreground="White"
+                      Click="cb1_Click" Checked="cb1_Checked"/>
+
+            <Label Name="label2" Content="Scaling Factors:" 
+                   Foreground="White"/>
+            
+            <RadioButton Name="rb1" Content="0,5" Foreground="White" />
+            <RadioButton Name="rb2" Content="2" Foreground="White"/>
+            <RadioButton Name="rb3" Content="3" Foreground="White"  />
+
+            <RichTextBox Name="rtb1" Height="119" Width="485"/>
+        </StackPanel>
+
+
+
+    </Border>
+</Window>

@@ -1,0 +1,16 @@
+C:\Users\User\source\repos\FileMainTwo\FileMainTwo\bin\Debug\FileMainTwo.exe.config
+C:\Users\User\source\repos\FileMainTwo\FileMainTwo\bin\Debug\FileMainTwo.exe
+C:\Users\User\source\repos\FileMainTwo\FileMainTwo\bin\Debug\FileMainTwo.pdb
+C:\Users\User\source\repos\FileMainTwo\FileMainTwo\obj\Debug\FileMainTwo.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\FileMainTwo\FileMainTwo\obj\Debug\MainWindow.g.cs
+C:\Users\User\source\repos\FileMainTwo\FileMainTwo\obj\Debug\App.g.cs
+C:\Users\User\source\repos\FileMainTwo\FileMainTwo\obj\Debug\FileMainTwo_MarkupCompile.cache
+C:\Users\User\source\repos\FileMainTwo\FileMainTwo\obj\Debug\FileMainTwo_MarkupCompile.lref
+C:\Users\User\source\repos\FileMainTwo\FileMainTwo\obj\Debug\MainWindow.baml
+C:\Users\User\source\repos\FileMainTwo\FileMainTwo\obj\Debug\FileMainTwo.g.resources
+C:\Users\User\source\repos\FileMainTwo\FileMainTwo\obj\Debug\FileMainTwo.Properties.Resources.resources
+C:\Users\User\source\repos\FileMainTwo\FileMainTwo\obj\Debug\FileMainTwo.csproj.GenerateResource.cache
+C:\Users\User\source\repos\FileMainTwo\FileMainTwo\obj\Debug\FileMainTwo.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\FileMainTwo\FileMainTwo\obj\Debug\FileMainTwo.exe
+C:\Users\User\source\repos\FileMainTwo\FileMainTwo\obj\Debug\FileMainTwo.pdb
+C:\Users\User\source\repos\FileMainTwo\FileMainTwo\obj\Debug\FileMainTwo.csproj.SuggestedBindingRedirects.cache

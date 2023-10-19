@@ -1,0 +1,110 @@
+﻿@model IEnumerable<TheRideYouRentFinalTest.Models.ReturnCar>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- Include the jQuery library -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    function calculateElapsedDays(returnDate) {
+        var currentDate = new Date();
+        var elapsedDays = Math.floor((currentDate - new Date(returnDate)) / (1000 * 60 * 60 * 24));
+        return elapsedDays;
+    }
+
+    function calculateFine(elapsedDays) {
+        if (elapsedDays > 0) {
+            var fine = elapsedDays * 500;
+            return fine.toString();
+        } else {
+            return "";
+        }
+    }
+
+    $(document).ready(function () {
+        // Attach the event listener to the returnid input field
+        $("#returnid").keyup(function (e) {
+            var returnId = $(this).val();
+            $.ajax({
+                type: 'GET',
+                url: '/ReturnCar/Getid',
+                data: { Return_id: returnId },
+                dataType: 'json',
+                success: function (data) {
+                    if (data !== null && data.length > 0) {
+                        $('#inspectorid').val(data[0].Inspector_no);
+                        $('#rentalid').val(data[0].Rental_no);
+                        $('#returndate').val(new Date(data[0].ReturnDate).toLocaleString());
+
+                        var elapsedDays = calculateElapsedDays(data[0].ReturnDate);
+                        $('#elapseddays').val(elapsedDays);
+
+                        var fine = calculateFine(elapsedDays);
+                        $('#fine').val(fine);
+                    } else {
+                        $('#inspectorid').val('');
+                        $('#rentalid').val('');
+                        $('#returndate').val('');
+                        $('#elapseddays').val('');
+                        $('#fine').val('');
+                    }
+                }
+            });
+        });
+    });
+</script>
+
+<h2>Return Car</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Inspector.InspectorName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rental.CarNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReturnDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ElapsedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fine)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Inspector.InspectorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rental.CarNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReturnDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ElapsedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fine)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Return_id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Return_id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Return_id })
+            </td>
+        </tr>
+    }
+
+</table>
