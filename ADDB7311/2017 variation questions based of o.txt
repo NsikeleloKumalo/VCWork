@@ -1,0 +1,272 @@
+2017 variation questions based of off the preloads:
+
+Question 2 Variations:
+
+Question 2A: Create an SQL query that will display the customer who has made the most pet purchases.
+
+Sample Data:
+
+Assume additional pet sales have been made.
+SQL Query:
+
+-- Select the customer name and count the number of pet purchases for each customer.
+SELECT customer_name AS CUSTOMER_NAME, COUNT(pet_id) AS PURCHASE_COUNT
+FROM CUSTOMER
+-- Left join with PET_SALES to include customers who haven't made any purchases.
+LEFT JOIN PET_SALES ON CUSTOMER.customer_id = PET_SALES.customer_id
+-- Group the results by customer name.
+GROUP BY customer_name
+-- Filter only the customers who have made the most purchases.
+HAVING COUNT(pet_id) = (SELECT MAX(purchase_count) FROM (SELECT COUNT(pet_id) AS purchase_count FROM PET_SALES GROUP BY customer_id))
+-- Order the results by customer name.
+ORDER BY CUSTOMER_NAME;
+
+
+Question 2B: Create an SQL query that will display the customer who has purchased the most expensive pet.
+
+Sample Data:
+
+Modify the prices of pets in the PETS table.
+SQL Query:
+
+-- Select customer name, pet type, and the maximum pet price.
+SELECT c.customer_name AS CUSTOMER_NAME, p.pet_type AS PET_TYPE, MAX(p.price) AS MAX_PRICE
+FROM CUSTOMER c
+-- Join the CUSTOMER, PET_SALES, and PETS tables to get the required information.
+JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+JOIN PETS p ON ps.pet_id = p.pet_id
+-- Group the results by customer name and pet type.
+GROUP BY c.customer_name, p.pet_type
+-- Filter only the customers who have purchased the most expensive pet.
+HAVING MAX(p.price) = (SELECT MAX(price) FROM PETS)
+-- Order the results by customer name.
+ORDER BY CUSTOMER_NAME;
+
+Question 3 Variations:
+
+Question 3A: Create an SQL query to display the customer name and the total amount spent on pet purchases, including customers who haven't made any purchases.
+
+Sample Data:
+
+Consider customers with no pet purchases.
+SQL Query:
+
+-- Select customer name and the total amount spent on pet purchases, handling customers with no purchases.
+SELECT c.customer_name AS CUSTOMER_NAME, COALESCE(SUM(p.price), 0) AS TOTAL_AMOUNT_SPENT
+FROM CUSTOMER c
+-- Left join with PET_SALES and PETS to include all customers and calculate the total amount spent.
+LEFT JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+LEFT JOIN PETS p ON ps.pet_id = p.pet_id
+-- Group the results by customer name.
+GROUP BY c.customer_name
+-- Order the results by customer name.
+ORDER BY CUSTOMER_NAME;
+
+Question 3B: Create an SQL query to display the customer name and the average amount spent on pet purchases.
+
+Sample Data:
+
+Adjust the number of pet sales and their prices.
+SQL Query:
+
+-- Select customer name and the average amount spent on pet purchases.
+SELECT c.customer_name AS CUSTOMER_NAME, AVG(p.price) AS AVERAGE_AMOUNT_SPENT
+FROM CUSTOMER c
+-- Join the CUSTOMER, PET_SALES, and PETS tables to get the required information.
+JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+JOIN PETS p ON ps.pet_id = p.pet_id
+-- Group the results by customer name.
+GROUP BY c.customer_name
+-- Order the results by customer name.
+ORDER BY CUSTOMER_NAME;
+
+Question 4 Variations:
+
+Question 4A: Create a PL/SQL query to display the pet type and the date of purchase for the sale with ID 2.
+
+Sample Data:
+
+Modify the sales data in the PET_SALES table.
+PL/SQL Query:
+
+-- Declare variables to store pet type and sales date.
+DECLARE
+  v_pet_type VARCHAR2(50);
+  v_sales_date DATE;
+BEGIN
+  -- Select pet type and sales date for sale with ID 2.
+  SELECT p.pet_type, ps.sales_date
+  INTO v_pet_type, v_sales_date
+  FROM PETS p
+  JOIN PET_SALES ps ON p.pet_id = ps.pet_id
+  WHERE ps.sales_id = 2;
+  
+  -- Print the results.
+  DBMS_OUTPUT.PUT_LINE('PET TYPE: ' || v_pet_type);
+  DBMS_OUTPUT.PUT_LINE('SALES DATE: ' || TO_CHAR(v_sales_date, 'DD/MON/YY'));
+END;
+/
+
+Question 4B: Create a PL/SQL query to display the customer name and the date of purchase for the sale with ID 3.
+
+Sample Data:
+
+Modify the sales data in the PET_SALES table and link the sales to customers.
+PL/SQL Query:
+
+-- Declare variables to store customer name and sales date.
+DECLARE
+  v_customer_name VARCHAR2(50);
+  v_sales_date DATE;
+BEGIN
+  -- Select customer name and sales date for sale with ID 3.
+  SELECT c.customer_name, ps.sales_date
+  INTO v_customer_name, v_sales_date
+  FROM CUSTOMER c
+  JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+  WHERE ps.sales_id = 3;
+  
+  -- Print the results.
+  DBMS_OUTPUT.PUT_LINE('CUSTOMER NAME: ' || v_customer_name);
+  DBMS_OUTPUT.PUT_LINE('SALES DATE: ' || TO_CHAR(v_sales_date, 'DD/MON/YY'));
+END;
+/
+
+
+These variations cover different scenarios and aspects of the data and can serve as sample questions and solutions for each case. Adjust the sample data and queries as needed for your specific needs.
+
+questions based on the PETS, CUSTOMER, and PET_SALES tables, along with sample data and solutions for each question:
+
+Question 2 Variations:
+
+Display the customer who has made the most number of pet purchases.
+
+Sample Data:
+
+sql
+Copy code
+-- Assume 'cust_106' has made the most purchases (6 purchases).
+INSERT INTO PET_SALES(sales_id, sales_date, pet_id, customer_id)
+VALUES (6, '01 April 2023', 100001, 'cust_106');
+SQL Query:
+
+sql
+Copy code
+SELECT customer_name AS CUSTOMER_NAME, COUNT(*) AS PURCHASE_COUNT
+FROM CUSTOMER c
+LEFT JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+GROUP BY c.customer_name
+HAVING COUNT(*) = (
+    SELECT MAX(PURCHASE_COUNT)
+    FROM (
+        SELECT COUNT(*) AS PURCHASE_COUNT
+        FROM CUSTOMER c
+        LEFT JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+        GROUP BY c.customer_name
+    )
+);
+Display the pet type with the least number of sales.
+
+Sample Data:
+
+sql
+Copy code
+-- Assume 'Bird' has the least sales (1 sale).
+INSERT INTO PET_SALES(sales_id, sales_date, pet_id, customer_id)
+VALUES (7, '02 April 2023', 100003, 'cust_101');
+SQL Query:
+
+sql
+Copy code
+SELECT p.pet_type AS PET_TYPE, COUNT(*) AS SALES_COUNT
+FROM PETS p
+LEFT JOIN PET_SALES ps ON p.pet_id = ps.pet_id
+GROUP BY p.pet_type
+HAVING COUNT(*) = (
+    SELECT MIN(SALES_COUNT)
+    FROM (
+        SELECT COUNT(*) AS SALES_COUNT
+        FROM PETS p
+        LEFT JOIN PET_SALES ps ON p.pet_id = ps.pet_id
+        GROUP BY p.pet_type
+    )
+);
+Question 3 Variations:
+
+Display the pet type and the total amount of revenue generated from pet sales.
+
+Sample Data:
+
+sql
+Copy code
+-- Assume a new sale of a 'Dog' for $4500.
+INSERT INTO PET_SALES(sales_id, sales_date, pet_id, customer_id)
+VALUES (8, '03 April 2023', 100001, 'cust_102');
+SQL Query:
+
+sql
+Copy code
+SELECT p.pet_type AS PET_TYPE, SUM(p.price) AS TOTAL_REVENUE
+FROM PETS p
+LEFT JOIN PET_SALES ps ON p.pet_id = ps.pet_id
+GROUP BY p.pet_type;
+Display the customer name and the total number of pet purchases made.
+
+SQL Query:
+
+sql
+Copy code
+SELECT c.customer_name AS CUSTOMER_NAME, COUNT(*) AS TOTAL_PURCHASES
+FROM CUSTOMER c
+LEFT JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+GROUP BY c.customer_name;
+Question 4 Variations:
+
+Create a PL/SQL query to display the customer name and the booking date for the most recent pet purchase made.
+
+SQL Query:
+
+sql
+Copy code
+DECLARE
+    v_customer_name CUSTOMER.customer_name%TYPE;
+    v_sales_date PET_SALES.sales_date%TYPE;
+BEGIN
+    SELECT c.customer_name, MAX(ps.sales_date)
+    INTO v_customer_name, v_sales_date
+    FROM CUSTOMER c
+    JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+    GROUP BY c.customer_name
+    ORDER BY MAX(ps.sales_date) DESC
+    FETCH FIRST 1 ROWS ONLY;
+
+    DBMS_OUTPUT.PUT_LINE('CUSTOMER NAME: ' || v_customer_name);
+    DBMS_OUTPUT.PUT_LINE('SALES DATE: ' || TO_CHAR(v_sales_date, 'DD/MON/YY'));
+END;
+Create a PL/SQL query to display the artist name and the booking date for Event ID 1002 (assuming a new event).
+
+Sample Data:
+
+sql
+Copy code
+-- Assume Event ID 1002 with artist 'Funny Comedians' and booking date '04 April 2023'.
+INSERT INTO EVENTS(event_id, event_name, booking_date)
+VALUES (1002, 'Funny Comedians', TO_DATE('04/APR/23', 'DD/MON/YY'));
+SQL Query:
+
+sql
+Copy code
+DECLARE
+    v_artist_name EVENTS.artist_name%TYPE;
+    v_booking_date EVENTS.booking_date%TYPE;
+BEGIN
+    SELECT artist_name, booking_date
+    INTO v_artist_name, v_booking_date
+    FROM EVENTS
+    WHERE event_id = 1002;
+
+    DBMS_OUTPUT.PUT_LINE('ARTIST NAME: ' || v_artist_name);
+    DBMS_OUTPUT.PUT_LINE('BOOKING DATE: ' || TO_CHAR(v_booking_date, 'DD/MON/YY'));
+END;
+
+

@@ -1,0 +1,180 @@
+2016 Past paper 
+
+show user;
+
+--PRODUCT(ProductID, Product, Price, StockLevel);
+--? CUSTOMER(CustomerID, CompanyName, Address, Email);
+--? SALES(SaleID, ProductID, CustomerID, SaleDate, Quantity).
+
+show user;
+
+--PRODUCT(ProductID, Product, Price, StockLevel);
+--? CUSTOMER(CustomerID, CompanyName, Address, Email);
+--? SALES(SaleID, ProductID, CustomerID, SaleDate, Quantity).
+
+Create table Product(
+ProductID VARCHAR(4) NOT NULL,
+Product VARCHAR(50) NOT NULL,
+Price DECIMAL(9,2),
+StockLevel INT NOT NULL,
+PRIMARY KEY (ProductID)
+);
+
+Create table Customer(
+CustomerID INT NOT NULL,
+CustomerName VARCHAR(40) NOT NULL,
+ADDRESS VARCHAR(40) NOT NULL,
+Email VARCHAR(40) NOT NULL,
+PRIMARY KEY (CustomerID)
+);
+
+ALTER TABLE Customer RENAME COLUMN CustomerName TO CompanyName;
+
+Create table Sales(
+SaleID INT NOT NULL,
+ProductID VARCHAR(4) NOT NULL,
+CustomerID INT NOT NULL,
+SaleDate DATE NOT NULL,
+Quantity INT NOT NULL,
+PRIMARY KEY (SaleID),
+FOREIGN KEY (ProductID) REFERENCES Product(ProductID),
+FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID)
+);
+
+select * from product;
+select * from sales;
+select * from customer;
+--X500 Android 8 inch 3g WiFi R1 999.00 10
+--X501 Android 10 inch 3g R2 499.00 5
+--X502 Android 7 inch Tab R2 799.00 8
+--X503 Android 10 inch Tab R1 599.00 3
+INSERT INTO Product (ProductID ,Product,price,stocklevel)
+VALUES ('X500','Android 8 inch 3g WiFi', 1999.00,10);
+INSERT INTO Product (ProductID ,Product,price,stocklevel)
+VALUES('X501','Android 10 inch 3g', 2499.00,5);
+INSERT INTO Product (ProductID ,Product,price,stocklevel)
+VALUES('X502','Android 7 inch Tab', 2799.00 ,8);
+INSERT INTO Product (ProductID ,Product,price,stocklevel)
+VALUES('X503','Android 10 inch Tab', 1599.00,3);
+
+--10010 Wireless Devices 10 Main Rd wdev@gmail.com
+--10011 Mobile Extreme 12 Water Way moex@gmail.com
+--10012 Android Haven 18 Main Rd ahaven@gmail.com
+
+INSERT INTO Customer  VALUES (10010,'Wireless Devices ', '10 Main Rd','wdev@gmail.com');
+INSERT INTO Customer  VALUES (10011,'Mobile Extreme ', '12 Water Way','moex@gmail.com');
+INSERT INTO Customer  VALUES (10012,'Android Haven ', '18 Main Rd ','ahaven@gmail.com');
+--SALES 
+--555 X500 10010 15 May 2016 5
+--556 X503 10010 17 May 2016 3
+--557 X500 10012 17 May 2016 1
+--558 X501 10012 18 May 2016 1
+--559 X501 10010 20 May 206 1
+INSERT INTO Sales  VALUES (555,'X500', 10010,'15 May 2016',5);
+INSERT INTO Sales  VALUES (556,'X503', 10012,'17 May 2016',3);
+INSERT INTO Sales VALUES (557,'X500',  10012 ,'17 May 2016',1);
+INSERT INTO Sales VALUES (558,'X501', 10012,'18 May 2016',1);
+INSERT INTO Sales VALUES (559,'X501', 10010,'20 May 2016 ',1);
+
+--qu 1.2 
+SELECT c.CompanyName, p.Product, s.Quantity
+FROM Customer c
+INNER JOIN Sales s ON c.CustomerID = s.CustomerID
+INNER JOIN Product p ON s.ProductID = p.ProductID;
+
+--1.3
+SELECT C.CompanyName, P.Product, 
+       ROUND(SUM(P.Price), 2) AS TOTAL, 
+       ROUND(SUM(P.Price * 0.10), 2) AS DISCOUNT,
+       ROUND(SUM(P.Price - (P.Price * 0.10)), 2) AS DISCOUNTED_TOTAL
+FROM Customer C
+INNER JOIN Sales S ON C.CustomerID = S.CustomerID
+INNER JOIN Product P ON S.ProductID = P.ProductID
+GROUP BY C.CompanyName, P.Product;
+
+--set server output 
+--2016 test
+-- query 1.4
+-- revenue = qnty x sp 
+SET SERVEROUTPUT ON;
+DECLARE
+V_PRODUCT product.product%TYPE;
+V_TOTAL VARCHAR2 (100); --calc
+--logic
+Cursor secondCursor IS 
+SELECT P.PRODUCT, SUM(P.PRICE * S.QUANTITY)
+FROM PRODUCT P
+INNER JOIN SALES S ON P.PRODUCTID = S.PRODUCTID
+where P.PRODUCTID = 'X500'
+GROUP BY P.PRODUCT;
+BEGIN 
+OPEN secondCursor;
+LOOP
+FETCH secondCursor INTO V_PRODUCT, V_TOTAL;
+--OUTPUT
+DBMS_OUTPUT.put_line('The total sales amount for product' || V_PRODUCT || 'is:R' || v_total);
+--EXIT CONDITION 
+EXIT WHEN secondCursor %FOUND;
+END LOOP; --ends the loop 
+CLOSE secondCursor; --close the cursor 
+END; --end thhe pl/sql block 
+
+
+--1.5
+SET SERVEROUTPUT ON;
+DECLARE
+V_CompanyName companyname.companyname%TYPE;
+V_PURCHASE INT; --calc
+--logic
+Cursor thirdCursor IS 
+SELECT c.companyname,COUNT(S.CUSTOMERID)
+FROM CUSTOMER C
+JOIN SALES S ON 
+C.CUSTOMERID = S.CUSTOMERID
+where S.PRODUCTID = 'X500'
+GROUP BY C.COMPANYNAME;
+BEGIN 
+OPEN thirdCursor;
+LOOP
+FETCH thirdCursor INTO V_companyname, V_Purchase;
+--OUTPUT
+DBMS_OUTPUT.put_line('Purchase by' || V_CompanyName || 'is:R' || v_urchase);
+--EXIT CONDITION 
+EXIT WHEN thirdCursor %NOTFOUND;
+END LOOP; --ends the loop 
+CLOSE thirdCursor; --close the cursor 
+END; --end thhe pl/sql block
+
+--1.6
+CREATE VIEW No_Purchases AS
+SELECT C.CompanyName
+FROM Customer C
+LEFT JOIN Sales S ON C.CustomerID = S.CustomerID
+WHERE S.CustomerID IS NULL;
+
+--1.7
+DECLARE
+    v_stock_level INT;
+BEGIN
+    SELECT StockLevel
+    INTO v_stock_level
+    FROM Product
+    WHERE ProductID = 'X503'; -- Replace with the desired product ID (X503)
+
+    IF v_stock_level >= 10 THEN
+        DBMS_OUTPUT.PUT_LINE('X503 stock levels are stable.');
+    ELSE
+        DBMS_OUTPUT.PUT_LINE('X503 stock levels are not stable. Stock levels need to be increased.');
+    END IF;
+END;
+/
+
+--1.8
+CREATE USER sam_smith IDENTIFIED BY smith12345;
+GRANT SELECT ON Product TO sam_smith;
+
+
+--1.9 
+CREATE SEQUENCE sales_id
+    START WITH 560
+    INCREMENT BY 1;

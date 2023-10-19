@@ -1,0 +1,107 @@
+Assessment Checklist 
+
++ Login sql server 
++ Check your services
++ Create a new user - has to be done under a system 
+show user;
++ Grant all permissions 
+
+create user test2017 identified by test2017
+DEFAULT tablespace users temporary tablespace temp 
+quota 20m on users
+account unlock;
+
+--GRANT ALL PERMISSIONS 
+grant create session to test2017;
+grant all privileges to test2017;
+
++ oracle script to true -optional 
+ALTER SESSION SET "_oracle_script" = true;
+
++Now create a new DB connection
+
++ USING THE NEW USER YOU JUST SETUP 
+show user;
+
+--table 1
+CREATE TABLE Event (
+EVENT_ID INT NOT NULL PRIMARY KEY,
+EVENT_NAME VARCHAR2(50),
+EVENT_RATE NUMBER (10,2) NOT NULL
+);
+
+--table 2
+CREATE TABLE ARTIST(
+ARTIST_ID VARCHAR(5) NOT NULL PRIMARY KEY,
+ARTIST_NAME VARCHAR(50) NOT NULL,
+ARTIST_EMAIL VARCHAR(50)
+);
+
+--table 3
+CREATE TABLE BOOKINGS(
+BOOKING_ID INT NOT NULL PRIMARY KEY,
+BOOKING_DATE DATE NOT NULL,
+EVENT_ID INT NOT NULL,
+ARTIST_ID VARCHAR(5) NOT NULL,
+FOREIGN KEY (EVENT_ID) REFERENCES EVENT(EVENT_ID),
+FOREIGN KEY  (ARTIST_ID) REFERENCES ARTIST(ARTIST_ID)
+);
+
+
+--DROP TABLE BOOKING;
+
+savepoint a;
+
+--inserting data into the tables 
+INSERT INTO EVENT VALUES (1001,'Open Air Comedy Festival',300);
+INSERT INTO EVENT VALUES (1002,' Mountain Side Music Festival',280);
+INSERT INTO EVENT VALUES (1003,'Beach Music Festival',195);
+
+SELECT * FROM EVENT;
+savepoint b;
+
+INSERT INTO ARTIST VALUES ('A_101','Max Trillion','maxt@isat.com');
+INSERT INTO ARTIST VALUES ('A_102','Music Mayhem','mayhem@ymail.com');
+INSERT INTO ARTIST VALUES ('A_103','LOL Man','lol@isat.com');
+
+SELECT * FROM ARTIST;
+
+--things that dont work for date format
+-- 07/15/2017
+-- 15/07/2017
+
+1 15 July 2017 1002 A_101
+2 15 July 2017 1002 A_102
+3 27 August 2017 1001 A_103
+4 30 August 2017 1003 A_101
+5 30 August 2017 1003 A_10
+INSERT INTO BOOKINGS VALUES (1,'15 July 2017',1002,'A_101');
+INSERT INTO BOOKINGS VALUES (2,'15 July 2017',1002,'A_102');
+INSERT INTO BOOKINGS VALUES (3,'27 August 2017',1001,'A_103');
+INSERT INTO BOOKINGS VALUES (4,'30 August 2017',1003,'A_101');
+INSERT INTO BOOKINGS VALUES (5,'30 August 2017',1003,'A_102');
+
+savepoint c;
+--query 2
+--display least amount of performances
+SELECT * FROM (
+    SELECT ARTIST.ARTIST_NAME, COUNT(BOOKINGS.ARTIST_ID) AS PERFORMANCE_COUNT 
+    FROM BOOKINGS
+    JOIN ARTIST
+    ON BOOKINGS.ARTIST_ID=ARTIST.ARTIST_ID
+    GROUP BY ARTIST.ARTIST_NAME
+    ORDER BY COUNT(BOOKINGS.ARTIST_ID)
+)
+WHERE ROWNUM=1;
+
+
+--query 3 
+
+SELECT ARTIST.ARTIST_NAME , SUM(EVENT.EVENT_RATE) REVENUE
+FROM BOOKINGS
+INNER JOIN ARTIST
+ON BOOKINGS.ARTIST_ID = ARTIST.ARTIST_ID
+INNER JOIN EVENT
+ON BOOKINGS.EVENT_ID = EVENT.EVENT_ID
+GROUP BY ARTIST.ARTIST_NAME;
+

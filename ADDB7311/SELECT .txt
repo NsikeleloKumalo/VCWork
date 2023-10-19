@@ -1,0 +1,25 @@
+SELECT 
+
+INTRODUCTION 
+
+is a data Retrival Language 
+SELECT clasue specifies the column to search 
+FROM clasuse specifies the data source 
+Column search can be modified using expressions 
+
+Select table:
+select * from employees;
+
+select from specific columns:
+select employee-Id, FirstName, Last_Name, Salary from Emplyees;
+
+Calc using select:
+select employee-Id, FirstName ||'' ||Last_Name, Salary from Emplyees;
+
+Calc using select and alias:
+select employee-Id, FirstName ||'' ||Last_Name as Employee_Name, Salary * 12 as Annual_Salary from Emplyees;
+
+to add spacing 
+Calc using select and alias:
+select employee-Id, FirstName ||'' ||Last_Name as "Employee Name", Salary * 12 as Annual_Salary from Emplyees;
+

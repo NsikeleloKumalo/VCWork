@@ -1,0 +1,85 @@
+mocktest  pp var but based off the preloads
+
+Queries for PETS Table:
+
+Query 1: Display the pet types and breeds for pets with a price between 2000 and 4000. Order the results by pet type and breed in ascending order. Save your query as qryPets1.
+
+
+SELECT pet_type, pet_breed
+FROM PETS
+WHERE price BETWEEN 2000 AND 4000
+ORDER BY pet_type, pet_breed;
+
+Query 2: Calculate the average price of all pets and display it. Save your query as qryPets2.
+
+SELECT AVG(price) AS average_price
+FROM PETS;
+Query 3: Display the pet types and their counts. Save your query as qryPets3.
+
+
+SELECT pet_type, COUNT(*) AS pet_count
+FROM PETS
+GROUP BY pet_type;
+Query 4: Find the most expensive pet and display its details. Save your query as qryPets4.
+
+
+SELECT *
+FROM PETS
+WHERE price = (SELECT MAX(price) FROM PETS);
+
+Queries for CUSTOMER Table:
+
+Query 1: Display the names and email addresses of customers whose names start with 'S'. Save your query as qryCustomer1.
+
+
+SELECT customer_name, customer_email
+FROM CUSTOMER
+WHERE customer_name LIKE 'S%';
+
+Query 2: Calculate the average length of customer names. Save your query as qryCustomer2.
+
+
+SELECT AVG(LENGTH(customer_name)) AS average_name_length
+FROM CUSTOMER;
+
+Query 3: Display the total number of customers. Save your query as qryCustomer3.
+
+SELECT COUNT(*) AS total_customers
+FROM CUSTOMER;
+Query 4: Find the customer with the longest email address. Save your query as qryCustomer4.
+
+sql
+Copy code
+SELECT *
+FROM CUSTOMER
+WHERE LENGTH(customer_email) = (SELECT MAX(LENGTH(customer_email)) FROM CUSTOMER);
+
+Queries for PET_SALES Table:
+
+Query 1: Display the sales dates and pet types for all pet sales made on or after '2023-03-15'. Save your query as qryPetSales1.
+
+
+SELECT PS.sales_date, P.pet_type
+FROM PET_SALES PS
+JOIN PETS P ON PS.pet_id = P.pet_id
+WHERE PS.sales_date >= TO_DATE('2023-03-15', 'YYYY-MM-DD');
+
+Query 2: Calculate the total number of pet sales. Save your query as qryPetSales2.
+
+
+SELECT COUNT(*) AS total_sales
+FROM PET_SALES;
+Query 3: Display the customer names and their total spending on pet sales. Save your query as qryPetSales3.
+
+
+SELECT C.customer_name, SUM(P.price) AS total_spending
+FROM CUSTOMER C
+JOIN PET_SALES PS ON C.customer_id = PS.customer_id
+JOIN PETS P ON PS.pet_id = P.pet_id
+GROUP BY C.customer_name;
+
+Query 4: Find the latest pet sale and display its details. Save your query as qryPetSales4.
+
+SELECT *
+FROM PET_SALES
+WHERE sales_date = (SELECT MAX(sales_date) FROM PET_SALES);

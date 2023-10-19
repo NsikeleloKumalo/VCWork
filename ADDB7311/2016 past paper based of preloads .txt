@@ -1,0 +1,152 @@
+2016 past paper based of preloads 
+Q.1.2 - Display the customer name, pet type, and quantity purchased:
+
+sql
+Copy code
+SELECT C.customer_name, P.pet_type, COUNT(*) AS QUANTITY
+FROM CUSTOMER C
+JOIN PET_SALES PS ON C.customer_id = PS.customer_id
+JOIN PETS P ON PS.pet_id = P.pet_id
+GROUP BY C.customer_name, P.pet_type;
+Sample Output:
+
+markdown
+Copy code
+CUSTOMER_NAME     PET_TYPE      QUANTITY
+---------------------------------------
+Jeff Jones        Cat           1
+Sally Williams    Dog           1
+Sam Henry         Bird          1
+Sally Williams    Rabbit        1
+Jack West         Fish          1
+Q.1.3 - Display the customer name, pet type, total bill, and discounted total:
+
+sql
+Copy code
+SELECT C.customer_name, P.pet_type, SUM(P.price) AS TOTAL,
+       SUM(P.price * 0.10) AS DISCOUNT,
+       SUM(P.price - (P.price * 0.10)) AS DISCOUNTED_TOTAL
+FROM CUSTOMER C
+JOIN PET_SALES PS ON C.customer_id = PS.customer_id
+JOIN PETS P ON PS.pet_id = P.pet_id
+GROUP BY C.customer_name, P.pet_type;
+Sample Output:
+
+yaml
+Copy code
+CUSTOMER_NAME      PET_TYPE      TOTAL    DISCOUNT   DISCOUNTED_TOTAL
+---------------------------------------------------------------------
+Jeff Jones         Cat           3800.00  380.00     3420.00
+Sally Williams     Dog           5000.00  500.00     4500.00
+Sam Henry          Bird          2500.00  250.00     2250.00
+Sally Williams    Rabbit        550.00   55.00      495.00
+Jack West         Fish           280.00   28.00      252.00
+Q.1.4 - Calculate the total sales amount for a specific pet:
+
+sql
+Copy code
+DECLARE
+    v_total_sales NUMBER(8,2);
+BEGIN
+    SELECT SUM(P.price)
+    INTO v_total_sales
+    FROM PET_SALES PS
+    JOIN PETS P ON PS.pet_id = P.pet_id
+    WHERE P.pet_id = 100002; -- Replace with the desired pet_id
+
+    DBMS_OUTPUT.PUT_LINE('The total sales amount for product Siamese Cat is: R' || TO_CHAR(v_total_sales, '9999.99'));
+END;
+/
+Sample Output:
+
+csharp
+Copy code
+Anonymous block completed
+The total sales amount for product Siamese Cat is: R3800.00
+Q.1.5 - Display the number of purchases made by each customer:
+
+sql
+Copy code
+DECLARE
+    v_customer_name CUSTOMER.customer_name%TYPE;
+    v_purchase_count NUMBER(6);
+    CURSOR purchase_cursor IS
+        SELECT C.customer_name, COUNT(*) AS purchase_count
+        FROM CUSTOMER C
+        JOIN PET_SALES PS ON C.customer_id = PS.customer_id
+        GROUP BY C.customer_name;
+BEGIN
+    OPEN purchase_cursor;
+    LOOP
+        FETCH purchase_cursor INTO v_customer_name, v_purchase_count;
+        EXIT WHEN purchase_cursor%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE('Purchases made by ' || v_customer_name || ': ' || v_purchase_count);
+    END LOOP;
+    CLOSE purchase_cursor;
+END;
+/
+Sample Output:
+
+csharp
+Copy code
+Anonymous block completed
+Purchases made by Jeff Jones: 1
+Purchases made by Sally Williams: 2
+Purchases made by Sam Henry: 1
+Purchases made by Jack West: 1
+Q.1.6 - Create a view called No_Purchases to display customers with no purchases:
+
+sql
+Copy code
+CREATE VIEW No_Purchases AS
+SELECT C.customer_name
+FROM CUSTOMER C
+WHERE C.customer_id NOT IN (SELECT DISTINCT customer_id FROM PET_SALES);
+Sample Output:
+
+diff
+Copy code
+No_Purchases
+--------------
+Jabulani Zintle
+Q.1.7 - Display whether a specific pet stock level needs to be increased:
+
+sql
+Copy code
+DECLARE
+    v_stock_level NUMBER(6);
+BEGIN
+    SELECT COUNT(*)
+    INTO v_stock_level
+    FROM PETS
+    WHERE pet_id = 100002; -- Replace with the desired pet_id
+
+    IF v_stock_level >= 10 THEN
+        DBMS_OUTPUT.PUT_LINE('Stock levels are stable');
+    ELSE
+        DBMS_OUTPUT.PUT_LINE('Stock levels are not stable. Stock levels need to be increased');
+    END IF;
+END;
+/
+Sample Output:
+
+css
+Copy code
+Anonymous block completed
+Stock levels are not stable. Stock levels need to be increased
+Q.1.8 - Create a user called sam_smith with select privileges for PET_SALES:
+
+sql
+Copy code
+CREATE USER sam_smith IDENTIFIED BY smith12345;
+GRANT SELECT ON PET_SALES TO sam_smith;
+Sample Output: User and privileges created successfully.
+
+Q.1.9 - Create a sequence called sales_id starting at 560 and incrementing by one:
+
+sql
+Copy code
+CREATE SEQUENCE sales_id
+    START WITH 560
+    INCREMENT BY 1;
+Sample Output: Sequence created successfully.

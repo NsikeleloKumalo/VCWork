@@ -1,0 +1,49 @@
+create table Employee(
+   ID                 VARCHAR2(4)         NOT NULL,
+   First_Name         VARCHAR2(10),
+   Last_Name          VARCHAR2(10),
+   Start_Date         DATE,
+   End_Date           DATE,
+   Salary             Number(8,2),
+   City               VARCHAR2(10),
+   Description        VARCHAR2(15)
+  );
+  create table employee_audit (
+       id VARCHAR2(4),
+       salary Number(8,2),
+       delete_date Date,
+       deleted_by VARCHAR2(50)
+       );
+       
+insert into Employee(ID,  First_Name, Last_Name, Start_Date,End_Date,Salary,City,Description)
+values ('01','Jason',    'Martin',  to_date('19960725','YYYYMMDD'), to_date('20060725','YYYYMMDD'), 1234.56, 'Toronto',  'Programmer');
+insert into Employee(ID,  First_Name, Last_Name, Start_Date,End_Date,Salary,City,Description)
+values('02','Alison',   'Mathews', to_date('19760321','YYYYMMDD'), to_date('19860221','YYYYMMDD'), 6661.78, 'Vancouver','Tester');
+insert into Employee(ID,  First_Name, Last_Name, Start_Date,End_Date,Salary,City,Description)
+values('03','James',    'Smith',   to_date('19781212','YYYYMMDD'), to_date('19900315','YYYYMMDD'), 6544.78, 'Vancouver','Tester');
+             
+ select * from employee;
+ 
+ --create trigger 
+ CREATE OR REPLACE TRIGGER trigOne
+ After DELETE 
+ ON Employee 
+ FOR EACH ROW 
+DECLARE 
+    v_username varchar(50);
+    
+Begin 
+
+--put the user into the audit table 
+SELECT user INTO v_username 
+FROM Dual;
+
+--TABLE 
+INSERT INTO employee_audit values (:old.id, :old.salary, sysdate, v_username);
+
+END;
+
+SELECT * FROM employee_audit;
+
+-- make the trigger ire 
+Delete from employee where id='01';

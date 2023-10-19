@@ -1,0 +1,78 @@
+ADVANCED DB 10-08-2023
+--pl sql/slq blocks 
+--deal with sql scripts in blocks
+-- handle server side reqs/ ops
+--used for decision making //calcs
+-- there are 2 types of blocks
+   -- named blocks
+   -- anonymous blocks 
+--portion 
+   --declaration portion
+   -- used to set the serveroutput to on
+
+-- Portion 2 
+    -- execution portion
+
+-- Portion 3
+    --Output
+    --Exception Handling 
+
+
+--here is an example 
+--portion 
+   --declaration portion
+   -- used to set the serveroutput to on
+--BLOCK ONE
+SET SERVEROUTPUT ON;
+DECLARE 
+--global variables
+a INTEGER := 100;
+b integer := 150;
+c INTEGER ;
+d INTEGER ;
+
+-- Portion 2 
+    -- execution portion
+BEGIN
+c := a + b;
+d := a * b;
+
+-- Portion 3
+    --Output
+    --not doing exception handling in this lecture 
+--output 
+DBMS_OUTPUT.PUT_LINE('a and b added is: ' || c );
+DBMS_OUTPUT.PUT_LINE('a and b multiplied is: ' || d );
+
+END;
+
+--INSERT METHODS 
+
+-- INSERTING INTO TABLES 
+    --2 versions
+    --insert into
+    --insert all --> temp tablespace -- from dual
+    
+CREATE TABLE Customers (
+ID INT NOT NULL,
+NAME VARCHAR(20) NOT NULL,
+AGE INT NOT NULL,
+SALARY DECIMAL (8,2),
+PRIMARY KEY (ID)
+);
+
+--Version 1
+INSERT INTO Customers (ID, NAME, AGE, SALARY) VALUES (3, 'Henry', 23, 12500.00);
+INSERT INTO Customers (ID, NAME, AGE, SALARY) VALUES (4, 'Sue',343, 52500.00);
+
+--Version 2 
+INSERT ALL 
+INTO Customers (ID, NAME, AGE, SALARY) VALUES ( 5, 'Trent', 42, 5700.00 )
+INTO Customers (ID, NAME, AGE, SALARY) VALUES ( 6, 'Ben', 27, 15700.00 )
+INTO Customers (ID, NAME, AGE, SALARY) VALUES ( 7, 'Tim', 41, 2300.00 )
+INTO Customers (ID, NAME, AGE, SALARY) VALUES ( 8, 'Liam', 23, 4500.00 )
+SELECT * FROM DUAL;
+
+SELECT * FROM Customers;
+
+

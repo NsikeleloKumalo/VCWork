@@ -1,0 +1,87 @@
+Constraints 
+
+-Is a rule to which data must conform 
+-Constraint names are optional 
+- Can be aded @ Column level or table level 
+-Can be enabled/disabled/dropped 
+
+TYPES OF Contraints 
+ -NOT NULL = ensures that a column will never accept a null value 
+ -UNIQUE = ensure uniqunes of the records, but it's best to make this a primary key 
+ -PRIMARY KEY = combination of not nul and unique 
+ -CHECK = when you want a particular value to be of a particular type 
+ -FOREIGN KEY = refrencial integrity 
+
+NOT NULL: 
+-can only be used at a column level 
+CREATE TABLE Sample1(
+Col1 number constraint Sample1_Col1_nn NOT NULL,
+Col2 number NOT NULL);
+
+dec Sample1;
+-to se structure of the table 
+ *If you want to change a column from null to not null
+alter table Employees modify FirstName varchar2(20) constraint Employee_FirstName_NN not null;
+
+UNIQUE: can be added at couln/ table level 
+
+CREATE TABLE Sample2(
+Col1 number constraint Sample2_Col1_un unique,--Column leve1; 
+Col2 number,
+Col3 number,
+constraint Sample2_unique(Col2,Col3) --Table leve1);
+
+-add a unique constraint to an already existing data table 
+alter table Employees add constraint Employee_Email_UN unique(EmailId);
+
+alter table Employees add constraint Employee_Mobile_UN unique(MobileNo);
+
+
+PRIMARY KEY:
+CREATE TABLE Sample3(
+Col1 number constraint Sample1_Col3_pk PRIMARY KEY, --Column level 
+Col2 number,
+constraint Sample3_pk primary key(Col1));--Table level 
+
+-add a pk constraint to an already existing data table 
+alter table Employees add constraint Employee_pk primary key(EmpId);
+
+CHECK:
+CREATE TABLE Sample4(
+Col1 number constraint Sample4_Col3_check Check(Col1 >=10000));
+
+-add a pk constraint to an already existing data table 
+alter table Employees add constraint Employee_gender_check check(Gender in('M','F'));
+
+FOREIGN KEY:
+-ONE COLUMN SHOULD REFER TO A TABLE IN THAT COULMN 
+-add a Fk constraint to an already existing data table 
+alter table Employees add constraint Emp_Dept_Rel Foreign Key(DeptId) references Departments(DeptId) on delete set null;
+
+MANAGING CONSTRAINTS:
+-Viewing constraint
+-Adding constraint
+-Disabling constraint
+-Enabling constraint
+-Dropping constraint
+
+desc user_constraints;
+
+select constraint_name, constaint_type from user_contraints where table_name='EMPLOYEES';
+
+-select for colums 
+desc user_cons_columns 
+
+select constraint_name, column_name from  user_cons_columns  where table_name='EMPLOYEES';
+
+select constraint_name, constaint_type from user_contraints where table_name='EMPLOYEES';
+
+--remove/diable  constraint 
+alter table EMPLOYEES disable Emp_Gender_check;
+
+--enable  constraint 
+alter table EMPLOYEES enable Emp_Gender_check;
+
+--drop constraint 
+alter table EMPLOYEES drop Emp_Gender_check;
+

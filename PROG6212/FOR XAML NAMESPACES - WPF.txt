@@ -1,0 +1,9 @@
+//FOR XAML NAMESPACES - WPF 
+[assembly: XmlnsDefinition("http://schemas.hpod9.com/logc/wpf",
+    "LoginControl")]
+[assembly: XmlnsDefinition("http://schemas.hpod9.com/logc/wpf",
+    "LoginControl.Controls")]
+
+
+xmlns:logc="clr-namespace:LoginControl;assembly=LoginControl"
+xmlns:logcCtrl="clr-namespace:LoginControl.Controls;assembly=LoginControl"

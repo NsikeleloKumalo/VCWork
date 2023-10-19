@@ -1,0 +1,246 @@
+Joins 
+
+Types of JOIN
+
+Equijoins
+Non-Equi Joins
+Self Joins
+Cross Join / Cartesian Products
+Inner Joins
+Outer Joins
+Left Outer Join
+Right Outer Join
+Full Outer Join
+Natural Join
+Antijoins
+Semijoins
+
+EQUIJOIN:
+An equijoin is a join with a join condition containing an equality operator. This is represented by (=) sign. This join retrieves information by using equality condition.
+
+Sample table: emp_mast
+
+
+Sample table: dep_mast
+
+
+Example:
+
+The following command shows that the two tables emp_mast and dep_mast are being joined based on an equality matching criteria i.e., "WHERE e.dept_no=d.dept_no".
+
+SELECT emp_no,emp_name,job_name,dep_name 
+FROM emp_mast e,dep_mast d 
+WHERE e.dept_no=d.dept_no;
+
+Sample Output:
+
+    EMP_NO EMP_NAME             JOB_NAME   DEP_NAME
+---------- -------------------- ---------- ----------
+      1234 Alex                 Clerk      FINANCE
+      2345 Jack                 Consultant MARKETING
+      3456 Paul                 Manager    FINANCE
+
+Non-Equi Join
+
+An nonequi join is an inner join statement that uses an unequal operation (i.e.: <>, >, <, !=, BETWEEN, etc.) to match rows from different tables.
+
+Example:
+
+SELECT emp_no,emp_name,job_name,dep_name 
+FROM emp_mast e,dep_mast d 
+WHERE e.dept_no>d.dept_no;
+
+Sample Output:
+
+    EMP_NO EMP_NAME             JOB_NAME   DEP_NAME
+---------- -------------------- ---------- ----------
+      2345 Jack                 Consultant FINANCE
+      4567 Jenefer              Engineer   FINANCE
+      4567 Jenefer              Engineer   MARKETING
+      4567 Jenefer              Engineer   HR
+Self Joins
+
+A self join is such a join in which a table is joined with itself. For example, when you require details about an employee and his manager (also an employee).
+
+Example:
+
+SELECT a1.emp_no,a2.emp_name,a1.job_name,a2.dept_no 
+FROM emp_mast a1,emp_mast a2 
+WHERE a1.emp_no=a2.mgr_id;
+
+Sample Output:
+
+    EMP_NO EMP_NAME             JOB_NAME      DEPT_NO
+---------- -------------------- ---------- ----------
+      4567 Alex                 Engineer           15
+      3456 Jack                 Manager            25
+      1234 Paul                 Clerk              15
+      2345 Jenefer              Consultant         45
+Cross Joins
+
+A Cross Join or Cartesian join or Cartesian product is a join of every row of one table to every row of another table.
+
+Example:
+
+SELECT emp_no,emp_name,job_name,dep_name,location 
+FROM emp_mast 
+CROSS JOIN dep_mast;
+
+Sample Output:
+
+    EMP_NO EMP_NAME             JOB_NAME   DEP_NAME   LOCATION
+---------- -------------------- ---------- ---------- ---------
+      1234 Alex                 Clerk      FINANCE    PARIS
+      2345 Jack                 Consultant FINANCE    PARIS
+      3456 Paul                 Manager    FINANCE    PARIS
+      4567 Jenefer              Engineer   FINANCE    PARIS
+      1234 Alex                 Clerk      MARKETING  LONDON
+      2345 Jack                 Consultant MARKETING  LONDON
+      3456 Paul                 Manager    MARKETING  LONDON
+      4567 Jenefer              Engineer   MARKETING  LONDON
+      1234 Alex                 Clerk      HR         DELHI
+      2345 Jack                 Consultant HR         DELHI
+      3456 Paul                 Manager    HR         DELHI
+      4567 Jenefer              Engineer   HR         DELHI
+
+12 rows selected.
+Inner Joins
+
+An inner join is a join that returns rows of the tables that satisfy the join condition.
+
+Example:
+
+SELECT emp_no,emp_name,job_name,dep_name,location 
+FROM emp_mast 
+INNER JOIN dep_mast USING(dept_no);
+
+Sample Output:
+
+    EMP_NO EMP_NAME             JOB_NAME   DEP_NAME   LOCATION
+---------- -------------------- ---------- ---------- ----------
+      1234 Alex                 Clerk      FINANCE    PARIS
+      2345 Jack                 Consultant MARKETING  LONDON
+      3456 Paul                 Manager    FINANCE    PARIS
+Outer Joins
+
+An outer join is such a join which is similar to the equi join, but Oracle will also return non matched rows from the table.
+
+Left Outer Join
+
+This left outer join displays all matching records of both table along with the records in left hand side table of join clause which are not in right hand side table of join clause.
+
+Example:
+
+SELECT emp_no,emp_name,job_name,dep_name,location 
+FROM emp_mast e LEFT OUTER JOIN dep_mast d 
+ON(e.dept_no=d.dept_no);
+
+OR
+
+SELECT emp_no,emp_name,job_name,dep_name,location 
+FROM emp_mast e, dep_mast d 
+WHERE e.dept_no=d.dept_no(+);
+
+Sample Output:
+
+    EMP_NO EMP_NAME             JOB_NAME   DEP_NAME   LOCATION
+---------- -------------------- ---------- ---------- ----------
+      3456 Paul                 Manager    FINANCE    PARIS
+      1234 Alex                 Clerk      FINANCE    PARIS
+      2345 Jack                 Consultant MARKETING  LONDON
+      4567 Jenefer              Engineer
+Right Outer Join
+
+This right outer join displays all matching records of both tables along with the records in left hand side table of join clause which are not in right hand side table of join clause.
+
+Example:
+
+SELECT emp_no,emp_name,job_name,dep_name,location 
+FROM emp_mast e RIGHT OUTER JOIN dep_mast d 
+ON(e.dept_no=d.dept_no);
+
+OR
+
+SELECT emp_no,emp_name,job_name,dep_name,location 
+FROM emp_mast e, dep_mast d 
+WHERE e.dept_no(+)=d.dept_no;
+
+Sample Output:
+
+    EMP_NO EMP_NAME             JOB_NAME   DEP_NAME   LOCATION
+---------- -------------------- ---------- ---------- ---------
+      1234 Alex                 Clerk      FINANCE    PARIS
+      2345 Jack                 Consultant MARKETING  LONDON
+      3456 Paul                 Manager    FINANCE    PARIS
+                                           HR         DELHI
+Full Outer Join
+
+A full outer join returns all rows from both the tables left and right side of the join clause, extended with nulls if they do not satisfy the join condition.
+
+Example:
+
+SELECT emp_no,emp_name,job_name,dep_name,location 
+FROM emp_mast e 
+FULL OUTER JOIN dep_mast d ON(e.dept_no=d.dept_no);
+
+Sample Output:
+
+
+    EMP_NO EMP_NAME             JOB_NAME   DEP_NAME   LOCATION
+---------- -------------------- ---------- ---------- ----------
+      1234 Alex                 Clerk      FINANCE    PARIS
+      2345 Jack                 Consultant MARKETING  LONDON
+      3456 Paul                 Manager    FINANCE    PARIS
+      4567 Jenefer              Engineer 
+                                           HR         DELHI
+Natural Join
+
+A natural join is such a join that compares the common columns of both tables with each other.
+
+Example:
+
+SELECT  emp_no,emp_name,job_name,dep_name,location 
+FROM emp_mast 
+NATURAL JOIN dep_mast;
+
+Sample Output:
+
+    EMP_NO EMP_NAME             JOB_NAME   DEP_NAME   LOCATION
+---------- -------------------- ---------- ---------- ----------
+      1234 Alex                 Clerk      FINANCE    PARIS
+      2345 Jack                 Consultant MARKETING  LONDON
+      3456 Paul                 Manager    FINANCE    PARIS
+
+Antijoins
+
+An antijoin between two tables returns rows from the first table where no matches are found in the second table. Anti-Joins are only available when performing a NOT IN sub-query
+
+Example:
+
+SELECT * FROM emp_mast 
+WHERE dept_no NOT IN (
+SELECT  dept_no FROM dep_mast);
+
+Sample Output:
+
+    EMP_NO EMP_NAME             JOB_NAME       MGR_ID    DEPT_NO
+---------- -------------------- ---------- ---------- ----------
+      4567 Jenefer              Engineer         2345         45
+
+Semijoins
+
+A semi-join is such a join where the EXISTS clause is used with a subquery. It can be called a semi-join because even if duplicate rows are returned in the subquery, only one set of matching values in the outer query is returned.
+
+Example:
+
+SELECT * FROM dep_mast a 
+WHERE EXISTS 
+(SELECT * FROM emp_mast b 
+WHERE a.dept_no = b.dept_no);
+
+Sample Output:
+
+   DEPT_NO DEP_NAME   LOCATION
+---------- ---------- ----------
+        15 FINANCE    PARIS
+        25 MARKETING  LONDON

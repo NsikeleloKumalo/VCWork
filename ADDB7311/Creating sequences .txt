@@ -1,0 +1,86 @@
+Creating sequences 
+
+Introduction 
+
+Automatically generates unoque numbers 
+Is used to create primary key value 
+Can be shared 
+
+
+Create table Sample(
+Col1 number(3) primary key not null,
+Col2 varchar2(20)
+);
+
+Create sequene sample_col1_gen
+start with 100
+increment by 1
+--nomaxvalue its doesnt end 
+maxvalue 1000
+--when it reaches a 1000 cycle means it will start agin
+noncycle
+--the next 20 values are stored in the cache i just chose 10
+cache 10;
+
+desc user_sequences;
+select max_Value, increment_by from user_sequences where sequence_name='SAMPLE_COL1_GEN';
+
+select sample_col1_gen.currval,sample_col1_gen.nextval from dual;
+
+Insert into sample values (sample_col1_gen.nextval,'&value');
+
+Example 2:
+show user;
+
+--A sequence :
+-- can automatically generate unique numbers
+-- is a sharable object
+-- can be used to create a primary key value
+-- replaces application code
+-- speeds up theefficiency of accessing sequence values when cached in memory 
+
+--CREATE SEQUENCE sequence
+--
+
+Create table Person(
+Id Number(3) Primary Key,
+Name NVARCHAR2(50)
+);
+
+
+select * from person;
+
+--norm NOT ALLOWED 
+--Insert into person values(1,);
+-- Define a sequence to generate asequential numbers automatically:
+Create sequence firstSeq
+Start with 1
+Increment by 2
+Minvalue 1
+Maxvalue 103 
+Cycle 
+Cache 3
+Order;
+
+--USE THE SEQUENCE 
+
+Insert into person values (firstSeq.NEXTVAL,'Sue');
+Insert into person values (firstSeq.NEXTVAL,'Henry');
+
+--try reading the sequence next value that will be used 
+Select firstSeq.NextVal from Dual;
+
+--Create a sequence called sales_id tht will start at id 560 and increment by 1 
+--qu 1.9 
+Create sequence sales_id
+Start with 560
+Increment by 1
+Minvalue 506
+Maxvalue 1000 
+Cycle 
+Cache 3
+Order;
+
+Select sales_id.nextval from Dual;
+
+DROP SEQUENCE sales_id;

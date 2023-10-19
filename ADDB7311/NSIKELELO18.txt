@@ -1,0 +1,4 @@
+NSIKELELO18
+
+Go to tools in VS 
+Database connect

@@ -1,0 +1,104 @@
+2022 past paper varities  based of preloads 
+
+Question 2 Variation:
+
+Create a SQL Query to display the customer names and the total number of pets they purchased.
+
+sql
+Copy code
+SELECT c.customer_name, COUNT(ps.pet_id) AS "Total Number of Pets Purchased"
+FROM CUSTOMER c
+LEFT JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+GROUP BY c.customer_name;
+Sample Output for the total number of pets purchased by each customer:
+
+mathematica
+Copy code
+CUSTOMER_NAME       Total Number of Pets Purchased
+-------------------------------------------------
+Jeff Jones                           1
+Sally Williams                       1
+Sam Henry                            1
+Jack West                            1
+Jabulani Zintle                      1
+Question 3 Variation:
+
+Create a SQL Query to display the pet types, the total number of pets sold for each type, and the total revenue generated from each pet type.
+
+sql
+Copy code
+SELECT p.pet_type, COUNT(ps.pet_id) AS "Total Number of Pets Sold", SUM(p.price) AS "Total Revenue"
+FROM PETS p
+LEFT JOIN PET_SALES ps ON p.pet_id = ps.pet_id
+GROUP BY p.pet_type;
+Sample Output for the total number of pets sold and total revenue for each pet type:
+
+mathematica
+Copy code
+PET_TYPE      Total Number of Pets Sold   Total Revenue
+-------------------------------------------------------
+Dog                         1                     5000
+Cat                         1                     3800
+Bird                        1                     2500
+Fish                        1                     280
+Rabbit                      1                     550
+Question 4 Variation:
+
+Create a PL/SQL query to display the customer names and the total number of pet sales for customers whose email addresses contain 'xcom.com'.
+
+sql
+Copy code
+DECLARE
+  v_customer_name CUSTOMER.customer_name%TYPE;
+  v_total_sales NUMBER;
+BEGIN
+  FOR rec IN (SELECT c.customer_name, COUNT(ps.pet_id) AS total_sales
+              FROM CUSTOMER c
+              JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+              WHERE INSTR(c.customer_email, 'xcom.com') > 0
+              GROUP BY c.customer_name) LOOP
+    v_customer_name := rec.customer_name;
+    v_total_sales := rec.total_sales;
+    DBMS_OUTPUT.PUT_LINE('CUSTOMER NAME: ' || v_customer_name);
+    DBMS_OUTPUT.PUT_LINE('TOTAL SALES: ' || v_total_sales);
+    DBMS_OUTPUT.PUT_LINE('-------------------');
+  END LOOP;
+END;
+Sample Output for the total number of pet sales for customers with email addresses containing 'xcom.com':
+
+markdown
+Copy code
+CUSTOMER NAME: Jeff Jones
+TOTAL SALES: 1
+-------------------
+Question 5 Variation:
+
+Create a view called vwPetTypeSales that will display the pet type and the total number of sales for each pet type.
+
+sql
+Copy code
+CREATE VIEW vwPetTypeSales AS
+SELECT p.pet_type, COUNT(ps.pet_id) AS "Total Number of Sales"
+FROM PETS p
+LEFT JOIN PET_SALES ps ON p.pet_id = ps.pet_id
+GROUP BY p.pet_type;
+Question 6 Variation:
+
+Create a SQL Query to display the customer names and the total number of pet sales for customers who purchased pets with a price greater than 3000.
+
+sql
+Copy code
+SELECT c.customer_name, COUNT(ps.pet_id) AS "Total Number of Pet Sales"
+FROM CUSTOMER c
+JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+JOIN PETS p ON ps.pet_id = p.pet_id
+WHERE p.price > 3000
+GROUP BY c.customer_name;
+Sample Output for the total number of pet sales for customers who purchased pets with a price greater than 3000:
+
+mathematica
+Copy code
+CUSTOMER_NAME       Total Number of Pet Sales
+--------------------------------------------
+Jeff Jones                        1
+Sally Williams                    1

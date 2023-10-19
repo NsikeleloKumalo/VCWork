@@ -1,0 +1,9 @@
+Create synonyms
+
+Provides easy way to access the table owned by another user 
+Shortens lenghtly table name 
+
+Create synonym Emp for Employees;
+
+--For public access
+create public synonym Emp for Employees;

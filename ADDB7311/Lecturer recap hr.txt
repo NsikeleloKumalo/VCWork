@@ -1,0 +1,35 @@
+Lecturer recap 
+
+--recap-- ec1
+--1
+--pull from the employees table all the departments that work in department 90 
+--select * from employees WHERE department_id = 90;
+
+Select first_name, last_name, job_id, department_id
+From employees 
+WHERE department_id =90;
+
+--2 -- change the script above 
+--so that the col names for first name is name
+--column name for last name is surname
+-- alias -- AS 
+
+Select first_name AS Name, last_name AS Surname, job_id, department_id
+From employees 
+WHERE department_id =90;
+
+--3 
+--pull the last name and salary
+--for all emps earning under 3000
+
+Select last_name, salary
+From employees
+WHERE salary <= 3000;
+
+--4 
+--pull the last name and salary
+--for all emps earning between 2500 and 3500
+
+Select last_name, salary
+From employees
+WHERE salary BETWEEN 2500 and 3500;

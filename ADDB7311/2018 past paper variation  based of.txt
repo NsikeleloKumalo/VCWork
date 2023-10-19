@@ -1,0 +1,153 @@
+2018 past paper variation  based of preloads 
+
+Question 2 Variations:
+
+Variation 1:
+Create a SQL Query to display the customer who has purchased the most expensive pet. In your query, include the pet type and its price.
+
+Sample Results:
+
+yaml
+Copy code
+CUSTOMER_NAME MOST_EXPENSIVE_PET_TYPE PRICE
+Sally Williams Cat 3800.00
+SQL Query for Variation 1:
+
+sql
+Copy code
+SELECT c.customer_name, p.pet_type AS MOST_EXPENSIVE_PET_TYPE, MAX(p.price) AS PRICE
+FROM CUSTOMER c
+JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+JOIN PETS p ON ps.pet_id = p.pet_id
+GROUP BY c.customer_name, p.pet_type
+ORDER BY MAX(p.price) DESC
+FETCH FIRST 1 ROWS ONLY;
+Variation 2:
+Create a SQL Query to display the customer who has purchased the most pets and their total spending on pets. Include the pet type.
+
+Sample Results:
+
+yaml
+Copy code
+CUSTOMER_NAME PURCHASED_PETS TOTAL_SPENT
+Jeff Jones 2 8800.00
+SQL Query for Variation 2:
+
+sql
+Copy code
+SELECT c.customer_name, COUNT(ps.pet_id) AS PURCHASED_PETS, SUM(p.price) AS TOTAL_SPENT
+FROM CUSTOMER c
+JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+JOIN PETS p ON ps.pet_id = p.pet_id
+GROUP BY c.customer_name
+ORDER BY COUNT(ps.pet_id) DESC
+FETCH FIRST 1 ROWS ONLY;
+Question 3 Variations:
+
+Variation 1:
+Create a SQL query to display the pet type, pet breed, and the customer who bought the cheapest pet in each category.
+
+Sample Results:
+
+Copy code
+PET_TYPE PET_BREED CUSTOMER_NAME
+Cat Siamese Jeff Jones
+Dog Jack Russel Sally Williams
+Bird Parrot Sam Henry
+Fish Koi Jeff Jones
+Rabbit Dwarf Sally Williams
+SQL Query for Variation 1:
+
+sql
+Copy code
+WITH CheapestPets AS (
+  SELECT p.pet_type, p.pet_breed, p.price, c.customer_name,
+         ROW_NUMBER() OVER(PARTITION BY p.pet_type ORDER BY p.price ASC) AS rn
+  FROM PETS p
+  JOIN PET_SALES ps ON p.pet_id = ps.pet_id
+  JOIN CUSTOMER c ON ps.customer_id = c.customer_id
+)
+SELECT pet_type, pet_breed, customer_name
+FROM CheapestPets
+WHERE rn = 1;
+Variation 2:
+Create a SQL query to display the total spending of each customer on pets. Include the pet type and the most expensive pet they purchased.
+
+Sample Results:
+
+yaml
+Copy code
+CUSTOMER_NAME TOTAL_SPENT MOST_EXPENSIVE_PET_TYPE
+Jeff Jones 6300.00 Dog
+Sally Williams 3800.00 Cat
+Sam Henry 2500.00 Bird
+SQL Query for Variation 2:
+
+sql
+Copy code
+WITH CustomerTotalSpending AS (
+  SELECT c.customer_name, SUM(p.price) AS TOTAL_SPENT,
+         MAX(p.pet_type) KEEP (DENSE_RANK LAST ORDER BY p.price) AS MOST_EXPENSIVE_PET_TYPE
+  FROM CUSTOMER c
+  JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+  JOIN PETS p ON ps.pet_id = p.pet_id
+  GROUP BY c.customer_name
+)
+SELECT customer_name, TOTAL_SPENT, MOST_EXPENSIVE_PET_TYPE
+FROM CustomerTotalSpending;
+Question 4 Variations:
+
+Variation 1:
+Create a PL/SQL query to display the customer name, pet type, and the pet price for pets that were purchased for a price of 4000.00 or greater.
+
+Sample Results:
+
+yaml
+Copy code
+CUSTOMER_NAME PET_TYPE PRICE
+Jeff Jones Dog 5000.00
+Sally Williams Cat 3800.00
+PL/SQL Query for Variation 1:
+
+sql
+Copy code
+BEGIN
+  FOR r IN (SELECT c.customer_name, p.pet_type, p.price
+            FROM CUSTOMER c
+            JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+            JOIN PETS p ON ps.pet_id = p.pet_id
+            WHERE p.price >= 4000.00)
+  LOOP
+    DBMS_OUTPUT.PUT_LINE('CUSTOMER_NAME: ' || r.customer_name);
+    DBMS_OUTPUT.PUT_LINE('PET_TYPE: ' || r.pet_type);
+    DBMS_OUTPUT.PUT_LINE('PRICE: R ' || TO_CHAR(r.price, '999999.99'));
+  END LOOP;
+END;
+/
+Variation 2:
+Create a PL/SQL query to display the customer name and the number of pets they purchased with a price of 2000.00 or less.
+
+Sample Results:
+
+Copy code
+CUSTOMER_NAME PURCHASED_PETS
+Jeff Jones 0
+Sally Williams 1
+Sam Henry 1
+PL/SQL Query for Variation 2:
+
+sql
+Copy code
+BEGIN
+  FOR r IN (SELECT c.customer_name, COUNT(ps.pet_id) AS PURCHASED_PETS
+            FROM CUSTOMER c
+            LEFT JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+            LEFT JOIN PETS p ON ps.pet_id = p.pet_id
+            WHERE p.price <= 2000.00 OR p.price IS NULL
+            GROUP BY c.customer_name)
+  LOOP
+    DBMS_OUTPUT.PUT_LINE('CUSTOMER_NAME: ' || r.customer_name);
+    DBMS_OUTPUT.PUT_LINE('PURCHASED_PETS: ' || r.PURCHASED_PETS);
+  END LOOP;
+END;
+/

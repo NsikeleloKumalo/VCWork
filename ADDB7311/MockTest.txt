@@ -1,0 +1,60 @@
+create user mocktest identified by mocktest
+DEFAULT tablespace users temporary tablespace temp 
+quota 20m on users
+account unlock;
+
+--GRANT ALL PERMISSIONS 
+grant create session to mocktest;
+grant all privileges to mocktest;
+
+--oracle script to true -optional 
+ALTER SESSION SET "_oracle_script" = true;
+
+Create table Student(
+StudentID int not null primary key,
+StudentName VARCHAR2(10) not null,
+Email VARCHAR2(50) not null
+);
+savepoint a;
+CREATE TABLE Module(
+Mod_ID int not null primary key,
+Mod_Name VARCHAR2(100) not null
+);
+
+savepoint b;
+
+CREATE TABLE Result(
+Result_ID int not null primary key,
+Results int not null,
+StudentID int not null,
+Mod_ID int not null,
+FOREIGN KEY (StudentID) REFERENCES Student(StudentID),
+FOREIGN KEY (Mod_ID) REFERENCES Module(Mod_ID)
+);
+
+--insert statements
+INSERT INTO STUDENT VALUES(101,'JB','jb@gmail.com');
+INSERT INTO STUDENT VALUES(102,'CL','cl@yahoo.com');
+INSERT INTO STUDENT VALUES(103,'AN','an@gmail.com');
+
+SELECT * FROM STUDENT;
+
+
+INSERT INTO MODULE VALUES(555,'Intro to programming');
+INSERT INTO MODULE VALUES(556,'Intro to statistics');
+INSERT INTO MODULE VALUES(557,' Intro to accounting');
+
+SELECT * FROM MODULE;
+
+INSERT INTO result VALUES(1,55,101,557);
+INSERT INTO result VALUES(2,57,103,557);
+INSERT INTO result VALUES(3,85,101,555);
+
+SELECT * FROM Result;
+
+
+--query 1
+SELECT StudentName, mod_name
+from Student s, Module m , result r
+WHERE S.StudentID = r.StudentID
+AND m.Mod_ID = r.MOD_ID;

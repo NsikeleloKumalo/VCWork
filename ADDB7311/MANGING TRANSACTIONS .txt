@@ -1,0 +1,58 @@
+MANGING TRANSACTIONS 
+
+-DDL and DCL commands are auto commited 
+-DML commands need to be managed 
+-Transaction begins with first DML command 
+-Transaction ends when
+	-COMMIT or ROLLBACK is issued 
+	-DDL or DCL command isued 
+	-Command editor exists
+	-Sytem crashes 
+-SAVEPOINT can be placed in the transaction as a marker for rollback
+
+show user;
+
+Create table Persons(
+ID INT NOT NULL,
+NAME VARCHAR(20) NOT NULL,
+AGE INT NOT NULL,
+ADDRESS VARCHAR(40),
+SALARY DECIMAL(5,2),
+PRIMARY KEY (ID)
+);
+
+--SAVEPOINTS 
+-- Is a marker that allows a user 
+-- to do a partial rollback in the table scripts 
+-- lets the user go to a specific "point"
+
+-- What is a rollback?
+--ROLLBACKS
+-- Lets the user go back in the script
+-- normally back to a particular save point 
+
+Savepoint one;
+
+Select * from Persons;
+
+INSERT INTO PERSONS (ID,NAME,AGE,ADDRESS,SALARY)
+VALUES (1,'John',34, '1 Link road', 500.00);
+
+Savepoint two;
+INSERT INTO PERSONS (ID,NAME,AGE,ADDRESS,SALARY)
+VALUES (2,'Henry',42, '10 Smith Str', 800.00);
+
+--testing 
+select * from persons;
+
+--go back to savepoint one 
+Rollback to savepoint one;
+Rollback to savepoint two;
+select * from persons;
+
+
+--supercede
+--COMMIT -- hard coded in memory 
+--commit overrides or supercedes any rollback or savepoint 
+
+

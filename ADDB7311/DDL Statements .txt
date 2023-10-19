@@ -1,0 +1,65 @@
+DDL Statements 
+#if any sql comand is effecting the structure or info of the database is categorized as DDL# 
+
+-Create 
+-Alter
+-Drop
+-Truncate is the statement is executed with the table removing the data but wont remove the structure it will also release the space ocupied by that particular data. It will change the data but you wont beable to rollback
+-Rename
+
+*THESE STATEMENTS ARE AUTO COMMITTED *
+
+CREATE:
+
+-- Can be classified in Data Dictionary and User Tables 
+-- Must give a valid Table name
+-- User MUST have a create table permission and storage area 
+-- Table will be created in the user's schema 
+- DEFAULT keyword is used to set default value from the column 
+
+Ex:
+show user; 
+CREATE TABLE Employees(
+EmpId number,
+FirstName varchar2(20),
+LastName varchar2(20),
+ EmailId Varchar2(50),
+Gender char(1),
+MobileNo char(10),
+DateIfJoining date default sysdate,
+DeptID int);
+
+desc Employees;
+--Show the structure of the data dictionary 
+
+ALTER:
+-Ading column
+-Dropping column 
+-Modifying column
+-Renamining Column
+
+alter table Employees add DOB date;
+-- To alter multiple / add multiple tables 
+alter table Employees add (Salary number(10,2), Col1 number);
+
+-to modify 
+alter table Employees modify Col1  varchar2(10);
+
+-to drop
+alter table Employees drop column Salary;
+
+-set unused column
+alter table Employees set unused column Col1;
+
+-to drop unused column
+alter table Employees drop unused column Col1;
+
+DROP:
+DROP TABLE Employees;
+
+TRUNCATE:
+-Truncate is the statement is executed with the table removing the data but wont remove the structure it will also release the space ocupied by that particular data. It will change the data but you wont beable to rollback
+
+
+
+

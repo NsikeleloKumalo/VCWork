@@ -1,0 +1,13 @@
+Create index 
+
+Introduction 
+
+Is used to sped up the retrival 
+Is used by oracle server 
+Should be created on the fields having no keys = primary or foreign key 
+Should be created when very less number of rows to retrivied in a large table
+
+Create index EMP_FirstName_idx on Employees(First_Name);
+
+to call index: 
+select Employee_Id,Last Name from Employees where FirstName = 'Steve'

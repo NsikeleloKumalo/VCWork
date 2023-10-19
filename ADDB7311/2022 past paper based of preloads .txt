@@ -1,0 +1,147 @@
+2022 past paper based of preloads 
+
+Question 1:
+Create a private synonym called pet for the PETS table. Provide one advantage of using private synonyms.
+
+
+-- Advantage: Private synonyms provide a level of abstraction, allowing users to access objects by a simpler name and protecting against changes in object names.
+CREATE SYNONYM pet FOR PETS;
+
+Question 2:
+Create a SQL query to display the customer name and the pet type for each pet sale. In your query, also display the sales date.
+Create a SQL Query to display the full customer name and the pet type they purchased along with the number of pets they bought.
+
+Question 2: Sample Output
+
+CUSTOMER_NAME       PET_TYPE      Number of Pets Bought
+------------------------------------------------------
+Jeff Jones          Cat                    1
+Sally Williams      Dog                    1
+Sam Henry           Bird                   1
+Jack West           Rabbit                 1
+Jabulani Zintle     Fish                   1
+
+SELECT c.customer_name, p.pet_type, COUNT(ps.pet_id) AS "Number of Pets Bought"
+FROM CUSTOMER c
+JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+JOIN PETS p ON ps.pet_id = p.pet_id
+GROUP BY c.customer_name, p.pet_type;
+
+
+Question 3:
+Create a SQL query to display the total sales revenue for each customer. Include the customer name and their total spending on pet purchases.
+Create a SQL Query to display the customer name, sales date, and the total price of all pet sales for each customer.
+Question 3: Sample Output
+
+
+CUSTOMER_NAME       SALES_DATE    Total Price
+---------------------------------------------
+Jeff Jones          15 March 2023        3800
+Jack West           17 March 2023        5000
+Sam Henry           27 March 2023        2500
+Sally Williams      30 March 2023         550
+Jabulani Zintle     31 March 2023         280
+
+
+SELECT c.customer_name, ps.sales_date, SUM(p.price) AS "Total Price"
+FROM CUSTOMER c
+JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+JOIN PETS p ON ps.pet_id = p.pet_id
+GROUP BY c.customer_name, ps.sales_date;
+
+
+Question 4:
+Create a PL/SQL query to calculate and display the total revenue generated from all pet sales.
+
+Question 3: Sample Output
+
+CUSTOMER NAME: Jeff Jones
+CUSTOMER EMAIL: jj@xcom.com
+-------------------
+CUSTOMER NAME: Jack West
+CUSTOMER EMAIL: jw@xsat.com
+-------------------
+CUSTOMER NAME: Jabulani Zintle
+CUSTOMER EMAIL: jaz@xsat.com
+-------------------
+
+
+DECLARE
+  total_revenue NUMBER(8,2);
+BEGIN
+  SELECT SUM(price) INTO total_revenue FROM PETS;
+  DBMS_OUTPUT.PUT_LINE('Total Revenue: $' || total_revenue);
+END;
+
+Create a PL/SQL query to display the customer name and their email address. In your solution, only display the results for customers whose email addresses contain 'xcom.com'.
+DECLARE
+  v_customer_name CUSTOMER.customer_name%TYPE;
+  v_customer_email CUSTOMER.customer_email%TYPE;
+BEGIN
+  FOR rec IN (SELECT customer_name, customer_email FROM CUSTOMER WHERE INSTR(customer_email, 'xcom.com') > 0) LOOP
+    v_customer_name := rec.customer_name;
+    v_customer_email := rec.customer_email;
+    DBMS_OUTPUT.PUT_LINE('CUSTOMER NAME: ' || v_customer_name);
+    DBMS_OUTPUT.PUT_LINE('CUSTOMER EMAIL: ' || v_customer_email);
+    DBMS_OUTPUT.PUT_LINE('-------------------');
+  END LOOP;
+END;
+
+Question 5:
+Create a SQL query to display the total number of pets sold for each pet type.
+
+Create a view called vwPetSales that will display the customer name, pet type, pet breed, and the sales date for each pet sale.
+
+
+CREATE VIEW vwPetSales AS
+SELECT c.customer_name, p.pet_type, p.pet_breed, ps.sales_date
+FROM CUSTOMER c
+JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+JOIN PETS p ON ps.pet_id = p.pet_id;
+
+Question 5: Sample Output
+
+CUSTOMER_NAME       PET_TYPE      PET_BREED      SALES_DATE
+-----------------------------------------------------------
+Jeff Jones          Cat            Siamese     15 March 2023
+Jack West           Dog            Jack Russel 17 March 2023
+Sam Henry           Bird           Parrot      27 March 2023
+Sally Williams      Rabbit         Dwarf       30 March 2023
+Jabulani Zintle     Fish           Koi         31 March 2023
+
+
+SELECT pet_type, COUNT(*) AS total_sold
+FROM PET_SALES ps
+JOIN PETS p ON ps.pet_id = p.pet_id
+GROUP BY pet_type;
+
+
+
+Question 6:
+Create a view called vwPetSales that displays information about pet sales, including the customer name, pet type, pet breed, and sales date.
+
+Create a SQL Query to display the pet type and the total number of sales for each pet type.
+
+
+SELECT p.pet_type, COUNT(ps.pet_id) AS "Total Sales"
+FROM PETS p
+LEFT JOIN PET_SALES ps ON p.pet_id = ps.pet_id
+GROUP BY p.pet_type;
+
+Question 6: Sample Output
+
+
+PET_TYPE      Total Sales
+-------------------------
+Cat                1
+Dog                1
+Bird               1
+Rabbit             1
+Fish               1
+
+
+CREATE VIEW vwPetSales AS
+SELECT c.customer_name, p.pet_type, p.pet_breed, ps.sales_date
+FROM CUSTOMER c
+JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+JOIN PETS p ON ps.pet_id = p.pet_id;

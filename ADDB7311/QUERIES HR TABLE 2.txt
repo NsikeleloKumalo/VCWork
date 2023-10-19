@@ -1,0 +1,69 @@
+QUERIES HR TABLE 2 
+show user;
+
+--query 1
+-- extract from employees database firstname that begins with S 
+
+Select first_name
+From employees 
+WHERE first_name LIKE 'S%';
+
+--Query 2 
+-- extract employee id,last name, job id, salary
+--for salaries >= 10000 for all managers 
+
+--to see what is in the table 
+desc employees;
+
+--Question:
+--why must the % be before and after? 
+--because the word manager is not a starting is in between 
+
+
+--Gives me everybody
+Select employee_id, last_name, job_id, salary
+From employees 
+WHERE salary >= 10000 AND job_id LIKE '%MAN%';
+
+--gives me a few people
+Select employee_id, last_name, job_id, salary
+From employees 
+WHERE salary >= 10000 AND job_id LIKE '%MAN';
+-- gives u nobody 
+Select employee_id, last_name, job_id, salary
+From employees 
+WHERE salary >= 10000 AND job_id LIKE 'MAN%';
+
+    --Rules of precedence ??
+    -- 1 maths
+    -- 2 concatinations
+    -- 3 comarisons 
+    -- is / like
+    -- between
+    -- not
+    -- and 
+    -- or 
+
+--look at what happens when you switch around the and & or     
+SELECT last_name, job_id, salary
+from employees
+Where job_id = 'SA_REP'
+OR job_id = 'AD_PRES'
+AND salary > 15000;
+
+SELECT last_name, job_id, salary
+from employees
+Where job_id = 'SA_REP'
+AND job_id = 'AD_PRES'
+OR salary > 15000;
+
+
+
+
+
+--why must the % be befor and after 
+--because the word manager is not a starting is is in between 
+
+--to see what is in the table 
+desc employees;
+

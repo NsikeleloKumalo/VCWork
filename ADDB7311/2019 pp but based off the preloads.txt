@@ -1,0 +1,178 @@
+2019 pp but based off the preloads
+
+Question 2:
+Create a SQL Query to display the customer name and how many pet purchases they were involved in.
+
+Sample Results:
+
+Copy code
+CUSTOMER_NAME PURCHASE_COUNT
+Jeff Jones    1
+Sally Williams  1
+Sam Henry     1
+Jack West     1
+Jabulani Zintle 1
+Mark Allocation
+
+Requirement: 4
+Correct select statement used: 4
+Correct Tables used: 4
+Correct output: 2
+TOTAL: 10
+
+SOLUTION:
+SELECT C.customer_name, COUNT(PS.sales_id) AS PURCHASE_COUNT
+FROM CUSTOMER C
+LEFT JOIN PET_SALES PS ON C.customer_id = PS.customer_id
+GROUP BY C.customer_name;
+
+
+Question 3:
+Create a SQL query to display the customer ID, pet ID, and the transaction amount. In your query, include the price of the pet as the transaction amount.
+
+Sample Results:
+
+yaml
+Copy code
+CUSTOMER_ID PET_ID TRANS_AMT
+cust_101    100002  3800
+cust_104    100001  5000
+cust_103    100003  2500
+cust_102    100005  550
+cust_105    100004  280
+Mark Allocation
+
+Requirement: 6
+Correct select statement used: 6
+Correct Tables used: 6
+Correct output: 3
+TOTAL: 15
+
+SOLUTION: 
+
+SELECT PS.customer_id, PS.pet_id, P.price AS TRANS_AMT
+FROM PET_SALES PS
+INNER JOIN PETS P ON PS.pet_id = P.pet_id;
+
+Question 4:
+Create a view called Pet_Transaction_Details that will display the customer ID, pet ID, transaction date, and pet type for pet sales that occurred between '15 March 2023' and '31 March 2023'.
+
+Sample Results:
+
+yaml
+Copy code
+CUSTOMER_ID PET_ID TRANS_DATE PET_TYPE
+cust_101    100002  15 March 2023  Cat
+cust_104    100001  17 March 2023  Dog
+cust_103    100003  27 March 2023  Bird
+cust_102    100005  30 March 2023  Rabbit
+cust_105    100004  31 March 2023  Fish
+Mark Allocation
+
+Requirement: 4
+Correct CREATE VIEW statement used: 4
+Correct select statement used: 5
+Correct Tables used: 3
+Correct output: 3
+TOTAL: 15
+
+SOLUTION:
+CREATE VIEW Pet_Transaction_Details AS
+SELECT PS.customer_id, PS.pet_id, PS.sales_date AS TRANS_DATE, P.pet_type AS PET_TYPE
+FROM PET_SALES PS
+INNER JOIN PETS P ON PS.pet_id = P.pet_id
+WHERE PS.sales_date BETWEEN TO_DATE('15-MAR-2023', 'DD-MON-YYYY') AND TO_DATE('31-MAR-2023', 'DD-MON-YYYY');
+
+These SQL solutions should provide the requested information based on the given data in the tables PETS, CUSTOMER, and PET_SALES.
+
+
+PETS, CUSTOMER, and PET_SALES. Here are the revised questions:
+
+Question 1 (Marks: 10):
+Create a SQL Query to display the customer name and how many pet sales transactions they were involved in.
+
+Sample Results:
+
+Copy code
+CUSTOMER_NAME  PET_SALES_COUNT
+Jeff Jones     1
+Sally Williams 1
+Sam Henry      1
+Jack West      1
+Jabulani Zintle 1
+
+SELECT
+    C.customer_name AS CUSTOMER_NAME,
+    COUNT(PS.sales_id) AS PET_SALES_COUNT
+FROM
+    CUSTOMER C
+LEFT JOIN
+    PET_SALES PS
+ON
+    C.customer_id = PS.customer_id
+GROUP BY
+    C.customer_name
+ORDER BY
+    PET_SALES_COUNT DESC;
+
+
+Question 2 (Marks: 15):
+Create a SQL query to display the details of pet sales, including the pet type, customer name, sales date, and total sales amount (price). Calculate the total sales amount for each transaction.
+
+Sample Results:
+
+
+PET_TYPE   CUSTOMER_NAME      SALES_DATE     TOTAL_SALES_AMOUNT
+Cat        Jeff Jones         15 March 2023  3800
+Dog        Jack West          17 March 2023  5000
+Bird       Sam Henry          27 March 2023  2500
+Rabbit     Sally Williams     30 March 2023  550
+Fish       Jabulani Zintle    31 March 2023  280
+
+SELECT
+    P.pet_type AS PET_TYPE,
+    C.customer_name AS CUSTOMER_NAME,
+    TO_CHAR(PS.sales_date, 'DD Month YYYY') AS SALES_DATE,
+    P.price AS TOTAL_SALES_AMOUNT
+FROM
+    PET_SALES PS
+JOIN
+    PETS P
+ON
+    PS.pet_id = P.pet_id
+JOIN
+    CUSTOMER C
+ON
+    PS.customer_id = C.customer_id;
+
+
+Question 3 (Marks: 15):
+Create a view called Transaction_Details that will display the pet ID, customer ID, sales date, and the pet price for all pet sales transactions that occurred between the 15 March 2023 and the 31 March 2023.
+
+Sample Results:
+
+
+PET_ID  CUSTOMER_ID  SALES_DATE     PET_PRICE
+100002  cust_101     15 March 2023  3800
+100001  cust_104     17 March 2023  5000
+100003  cust_103     27 March 2023  2500
+100005  cust_102     30 March 2023  550
+100004  cust_105     31 March 2023  280
+
+CREATE VIEW Transaction_Details AS
+SELECT
+    PS.pet_id AS PET_ID,
+    PS.customer_id AS CUSTOMER_ID,
+    PS.sales_date AS SALES_DATE,
+    P.price AS PET_PRICE
+FROM
+    PET_SALES PS
+JOIN
+    PETS P
+ON
+    PS.pet_id = P.pet_id
+WHERE
+    PS.sales_date BETWEEN TO_DATE('15-MAR-2023', 'DD-MON-YYYY') AND TO_DATE('31-MAR-2023', 'DD-MON-YYYY');
+
+
+I've adjusted the questions to be based on the provided tables, and the sample results are relevant to these tables. If you have any further questions or need assistance with these SQL queries, please let me know.

@@ -1,0 +1,7 @@
+Group Functions 
+
+Also called aggregate function
+Perform calc on a set of values and return a single value
+COUNT,MAX,MIN,SUM,AVG,STDEV are some commonly used functions
+
+select Sum(Salary), avg(Salary), Min(Salary), Max(Salary), Count (Salary) from Employees;

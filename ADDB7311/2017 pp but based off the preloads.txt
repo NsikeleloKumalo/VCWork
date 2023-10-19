@@ -1,0 +1,164 @@
+2017 pp but based off the preloads
+
+based of pets and customers 
+Question 2: Create an SQL query that will display the customer who has made the least number of pet purchases.
+
+
+-- Query to find the customer with the least number of pet purchases
+SELECT customer_name AS CUSTOMER_NAME, COUNT(pet_id) AS PURCHASE_COUNT
+FROM CUSTOMER
+LEFT JOIN PET_SALES ON CUSTOMER.customer_id = PET_SALES.customer_id
+GROUP BY customer_name
+HAVING COUNT(pet_id) = (SELECT MIN(purchase_count) FROM (SELECT COUNT(pet_id) AS purchase_count FROM PET_SALES GROUP BY customer_id))
+ORDER BY CUSTOMER_NAME;
+
+-- Sample Data
+-- CUSTOMER_NAME      PURCHASE_COUNT
+-- Sally Williams     1
+-- Sam Henry          1
+-- Jabulani Zintle    1
+-- Jeff Jones         1
+-- Jack West          1
+
+Question 3: Create an SQL query to display the customer name and the total amount spent on pet purchases.
+
+
+-- Query to calculate the total amount spent by each customer on pet purchases
+SELECT customer_name AS CUSTOMER_NAME, SUM(price) AS TOTAL_AMOUNT_SPENT
+FROM CUSTOMER
+JOIN PET_SALES ON CUSTOMER.customer_id = PET_SALES.customer_id
+JOIN PETS ON PET_SALES.pet_id = PETS.pet_id
+GROUP BY customer_name
+ORDER BY CUSTOMER_NAME;
+
+-- Sample Data
+-- CUSTOMER_NAME      TOTAL_AMOUNT_SPENT
+-- Jabulani Zintle    280.00
+-- Jeff Jones         3800.00
+-- Sam Henry          2500.00
+-- Sally Williams     5000.00
+-- Jack West          550.00
+
+Question 4: Create a PL/SQL query to display the pet type and the date of purchase for the sale with ID 1.
+
+
+-- PL/SQL Block to display pet type and sales date for sale with ID 1
+DECLARE
+  v_pet_type VARCHAR2(50);
+  v_sales_date DATE;
+BEGIN
+  -- Retrieve pet type and sales date for sale with ID 1
+  SELECT pet_type, sales_date
+  INTO v_pet_type, v_sales_date
+  FROM PETS
+  JOIN PET_SALES ON PETS.pet_id = PET_SALES.pet_id
+  WHERE PET_SALES.sales_id = 1;
+
+  -- Display the results
+  DBMS_OUTPUT.PUT_LINE('PET TYPE: ' || v_pet_type);
+  DBMS_OUTPUT.PUT_LINE('SALES DATE: ' || TO_CHAR(v_sales_date, 'DD/MON/YY'));
+END;
+/
+
+-- Sample Output
+-- PET TYPE: Cat
+-- SALES DATE: 17/MAR/23
+
+Based of all 3 tables 
+
+Sample Data for Question 2 (Customer with Least Pet Purchases):
+
+Assuming the following data in the CUSTOMER and PET_SALES tables:
+
+Table CUSTOMER:
+
+CUSTOMER_ID | CUSTOMER_NAME    | CUSTOMER_EMAIL
+----------------------------------------------
+cust_101    | Jeff Jones       | jj@xcom.com
+cust_102    | Sally Williams   | sally@ymail.com
+cust_103    | Sam Henry        | sam@xsat.com
+cust_104    | Jack West        | jw@xsat.com
+cust_105    | Jabulani Zintle  | jaz@xsat.com
+Table PET_SALES:
+
+
+SALES_ID | SALES_DATE    | PET_ID | CUSTOMER_ID
+----------------------------------------------
+1        | '15-Mar-2023' | 100002 | cust_101
+2        | '17-Mar-2023' | 100001 | cust_104
+3        | '27-Mar-2023' | 100003 | cust_103
+4        | '30-Mar-2023' | 100005 | cust_102
+5        | '31-Mar-2023' | 100004 | cust_105
+The query will output:
+
+
+CUSTOMER_NAME   | PURCHASE_COUNT
+-------------------------------
+Sally Williams  | 1
+
+Create an SQL query that will display the customer who has made the least number of pet purchases.
+
+SELECT customer_name AS CUSTOMER_NAME, COUNT(*) AS PURCHASE_COUNT
+FROM CUSTOMER c
+LEFT JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+GROUP BY c.customer_name
+HAVING COUNT(*) = (
+    SELECT MIN(PURCHASE_COUNT)
+    FROM (
+        SELECT COUNT(*) AS PURCHASE_COUNT
+        FROM CUSTOMER c
+        LEFT JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+        GROUP BY c.customer_name
+    )
+);
+
+Sample Data for Question 3 (Total Spending by Customers):
+
+Assuming the same data as above, the query will output:
+
+markdown
+Copy code
+CUSTOMER_NAME    | TOTAL_SPENT
+-------------------------------
+Jeff Jones       | 3800.00
+Sally Williams   | 550.00
+Sam Henry        | 2500.00
+Jack West        | 5000.00
+Jabulani Zintle  | 280.00
+
+Create an SQL query to display the customer name and the total amount of money spent on pet purchases.
+
+
+SELECT c.customer_name AS CUSTOMER_NAME, SUM(p.price) AS TOTAL_SPENT
+FROM CUSTOMER c
+LEFT JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+LEFT JOIN PETS p ON ps.pet_id = p.pet_id
+GROUP BY c.customer_name;
+
+Sample Data for Question 4 (First Purchase Date for 'cust_101'):
+
+Assuming the same data as above, the query will output:
+
+
+CUSTOMER NAME: Jeff Jones
+SALES DATE: 15/MAR/23
+
+Create a PL/SQL query to display the customer name and the sales date for the first pet purchase made by customer ID 'cust_101'.
+
+sql
+Copy code
+DECLARE
+    v_customer_name CUSTOMER.customer_name%TYPE;
+    v_sales_date PET_SALES.sales_date%TYPE;
+BEGIN
+    SELECT c.customer_name, ps.sales_date
+    INTO v_customer_name, v_sales_date
+    FROM CUSTOMER c
+    JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+    WHERE c.customer_id = 'cust_101'
+    AND ROWNUM = 1
+    ORDER BY ps.sales_date ASC;
+
+    DBMS_OUTPUT.PUT_LINE('CUSTOMER NAME: ' || v_customer_name);
+    DBMS_OUTPUT.PUT_LINE('SALES DATE: ' || TO_CHAR(v_sales_date, 'DD/MON/YY'));
+END;

@@ -1,0 +1,40 @@
+What is a database? 
+--Provides permanent storag of data
+-- Is a colection of diferent database objects
+-- Diferent objects have diferent roles to perform 
+-- Refers to a set of related data and the way its organized 
+
+What is BDMS?
+--DBMS is a computer software application that interacts with the user, other aplications to capture and analyse data 
+--Is designed to alow the definition, creation, querying, update,and the administration of databases 
+-- Data sharing, data security, data integration, data access are some of the major advantages of dbms
+
+What is RDBMS?
+~ Is a database with relational model = each and every object in the database wil be related to each other 
+~Developed by E.F. Codd
+~RM purpose is to provide a declarative method for specifying data and queries 
+~Most relational databases use SQL = structured query language is a standard language 
+SQL
+~Stands for structured query language
+~Designed by Donald Chamberlin and Raymond Boyce in 1974
+~ Is a special-purpose language designed for managing data held in a RDBMS  
+~Is a fourth generation language 
+~Can be clasified in several typesof basic tasks performed
+
+Classification of SQL 
+--Data Defenition Laguages = any sql comand used to define some database objects like creating a view, table index etc. I am ading something new into the database. So if any sql comand is effecting the structure or info of the database = DDL  
+
+--Data Manipulation Language = once you have created the table mow you need to modify them or insert data. When you insert or manipulate data it doesnt afect the structure of the database but it does afect the structure of the table for example when you adding, updating, modifing info things are gona change in the table. So if anything wil afect the data in a table then it is apart of DML 
+ 
+-- Data Retrival Language =  Once we have data we wil retrieve it so like select statements
+
+-- Data Control Language = Deals with accessability = restriction of view to the data / roles of the user wil be used 
+
+-- Transaction Control Language = when executing a number of sql statemnts all together then i should take care of the transaction. Update statemts are used.It wil ensure that all participating wil execute succesful if not the whole transaction will rollback
+
+Intro to Oracle 
+--Deals with the db, middleware, Busines Apps, Development softwares, file systems, operating systems, etc.
+-- Data Manuplation Language 
+-- Data Retrival Language 
+-- Data Control Language 
+-

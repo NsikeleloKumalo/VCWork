@@ -1,0 +1,25 @@
+<hw:PlainWindow x:Class="LoginControl.Authenticationwindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LoginControl"
+        xmlns:hw="http://schemas.hpod9.com/haley/wpf"
+        xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
+        mc:Ignorable="d"
+        Title="Authenticationwindow" Height="450" Width="800"
+        WindowStartupLocation="CenterOwner"
+        hm:WindowBlurAP.IsEnabled="True"
+        >
+    <hw:PlainWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/LoginControl;component/Dictionaries/LCRD.xaml">
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </hw:PlainWindow.Resources>
+    <Grid>
+        <TextBlock Text="Hi I am auth application" FontSize="20" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center" />
+    </Grid>
+</hw:PlainWindow>

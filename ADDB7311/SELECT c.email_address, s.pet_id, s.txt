@@ -1,0 +1,60 @@
+SELECT c.email_address, s.pet_id, s.sales_date
+FROM customers c
+JOIN sales s ON c.customer_id = s.customer_id;
+
+
+CREATE VIEW vwPetSalesDetails AS
+SELECT customer_id, pet_id, sales_date
+FROM sales
+WHERE sales_date BETWEEN '2023-03-15' AND '2023-03-18';
+
+
+. SQL statement to display customer email address, pet ID number, and pet sales date:
+sql
+Copy
+SELECT c.email_address, s.pet_id, s.sales_date
+FROM customers c
+JOIN sales s ON c.customer_id = s.customer_id;
+2. SQL statement to create a view called vwPetSalesDetails:
+sql
+Copy
+CREATE VIEW vwPetSalesDetails AS
+SELECT customer_id, pet_id, sales_date
+FROM sales
+WHERE sales_date BETWEEN '2023-03-15' AND '2023-03-18';
+3. PL/SQL query to display customer name, pet breed, and pet price:
+sql
+Copy
+DECLARE
+  v_customer_name VARCHAR2(100);
+  v_pet_breed VARCHAR2(50);
+  v_pet_price NUMBER(8,2);
+BEGIN
+  SELECT c.first_name || ' ' || c.last_name, p.pet_breed, p.price
+  INTO v_customer_name, v_pet_breed, v_pet_price
+  FROM customers c
+  JOIN sales s ON c.customer_id = s.customer_id
+  JOIN pets p ON s.pet_id = p.pet_id;
+  
+  DBMS_OUTPUT.PUT_LINE('Customer Name: ' || v_customer_name);
+  DBMS_OUTPUT.PUT_LINE('Pet Breed: ' || v_pet_breed);
+  DBMS_OUTPUT.PUT_LINE('Pet Price: $' || v_pet_price);
+END;
+4. PL/SQL query to display the customer's full name and the number of pet purchases:
+sql
+Copy
+DECLARE
+  v_customer_name VARCHAR2(100);
+  v_num_pets NUMBER(6);
+BEGIN
+  SELECT c.first_name || ' ' || c.last_name, COUNT(s.pet_id)
+  INTO v_customer_name, v_num_pets
+  FROM customers c
+  JOIN sales s ON c.customer_id = s.customer_id
+  GROUP BY c.customer_id;
+  
+  DBMS_OUTPUT.PUT_LINE('Customer Name: ' || v_customer_name);
+  DBMS_OUTPUT.PUT_LINE('Number of Pet Purchases: ' || v_num_pets);
+END;
+answer again
+search web and ask GPT-4

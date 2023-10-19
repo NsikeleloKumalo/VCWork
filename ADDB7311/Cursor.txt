@@ -1,0 +1,26 @@
+show user;
+
+--create a cursor to pull the first name 
+-- of all employees
+-- with an employee # under 105
+
+
+--set server output 
+SET SERVEROUTPUT ON;
+DECLARE
+V_NAME VARCHAR2 (50);
+Cursor firstCursor IS 
+SELECT first_name FROM employees
+where employee_id <105;
+
+BEGIN 
+OPEN firstCursor;
+LOOP
+FETCH firstCursor INTO V_NAME;
+--OUTPUT
+DBMS_OUTPUT.put_line(V_NAME);
+--EXIT CONDITION 
+EXIT WHEN firstCursor %NOTFOUND;
+END LOOP; --ends the loop 
+CLOSE firstCursor; --close the cursor 
+END; --end thhe pl/sql block 

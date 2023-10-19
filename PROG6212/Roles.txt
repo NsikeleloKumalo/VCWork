@@ -1,0 +1,37 @@
+--super rule 
+/*
+ONLY THE SYS OR DBA CAN CREATE A ROLE
+IE: THEY HALL PRIVILEGES
+-- usernames are not contained in any schema
+-- roles are not contained in any schema
+     --ADV's=advantages
+     --security, restricted access
+     --reduces time when assigning privileges 
+     --you can assign multiple roles to any user
+*/
+ALTER SESSION SET "_oracle_script" = true;
+show user;
+--role 1 -- using identified and not identified 
+
+-- AUTO AUTHORIZED TO VIED
+-- NO PASSWORD IS REQUIRED 
+CREATE ROLE user1 NOT IDENTIFIED;
+--password is required
+CREATE ROLE user2 IDENTIFIED BY password;
+--externally and globally
+--allows the user or role to be handled by external services
+--like OS
+CREATE ROLE user3 IDENTIFIED EXTERNALLY;
+--globally - enterprise oracle services (PROBLEM )
+--CREATE ROLE user4 IDENTIFIED GLOBALLY;(Globally doesn't work)
+
+
+--once the user role is set
+--You can grant privileges to the role
+
+--ex 1 --> Grant create session to user1
+GRANT CREATE SESSION TO user1;
+--ex 2 --> GRANT create tables to user 2 
+GRANT CREATE TABLE TO user2;
+--ex 3 -->give a role to another role
+--GRANT user2 TO user1; (PROBLEM )

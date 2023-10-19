@@ -1,0 +1,6 @@
+Managing Roles 
+
+Create role manager;
+
+grant create table, create session, create view to manager;
+Grant manager; 

@@ -1,0 +1,19 @@
+creating Users 
+
++ Login sql server 
++ Check your services
++ Create a new user - has to be done under a system 
+show user;
++ Grant all permissions 
+
+create user test2017 identified by test2017
+DEFAULT tablespace users temporary tablespace temp 
+quota 20m on users
+account unlock;
+
+--GRANT ALL PERMISSIONS 
+grant create session to test2017;
+grant all privileges to test2017;
+
++ oracle script to true -optional 
+ALTER SESSION SET "_oracle_script" = true;

@@ -1,0 +1,175 @@
+2021 past paper based of preloads 
+
+Question 2 (Marks: 10)
+
+Create a SQL query to display the customer name, pet type, and the price of the pet they purchased. Order your results by the price of the pet in descending order.
+
+Question 2 (SQL Query):
+
+
+SELECT c.customer_name, p.pet_type, p.price
+FROM CUSTOMER c
+INNER JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+INNER JOIN PETS p ON ps.pet_id = p.pet_id
+ORDER BY p.price DESC;
+Sample Output (for Question 2):
+
+
+CUSTOMER_NAME       PET_TYPE    PRICE
+------------------  ----------  --------
+Jeff Jones          Cat         3800
+Sally Williams      Dog         5000
+Sam Henry           Bird        2500
+Jabulani Zintle     Rabbit      550
+Jack West           Fish        280
+
+Question 3 (Marks: 10)
+
+Create a SQL query to display the customer id, customer email, pet type, pet breed, and the price of the pet they purchased. In your query, include a 5% discount on the pet price and the total discounted amount.
+
+Question 3 (SQL Query):
+
+sql
+Copy code
+SELECT c.customer_id, c.customer_email, p.pet_type, p.pet_breed,
+       p.price AS AMOUNT, p.price * 0.05 AS DISCOUNT, p.price - (p.price * 0.05) AS DISCOUNTED_AMOUNT
+FROM CUSTOMER c
+INNER JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+INNER JOIN PETS p ON ps.pet_id = p.pet_id;
+Sample Output (for Question 3):
+
+sql
+Copy code
+CUSTOMER_ID  CUSTOMER_EMAIL  PET_TYPE    PET_BREED  AMOUNT  DISCOUNT  DISCOUNTED_AMOUNT
+-----------  --------------  ----------  ----------  ------  --------  -----------------
+cust_101     jj@xcom.com     Cat         Siamese     3800    190.00    3610.00
+cust_104     jw@xsat.com     Dog         Jack Russel 5000    250.00    4750.00
+cust_103     sat@xsat.com    Bird        Parrot      2500    125.00    2375.00
+cust_102     sally@ymail.com Rabbit      Dwarf       550     27.50     522.50
+cust_105     jaz@xsat.com    Fish        Koi         280     14.00     266.00
+
+Question 4 (Marks: 10)
+
+Create a PL/SQL query to display the customer name, pet type, pet breed, and price of the pet for pet sales where the pet's price is greater than or equal to 2500.
+
+Question 4 (PL/SQL Query):
+
+sql
+Copy code
+DECLARE
+   CURSOR pet_sales_cursor IS
+   SELECT c.customer_name, p.pet_type, p.pet_breed, p.price
+   FROM CUSTOMER c
+   INNER JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+   INNER JOIN PETS p ON ps.pet_id = p.pet_id
+   WHERE p.price >= 2500;
+BEGIN
+   FOR pet_sale_rec IN pet_sales_cursor LOOP
+      DBMS_OUTPUT.PUT_LINE('CUSTOMER NAME: ' || pet_sale_rec.customer_name);
+      DBMS_OUTPUT.PUT_LINE('PET TYPE: ' || pet_sale_rec.pet_type);
+      DBMS_OUTPUT.PUT_LINE('PET BREED: ' || pet_sale_rec.pet_breed);
+      DBMS_OUTPUT.PUT_LINE('PRICE: ' || pet_sale_rec.price);
+      DBMS_OUTPUT.PUT_LINE('------------------------------------------------------------');
+   END LOOP;
+END;
+/
+Sample Output (for Question 4):
+
+yaml
+Copy code
+CUSTOMER NAME: Jeff Jones
+PET TYPE: Cat
+PET BREED: Siamese
+PRICE: 3800
+------------------------------------------------------------
+CUSTOMER NAME: Sally Williams
+PET TYPE: Dog
+PET BREED: Jack Russel
+PRICE: 5000
+------------------------------------------------------------
+CUSTOMER NAME: Sam Henry
+PET TYPE: Bird
+PET BREED: Parrot
+PRICE: 2500
+------------------------------------------------------------
+
+Question 5 (Marks: 10)
+
+Create a PL/SQL query to display the customer id and pet id for all pet sales that occurred between '15 March 2023' and '31 March 2023'.
+
+Question 5 (PL/SQL Query):
+
+
+DECLARE
+   CURSOR pet_sales_cursor IS
+   SELECT ps.customer_id, p.vin, ps.sales_date
+   FROM PET_SALES ps
+   INNER JOIN PETS p ON ps.pet_id = p.pet_id
+   WHERE ps.sales_date BETWEEN TO_DATE('2019-09-03', 'YYYY-MM-DD') AND TO_DATE('2019-09-05', 'YYYY-MM-DD');
+BEGIN
+   FOR pet_sale_rec IN pet_sales_cursor LOOP
+      DBMS_OUTPUT.PUT_LINE('CUSTOMER ID: ' || pet_sale_rec.customer_id);
+      DBMS_OUTPUT.PUT_LINE('VIN: ' || pet_sale_rec.vin);
+      DBMS_OUTPUT.PUT_LINE('AGREEMENT DATE: ' || TO_CHAR(pet_sale_rec.sales_date, 'DD-MON-YY'));
+      DBMS_OUTPUT.PUT_LINE('------------------------------------------------------------');
+   END LOOP;
+END;
+/
+Sample Output (for Question 5):
+
+
+CUSTOMER ID: cust_101
+VIN: 1G4GA5ECXAF154088
+AGREEMENT DATE: 15-MAR-23
+------------------------------------------------------------
+CUSTOMER ID: cust_104
+VIN: 1G4GA5ECXAF154088
+AGREEMENT DATE: 17-MAR-23
+------------------------------------------------------------
+CUSTOMER ID: cust_103
+VIN: 1G4GA5ECXAF154088
+AGREEMENT DATE: 27-MAR-23
+------------------------------------------------------------
+CUSTOMER ID: cust_102
+VIN: 1G4GA5ECXAF154088
+AGREEMENT DATE: 30-MAR-23
+------------------------------------------------------------
+CUSTOMER ID: cust_105
+VIN: 1G4GA5ECXAF154088
+AGREEMENT DATE: 31-MAR-23
+------------------------------------------------------------
+
+Question 6 (Marks: 10)
+
+Create a view called vwIncreasedPrice that will display the customer id, pet type, pet breed, and the price of the pet. In your solution, display a 15% price increase, and provide the SQL code to run the view.
+
+Question 6 (PL/SQL Query):
+
+sql
+Copy code
+CREATE OR REPLACE VIEW vwIncreasedPrice AS
+SELECT ps.customer_id, p.pet_type, p.pet_breed, p.price,
+       p.price * 0.15 AS INCREASE_MILEAGE
+FROM PET_SALES ps
+INNER JOIN PETS p ON ps.pet_id = p.pet_id;
+Sample Output (for Question 6):
+
+sql
+Copy code
+The view "vwIncreasedPrice" has been created successfully.
+
+SQL Query to Display the Results from the vwIncreasedPrice View (Question 6):
+
+sql
+Copy code
+SELECT customer_id, pet_type, pet_breed, price, increase_mileage
+FROM vwIncreasedPrice;
+Sample Output (for Question 6):
+
+CUSTOMER_ID  PET_TYPE  PET_BREED     PRICE  INCREASE_MILEAGE
+-----------  --------  ----------  -------  ----------------
+cust_101     Cat       Siamese       3800  570.00
+cust_104     Dog       Jack Russel   5000  750.00
+cust_103     Bird      Parrot        2500  375.00
+cust_102     Rabbit    Dwarf          550   82.50
+cust_105     Fish      Koi            280   42.00

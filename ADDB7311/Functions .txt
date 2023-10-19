@@ -1,0 +1,156 @@
+Functions 
+
+Introduction
+Performs some specific task 
+Accepts the value through parameters 
+Returns the processed value 
+
+TYPES OF FUNCTIONS 
+Single Row function:work on one row at a time and returns one result for every row
+
+Multi Row Functions:work on a group of rows and return one result for every group
+
+Single Row Functions:
+
+Character Functions:
+--Case manipulation:
+select Employee_Id, First_Name, Last_Name,Salary, Department_Id
+From Employees 
+where Last_Name ='KING';
+
+select Employee_Id, First_Name, Last_Name,Salary, Department_Id
+From Employees 
+where lower (Last_Name)='king';
+
+slect initcap('anadi sharma') from dual;
+
+--character manipulation: 
+select Employee_Id, First_Name, Last_Name,Salary, Department_Id
+From Employees 
+where length(Last_Name)= 5;
+
+select Employee_Id, concat(upper(First_Name), lower(Last_Name)),Salary, Department_Id
+From Employees;
+
+select firstName, Phone_number from Employees;
+
+--show first 3 characters 
+select firstName, substr(Phone_number ,0,3) from Employees;
+
+select firstName, substr(Phone_number ,0,3),7, '*' from Employees;
+
+Number Functions:
+select mod (7,2) from dual;
+
+select round(34.3456, 2) from dual;
+
+select trunc(34.3456, 2) from dual;
+
+select round(34.3456, 1) from dual;
+
+select round(34.3556, 1) from dual;
+
+
+Date Functions Oracle date functions are any functions that work with date and/or time values. They often take dates as an input and return many different types of output.
+
+SELECT SYSDATE
+FROM dual;
+10/SEP/22
+
+ALTER SESSION
+SET NLS_DATE_FORMAT = 'YYYY-MM-DD HH24:MI:SS';
+
+SELECT SYSDATE
+FROM dual;
+-2022-09-10 08:54:19
+
+SELECT
+TO_CHAR(SYSDATE, 'DD/MM/YYYY HH:MI:SS') AS sysdate_time
+FROM dual;
+-10/09/2022 08:54:19
+
+select sysdate - 5 from dual;
+
+select sysdate + 14/24 from dual;
+
+select to _date('31-Dec-16') - to_date("23-Feb-88') from dual;
+TO_DATE(31-DEC-16)-TO_DATE( 23-FEB-88')
+
+CONVERSION FUNCTIONS 
+Intro
+Varchar2 and Char implicitly converts to number or date
+
+Type conversion can also be done explicitly 
+
+mplicit Data Type Conversion
+A VARCHAR2 or CHAR value can be implicitly converted to NUMBER or DATE type value by Oracle. Similarly, a NUMBER or DATA type value can be automatically converted to character data by Oracle server. Note that the impicit interconversion happens only when the character represents the a valid number or date type value respectively.
+
+For example, examine the below SELECT queries. Both the queries will give the same result because Oracle internally treats 15000 and '15000' as same.
+
+Query-1
+SELECT employee_id,first_name,salary
+FROM employees
+WHERE salary > 15000;
+Query-2
+SELECT employee_id,first_name,salary
+FROM employees
+WHERE salary > '15000';
+Explicit Data Type Conversion
+SQL Conversion functions are single row functions which are capable of typecasting column value, literal or an expression . TO_CHAR, TO_NUMBER and TO_DATE are the three functions which perform cross modification of data types.
+
+General Functions:
+General Functions
+General functions are used to handle NULL values in database. The objective of the general NULL handling functions is to replace the NULL values with an alternate value. We shall briefly see through these functions below.
+
+NVL
+The NVL function substitutes an alternate value for a NULL value.
+
+Syntax:
+NVL( Arg1, replace_with )
+
+SELECT  first_name, NVL(JOB_ID, 'n/a')
+FROM employees;
+NVL2
+As an enhancement over NVL, Oracle introduced a function to substitute value not only for NULL columns values but also for NOT NULL columns. NVL2 function can be used to substitute an alternate value for NULL as well as non NULL value.
+
+Syntax:
+NVL2( string1, value_if_NOT_null, value_if_null )
+The SELECT statement below would display 'Bench' if the JOB_CODE for an employee is NULL. For a definite not null value of JOB CODE, it would show constant value 'Job Assigned'.
+
+SQL> SELECT NVL2(JOB_CODE, 'Job Assigned', 'Bench')
+FROM employees;
+NULLIF
+The NULLIF function compares two arguments expr1 and expr2. If expr1 and expr2 are equal, it returns NULL; else, it returns expr1. Unlike the other null handling function, first argument can't be NULL.
+
+Syntax:
+NULLIF (expr1, expr2)
+Note that first argument can be an expression that evaluates to NULL, but it can't be the literal NULL. Both the parameters are mandatory for the function to execute.
+
+The below query returns NULL since both the input values, 12 are equal.
+
+SELECT	NULLIF (12, 12)
+FROM DUAL;
+Similarly, below query return 'SUN' since both the strings are not equal.
+
+SELECT NULLIF ('SUN', 'MOON')
+FROM DUAL;
+COALESCE
+COALESCE function, a more generic form of NVL, returns the first non-null expression in the argument list. It takes minimum two mandatory parameters but maximum arguments has no limit.
+
+Syntax:
+COALESCE (expr1, expr2, ... expr_n )
+Consider the below SELECT query. It selects the first not null value fed into address fields for an employee.
+
+SELECT COALESCE (address1, address2, address3) Address
+FROM  employees;
+Interestingly, the working of COALESCE function is similar to IF..ELSIF..ENDIF construct. The query above can be re-written as -
+
+IF address1 is not null THEN
+   result := address1;
+ELSIF address2 is not null THEN
+   result := address2;
+ELSIF address3 is not null THEN
+   result := address3;
+ELSE
+   result := null;
+END IF;

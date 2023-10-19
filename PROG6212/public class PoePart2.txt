@@ -1,0 +1,39 @@
+public class PoePart2
+{
+    [FunctionName("PoePart2")]
+    public async Task Run(
+        [QueueTrigger("PoePart2", Connection = "X7Llz4Jis2jUsvHwd4RyrymN/bkbXlq4olLRwxUPIyRqiC9+aQZeeUhxAyocALQXaIMB8xBdJCNk+AStDFCmpA==")]string myQueueItem,
+        ILogger log,
+        [Queue("YourQueueName", Connection = "YourStorageAccountConnectionString")] IAsyncCollector<string> outputQueue)
+    {
+        log.LogInformation($"C# Queue trigger function processed: {myQueueItem}");
+
+        // Check if the queue exists and create it if it doesn't.
+        string connectionString = "YourStorageAccountConnectionString";
+        string queueName = "PoePart2";
+        QueueServiceClient queueServiceClient = new QueueServiceClient(connectionString);
+        QueueClient queueClient = queueServiceClient.GetQueueClient(queueName);
+
+        if (!await queueClient.ExistsAsync())
+        {
+            await queueClient.CreateAsync();
+        }
+
+        // Add example messages to the output queue
+        var messages = new List<string>
+        {
+            "1234567890123:VaccinationCenter1:2023-07-01:VaccineSerialNumber1",
+            "9876543210123:VaccinationCenter2:2023-08-15:VaccineSerialNumber2",
+            "4567890123456:VaccinationCenter3:2023-06-20:VaccineSerialNumber3",
+            "3456789012345:VaccinationCenter4:2023-08-10:VaccineSerialNumber4",
+            "2345678901234:VaccinationCenter5:2023-05-25:VaccineSerialNumber5",
+        };
+
+        foreach (var message in messages)
+        {
+            await outputQueue.AddAsync(message);
+        }
+
+        log.LogInformation("Example messages added to the output queue.");
+    }
+}

@@ -1,0 +1,2 @@
+
+how many ways could the above questions be changed can you make sample data with the question and solution for all the possible questions based of the above 3 for qu2,3,4 can you add the sample data for each variation  based off the queries  

@@ -1,0 +1,52 @@
+--set server output 
+--2016 test
+-- query 1.4
+-- revenue = qnty x sp 
+SET SERVEROUTPUT ON;
+DECLARE
+V_PRODUCT product.product%TYPE;
+V_TOTAL VARCHAR2 (100); --calc
+--logic
+Cursor secondCursor IS 
+SELECT P.PRODUCT, SUM(P.PRICE * S.QUANTITY)
+FROM PRODUCT P
+INNER JOIN SALES S ON P.PRODUCTID = S.PRODUCTID
+where P.PRODUCTID = 'X500'
+GROUP BY P.PRODUCT;
+BEGIN 
+OPEN secondCursor;
+LOOP
+FETCH secondCursor INTO V_PRODUCT, V_TOTAL;
+--OUTPUT
+DBMS_OUTPUT.put_line('The total sales amount for product' || V_PRODUCT || 'is:R' || v_total);
+--EXIT CONDITION 
+EXIT WHEN secondCursor %FOUND;
+END LOOP; --ends the loop 
+CLOSE secondCursor; --close the cursor 
+END; --end thhe pl/sql block 
+
+
+--1.5
+SET SERVEROUTPUT ON;
+DECLARE
+V_CompanyName companyname.companyname%TYPE;
+V_PURCHASE INT; --calc
+--logic
+Cursor thirdCursor IS 
+SELECT c.companyname,COUNT(S.CUSTOMERID)
+FROM CUSTOMER C
+JOIN SALES S ON 
+C.CUSTOMERID = S.CUSTOMERID
+where S.PRODUCTID = 'X500'
+GROUP BY C.COMPANYNAME;
+BEGIN 
+OPEN thirdCursor;
+LOOP
+FETCH thirdCursor INTO V_companyname, V_Purchase;
+--OUTPUT
+DBMS_OUTPUT.put_line('Purchase by' || V_CompanyName || 'is:R' || v_urchase);
+--EXIT CONDITION 
+EXIT WHEN thirdCursor %NOTFOUND;
+END LOOP; --ends the loop 
+CLOSE thirdCursor; --close the cursor 
+END; --end thhe pl/sql block 

@@ -1,0 +1,70 @@
+2018 past paper based of preloads 
+
+Question 2:
+Create a SQL Query to display the customer who has purchased the most pets. In your query include the total amount spent by the customer on pets.
+
+Sample Results:
+
+
+CUSTOMER_NAME PURCHASE_COUNT TOTAL
+Jeff Jones 2 8800.00
+SQL Query for Question 2:
+
+sql
+Copy code
+SELECT c.customer_name, COUNT(ps.pet_id) AS PURCHASE_COUNT, SUM(p.price) AS TOTAL
+FROM CUSTOMER c
+JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+JOIN PETS p ON ps.pet_id = p.pet_id
+GROUP BY c.customer_name
+ORDER BY COUNT(ps.pet_id) DESC
+FETCH FIRST 1 ROWS ONLY;
+Question 3:
+Create a SQL query to display the pet type, pet breed, pet price, and the customer who bought the pet. In your query, include a 10% commission value and the total paid by each customer.
+
+Sample Results:
+
+
+PET_TYPE PET_BREED PRICE COMMISSION TOTAL CUSTOMER_NAME
+Cat Siamese 3800.00 380.00 4180.00 Jeff Jones
+Dog Jack Russel 5000.00 500.00 5500.00 Sally Williams
+
+SQL Query for Question 3:
+
+
+SELECT p.pet_type, p.pet_breed, p.price, 
+       ROUND(p.price * 0.10, 2) AS COMMISSION,
+       (p.price + ROUND(p.price * 0.10, 2)) AS TOTAL,
+       c.customer_name
+FROM PETS p
+JOIN PET_SALES ps ON p.pet_id = ps.pet_id
+JOIN CUSTOMER c ON ps.customer_id = c.customer_id;
+
+
+Question 4:
+Create a PL/SQL query to display the customer name, pet ID, and the pet price for pets that were purchased for a price of 3000.00 or greater.
+
+Sample Results:
+
+
+CUSTOMER_NAME PET_ID PRICE
+Jeff Jones 100001 5000.00
+Sally Williams 100003 2500.00
+
+PL/SQL Query for Question 4:
+
+sql
+Copy code
+BEGIN
+  FOR r IN (SELECT c.customer_name, ps.pet_id, p.price
+            FROM CUSTOMER c
+            JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+            JOIN PETS p ON ps.pet_id = p.pet_id
+            WHERE p.price >= 3000.00)
+  LOOP
+    DBMS_OUTPUT.PUT_LINE('CUSTOMER_NAME: ' || r.customer_name);
+    DBMS_OUTPUT.PUT_LINE('PET_ID: ' || r.pet_id);
+    DBMS_OUTPUT.PUT_LINE('PRICE: R ' || TO_CHAR(r.price, '999999.99'));
+  END LOOP;
+END;
+/

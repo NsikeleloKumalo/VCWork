@@ -1,0 +1,62 @@
+Creating views 
+
+Intro :
+
+Is a virtual table 
+Contains a SQL Select Statement 
+Provides restricted access to data 
+DML can be performed through views 
+
+DONT'S FOR DELETE:
+Dont's For Delete because if you delete in the view you delete in the table 
+
+Distinct keyword
+Group Functions
+Group by clause 
+
+DONT'S FOR UPDATE:
+
+Distinct keyword
+Group Functions
+Group by clause 
+Contains expression
+
+DONT'S FOR INSERT:
+
+Distinct keyword
+Group Functions
+Group by clause 
+Contains expression
+Not Null column excluded 
+
+Validating Views:
+DML operation can be validated by using WITH CHECK OPTION
+DML operation can be restricted by using WITH READ ONLY 
+
+create view EmpVu50 as select Employee_Id, First Name ||' ' || Last Name as EmpName, Email, Salary, Department_id from Employees where Department_id=50; 
+
+to call View: 
+select * from EmpVu50;
+
+create or replace view EmpVu50 as select Employee_Id, First Name ||' ' || Last Name as EmpName, Email, Salary,Job_id, Department_id from Employees where Department_id=50; 
+
+desc user_views;
+
+select text from user_views where View_name = 'EMPVU50';
+
+ delete from Empvu50 where Employee_id=185;
+
+update Empvu50 set salary = 2800 where  Employee_id=199;
+
+update Empvu50 set Department_Id = 60  where  Employee_id=199;
+
+Cant do anything if there is an expression Alias:
+update Empvu50 set EmpName = 'Anadi Sharma' where  Employee_id=199; --it wont work due to the virtual column 
+
+cant do insertion or updating:
+create or replace view EmpVu50 as select Employee_Id, First Name ||' ' || Last Name as EmpName, Email, Salary,Job_id, Department_id from Employees where Department_id=50
+with check option; 
+
+Read only view means you cant perform any dml operations: 
+create or replace view EmpVu50 as select Employee_Id, First Name ||' ' || Last Name as EmpName, Email, Salary,Job_id, Department_id from Employees where Department_id=50
+with read only; 

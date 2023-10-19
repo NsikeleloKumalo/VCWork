@@ -1,0 +1,107 @@
+
+ALTER SESSION SET "_oracle_script" = true;
+
+--other work 
+
+Create table EmployeeDetails
+( 
+EmployeeID number,
+FirstName nvarchar2 (50),
+LastName nvarchar2 (50),
+Salary number,
+JoiningDate date,
+Department nvarchar2(20),
+Gender nvarchar2 (10)
+);
+
+create table ProjectDetail
+(
+ProjectDetailId number,
+EmployeeDetailsId number,
+ProjectName nvarchar2 (25)
+
+);
+
+
+
+insert into EmployeeDetails (EmployeeID,FirstName, LastName, Salary, JoiningDate, Department, Gender) Values(1,'Vikas','Ahlawat',600000,to_date('15-02-2013','dd-mm-yyyy'),'IT','Male');
+insert into EmployeeDetails (EmployeeID,FirstName, LastName, Salary, JoiningDate, Department, Gender) Values(2,'Nikita','Jain',530000,to_date('09-01-2014','dd-mm-yyyy'),'HR','Female');
+insert into EmployeeDetails (EmployeeID,FirstName, LastName, Salary, JoiningDate, Department, Gender) Values(3,'Ashish','Kumar',1000000,to_date('09-01-2014','dd-mm-yyyy'),'IT','Male');
+insert into EmployeeDetails (EmployeeID,FirstName, LastName, Salary, JoiningDate, Department, Gender) Values(4,'Nikhil','Sharma',480000,to_date('09-01-2014','dd-mm-yyyy'),'HR','Male');
+insert into EmployeeDetails (EmployeeID,FirstName, LastName, Salary, JoiningDate, Department, Gender) Values(5,'Asish','Kadian',500000,to_date('09-01-2014','dd-mm-yyyy'),'Payroll','Male');
+
+
+
+
+insert into ProjectDetail (projectdetailid,EmployeeDetailsId,ProjectName) values(1,1,'Task Track');
+insert into ProjectDetail (ProjectDetailId,EmployeeDetailsId,ProjectName) values(2,1,'CLP');
+insert into ProjectDetail (ProjectDetailId,EmployeeDetailsId,ProjectName) values(3,1,'Survey Management');
+insert into ProjectDetail (ProjectDetailId,EmployeeDetailsId,ProjectName) values(4,2,'HR Management');
+insert into ProjectDetail (ProjectDetailId,EmployeeDetailsId,ProjectName) values(5,3,'Task Track');
+insert into ProjectDetail (ProjectDetailId,EmployeeDetailsId,ProjectName) values(6,3,'GRS');
+insert into ProjectDetail (ProjectDetailId,EmployeeDetailsId,ProjectName) values(7,3,'DDS');
+insert into ProjectDetail (ProjectDetailId,EmployeeDetailsId,ProjectName) values(8,4,'HR Management');
+insert into ProjectDetail (ProjectDetailId,EmployeeDetailsId,ProjectName) values(9,6,'GL Management');
+
+
+--ql
+--fetch emp name, project name 
+-- order by first name 
+-- for those emps who have been assigned to a project 
+
+Select FirstName,ProjectName from employeedetails A
+INNER   JOIN 
+projectdetail B
+ON a.employeeid = b.employeedetailsid
+Order by a.FirstName;
+
+--q2
+--fetch emp name, project name 
+-- order by first name 
+-- for those emps who have been assigned to a project
+--as well as those that havent -- project name  == null
+--IT WAS A LEFT OUTER JOIN BECAUSE WE ARE PRIORITIZING EMPLOYEES 
+
+Select FirstName,ProjectName from employeedetails A
+LEFT OUTER    JOIN 
+projectdetail B
+ON a.employeeid = b.employeedetailsid
+Order by a.FirstName;
+
+
+--q3
+-- get all the details --first name and project name 
+--from both tables 
+-- if no match is found in any table 
+-- then show the null as the output 
+
+Select FirstName,ProjectName from employeedetails A
+FULL OUTER    JOIN 
+projectdetail B
+ON a.employeeid = b.employeedetailsid
+Order by a.FirstName;
+
+--q4
+-- get all the details --first name and project name 
+--For any person not assigned a any project
+-- display  this as "No project assigned"
+Select FirstName, NVL(ProjectName, 'No project assigned') AS ProjectName
+from employeedetails A
+LEFT OUTER    JOIN 
+projectdetail B
+ON a.employeeid = b.employeedetailsid
+Where ProjectName IS NULL ;
+
+--q5
+-- get all the details --first name and project name 
+--Who has been assigned to work 
+-- to more than 1 project
+SELECT A.FirstName, B.ProjectName
+FROM employeedetails A
+INNER JOIN projectdetail B ON A.EmployeeID = B.EmployeeDetailsID
+WHERE A.EmployeeID IN (
+    SELECT EmployeeDetailsID
+    FROM projectdetail
+    GROUP BY EmployeeDetailsID
+    HAVING COUNT(*) > 1
+);

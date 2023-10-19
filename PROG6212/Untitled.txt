@@ -1,0 +1,27 @@
+
+        internal  class CredentialHolder
+    {
+        internal bool IsAuthenticated { get; set; }
+        #region Constructor 
+
+        public static CredentialHolder Singelton = new CredentialHolder();
+
+        public static CredentialHolder getSingleton()
+        {
+            if (Singelton == null) Singelton = new CredentialHolder();
+            return Singelton;
+
+        }
+
+        public static void Clear()
+        {
+            Singelton = new CredentialHolder();
+        }
+
+        private CredentialHolder() { }
+
+        #endregion
+
+
+    }
+}

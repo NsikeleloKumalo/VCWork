@@ -1,0 +1,4 @@
+1 -- You are using an Array List, that is a problem. Use List <T>
+2 -- Use .Find() method to search for the ID.
+3 -- The ID is never found because you are comparing the numerical id with the hashed id
+	-- Either get rid of the hashing or create a method to to decrypt the hashed id, so that it will decrypt the hashed Id before it compared during the search.

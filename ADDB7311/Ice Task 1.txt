@@ -1,0 +1,85 @@
+2016 Past paper 
+
+show user;
+
+--PRODUCT(ProductID, Product, Price, StockLevel);
+--? CUSTOMER(CustomerID, CompanyName, Address, Email);
+--? SALES(SaleID, ProductID, CustomerID, SaleDate, Quantity).
+
+show user;
+
+--PRODUCT(ProductID, Product, Price, StockLevel);
+--? CUSTOMER(CustomerID, CompanyName, Address, Email);
+--? SALES(SaleID, ProductID, CustomerID, SaleDate, Quantity).
+
+Create table Product(
+ProductID VARCHAR(4) NOT NULL,
+Product VARCHAR(50) NOT NULL,
+Price DECIMAL(9,2),
+StockLevel INT NOT NULL,
+PRIMARY KEY (ProductID)
+);
+
+Create table Customer(
+CustomerID INT NOT NULL,
+CustomerName VARCHAR(40) NOT NULL,
+ADDRESS VARCHAR(40) NOT NULL,
+Email VARCHAR(40) NOT NULL,
+PRIMARY KEY (CustomerID)
+);
+
+ALTER TABLE Customer RENAME COLUMN CustomerName TO CompanyName;
+
+Create table Sales(
+SaleID INT NOT NULL,
+ProductID VARCHAR(4) NOT NULL,
+CustomerID INT NOT NULL,
+SaleDate DATE NOT NULL,
+Quantity INT NOT NULL,
+PRIMARY KEY (SaleID),
+FOREIGN KEY (ProductID) REFERENCES Product(ProductID),
+FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID)
+);
+
+select * from product;
+select * from sales;
+select * from customer;
+--X500 Android 8 inch 3g WiFi R1 999.00 10
+--X501 Android 10 inch 3g R2 499.00 5
+--X502 Android 7 inch Tab R2 799.00 8
+--X503 Android 10 inch Tab R1 599.00 3
+INSERT INTO Product (ProductID ,Product,price,stocklevel)
+VALUES ('X500','Android 8 inch 3g WiFi', 1999.00,10);
+INSERT INTO Product (ProductID ,Product,price,stocklevel)
+VALUES('X501','Android 10 inch 3g', 2499.00,5);
+INSERT INTO Product (ProductID ,Product,price,stocklevel)
+VALUES('X502','Android 7 inch Tab', 2799.00 ,8);
+INSERT INTO Product (ProductID ,Product,price,stocklevel)
+VALUES('X503','Android 10 inch Tab', 1599.00,3);
+
+--10010 Wireless Devices 10 Main Rd wdev@gmail.com
+--10011 Mobile Extreme 12 Water Way moex@gmail.com
+--10012 Android Haven 18 Main Rd ahaven@gmail.com
+
+INSERT INTO Customer  VALUES (10010,'Wireless Devices ', '10 Main Rd','wdev@gmail.com');
+INSERT INTO Customer  VALUES (10011,'Mobile Extreme ', '12 Water Way','moex@gmail.com');
+INSERT INTO Customer  VALUES (10012,'Android Haven ', '18 Main Rd ','ahaven@gmail.com');
+--SALES 
+--555 X500 10010 15 May 2016 5
+--556 X503 10010 17 May 2016 3
+--557 X500 10012 17 May 2016 1
+--558 X501 10012 18 May 2016 1
+--559 X501 10010 20 May 206 1
+INSERT INTO Sales  VALUES (555,'X500', 10010,'15 May 2016',5);
+INSERT INTO Sales  VALUES (556,'X503', 10012,'17 May 2016',3);
+INSERT INTO Sales VALUES (557,'X500',  10012 ,'17 May 2016',1);
+INSERT INTO Sales VALUES (558,'X501', 10012,'18 May 2016',1);
+INSERT INTO Sales VALUES (559,'X501', 10010,'20 May 2016 ',1);
+
+--qu 1.2 
+SELECT c.CompanyName, p.Product, s.Quantity
+FROM Customer c
+INNER JOIN Sales s ON c.CustomerID = s.CustomerID
+INNER JOIN Product p ON s.ProductID = p.ProductID;
+
+

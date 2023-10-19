@@ -1,0 +1,30 @@
+mocktest  pp but based off the preloads
+
+Query for PETS:
+
+Create a PL/SQL query to display the pet type, pet breed, and price for pets with a price greater than 3000. Order the results by price in descending order. Save your query as qryPets1.
+sql
+Copy code
+SELECT pet_type, pet_breed, price
+FROM PETS
+WHERE price > 3000
+ORDER BY price DESC;
+Query for CUSTOMER:
+
+Create a PL/SQL query to display the customer name and email for customers whose email addresses end with 'com'. Save your query as qryCustomer2.
+sql
+Copy code
+SELECT customer_name, customer_email
+FROM CUSTOMER
+WHERE customer_email LIKE '%.com';
+Query for PET_SALES:
+
+Create a PL/SQL query to display the customer name, pet type, and sales date for pet sales made in March 2023. Order the results by sales date in ascending order. Save your query as qryPetSales3.
+sql
+Copy code
+SELECT C.customer_name, P.pet_type, PS.sales_date
+FROM CUSTOMER C
+JOIN PET_SALES PS ON C.customer_id = PS.customer_id
+JOIN PETS P ON PS.pet_id = P.pet_id
+WHERE PS.sales_date BETWEEN TO_DATE('2023-03-01', 'YYYY-MM-DD') AND TO_DATE('2023-03-31', 'YYYY-MM-DD')
+ORDER BY PS.sales_date ASC;

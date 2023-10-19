@@ -1,0 +1,174 @@
+Assessment Checklist 
+
++ Login sql server 
++ Check your services
++ Create a new user - has to be done under a system 
+show user;
++ Grant all permissions 
+
+create user test2017 identified by test2017
+DEFAULT tablespace users temporary tablespace temp 
+quota 20m on users
+account unlock;
+
+--GRANT ALL PERMISSIONS 
+grant create session to test2017;
+grant all privileges to test2017;
+
++ oracle script to true -optional 
+ALTER SESSION SET "_oracle_script" = true;
+
++Now create a new DB connection
+
++ USING THE NEW USER YOU JUST SETUP 
+show user;
+
+--table 1
+CREATE TABLE Event (
+EVENT_ID INT NOT NULL PRIMARY KEY,
+EVENT_NAME VARCHAR2(50),
+EVENT_RATE NUMBER (10,2) NOT NULL
+);
+
+--table 2
+CREATE TABLE ARTIST(
+ARTIST_ID VARCHAR(5) NOT NULL PRIMARY KEY,
+ARTIST_NAME VARCHAR(50) NOT NULL,
+ARTIST_EMAIL VARCHAR(50)
+);
+
+--table 3
+CREATE TABLE BOOKINGS(
+BOOKING_ID INT NOT NULL PRIMARY KEY,
+BOOKING_DATE DATE NOT NULL,
+EVENT_ID INT NOT NULL,
+ARTIST_ID VARCHAR(5) NOT NULL,
+FOREIGN KEY (EVENT_ID) REFERENCES EVENT(EVENT_ID),
+FOREIGN KEY  (ARTIST_ID) REFERENCES ARTIST(ARTIST_ID)
+);
+
+
+--DROP TABLE BOOKING;
+
+savepoint a;
+
+--inserting data into the tables 
+INSERT INTO EVENT VALUES (1001,'Open Air Comedy Festival',300);
+INSERT INTO EVENT VALUES (1002,' Mountain Side Music Festival',280);
+INSERT INTO EVENT VALUES (1003,'Beach Music Festival',195);
+
+SELECT * FROM EVENT;
+savepoint b;
+
+INSERT INTO ARTIST VALUES ('A_101','Max Trillion','maxt@isat.com');
+INSERT INTO ARTIST VALUES ('A_102','Music Mayhem','mayhem@ymail.com');
+INSERT INTO ARTIST VALUES ('A_103','LOL Man','lol@isat.com');
+
+SELECT * FROM ARTIST;
+
+--things that dont work for date format
+-- 07/15/2017
+-- 15/07/2017
+
+1 15 July 2017 1002 A_101
+2 15 July 2017 1002 A_102
+3 27 August 2017 1001 A_103
+4 30 August 2017 1003 A_101
+5 30 August 2017 1003 A_10
+INSERT INTO BOOKINGS VALUES (1,'15 July 2017',1002,'A_101');
+INSERT INTO BOOKINGS VALUES (2,'15 July 2017',1002,'A_102');
+INSERT INTO BOOKINGS VALUES (3,'27 August 2017',1001,'A_103');
+INSERT INTO BOOKINGS VALUES (4,'30 August 2017',1003,'A_101');
+INSERT INTO BOOKINGS VALUES (5,'30 August 2017',1003,'A_102');
+
+savepoint c;
+--query 2
+--display least amount of performances
+SELECT * FROM (
+    SELECT ARTIST.ARTIST_NAME, COUNT(BOOKINGS.ARTIST_ID) AS PERFORMANCE_COUNT 
+    FROM BOOKINGS
+    JOIN ARTIST
+    ON BOOKINGS.ARTIST_ID=ARTIST.ARTIST_ID
+    GROUP BY ARTIST.ARTIST_NAME
+    ORDER BY COUNT(BOOKINGS.ARTIST_ID)
+)
+WHERE ROWNUM=1;
+
+
+--query 3 
+
+SELECT ARTIST.ARTIST_NAME , SUM(EVENT.EVENT_RATE) REVENUE
+FROM BOOKINGS
+INNER JOIN ARTIST
+ON BOOKINGS.ARTIST_ID = ARTIST.ARTIST_ID
+INNER JOIN EVENT
+ON BOOKINGS.EVENT_ID = EVENT.EVENT_ID
+GROUP BY ARTIST.ARTIST_NAME;
+
+--query4
+DECLARE
+    v_artist_name VARCHAR2(50);
+    v_booking_date DATE;
+BEGIN
+    SELECT ARTIST.ARTIST_NAME, BOOKINGS.BOOKING_DATE
+    INTO v_artist_name, v_booking_date
+    FROM BOOKINGS
+    INNER JOIN ARTIST ON BOOKINGS.ARTIST_ID = ARTIST.ARTIST_ID
+    WHERE BOOKINGS.EVENT_ID = 1001;
+
+    DBMS_OUTPUT.PUT_LINE('ARTIST NAME: ' || v_artist_name);
+    DBMS_OUTPUT.PUT_LINE('BOOKING DATE: ' || TO_CHAR(v_booking_date, 'DD/MON/YY'));
+END;
+/
+
+--query 5
+DECLARE
+    v_discount NUMBER := 0.10; -- 10% discount
+BEGIN
+    FOR event_rec IN (SELECT EVENT_NAME, EVENT_RATE FROM EVENT) LOOP
+        -- Calculate the discounted price
+        DECLARE
+            v_original_price NUMBER := event_rec.EVENT_RATE;
+            v_discounted_price NUMBER;
+        BEGIN
+            IF v_original_price > 250 THEN
+                v_discounted_price := v_original_price - (v_original_price * v_discount);
+            ELSE
+                v_discounted_price := v_original_price;
+            END IF;
+            
+            -- Display the event name and price
+            DBMS_OUTPUT.PUT_LINE(event_rec.EVENT_NAME || ' price: R ' || TO_CHAR(v_discounted_price, '999.99'));
+            DBMS_OUTPUT.PUT_LINE('-------------------------------------------------------');
+        END;
+    END;
+END;
+/
+
+--query 6 
+CREATE VIEW Event_Schedules AS
+SELECT E.EVENT_NAME, E.EVENT_RATE, TO_CHAR(B.BOOKING_DATE, 'DD/MON/YY') AS BOOKING_DATE
+FROM EVENT E
+INNER JOIN BOOKINGS B ON E.EVENT_ID = B.EVENT_ID
+WHERE B.BOOKING_DATE BETWEEN TO_DATE('01-JUL-17', 'DD-MON-YY') AND TO_DATE('28-AUG-17', 'DD-MON-YY');
+
+SELECT * FROM Event_Schedules;
+ 
+--query 7
+
+DECLARE
+   avg_price NUMBER;
+BEGIN
+   -- Calculate the average event price
+   SELECT AVG(EVENT_RATE) INTO avg_price FROM EVENT;
+
+   -- Display events with prices greater than the average
+   FOR event_rec IN (SELECT EVENT_NAME, EVENT_RATE FROM EVENT WHERE EVENT_RATE > avg_price) 
+   LOOP
+      DBMS_OUTPUT.PUT_LINE(event_rec.EVENT_NAME);
+      DBMS_OUTPUT.PUT_LINE('Price: R ' || TO_CHAR(event_rec.EVENT_RATE));
+      DBMS_OUTPUT.PUT_LINE('----------------------------------------------------');
+   END LOOP;
+END;
+
+

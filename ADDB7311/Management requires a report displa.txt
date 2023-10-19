@@ -1,0 +1,5 @@
+1. Management requires a report displaying the customer email address, pet ID number, and pet pet sales date. You have been tasked with creating sql statements to achieve the report
+
+2. Create a view called vwPetSalesDetails that will display the customer ID, pet id number, and the pet sale date. In your solution, only display the pet sales that occurred between 15 March 2023 and 18 March 2023. 
+3. A report displaying the customer name, pet breed,and pet price is requirded by senior management. You have decided to use a pl/sql query to achieve a similar repot out put 
+4. A report displaying the customers full name and the number of pet purchasess is required by senior management. You have decided to use a pl/sql query to achieve a similar repot out put 

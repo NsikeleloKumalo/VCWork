@@ -1,0 +1,330 @@
+2021 past paper variation  based of preloads 
+
+Variation 1 of Question 2 (Marks: 10):
+
+Question 2a: Create a SQL Query to display the customer name, pet type, and the number of pets they purchased. Order your results by the number of pets purchased in descending order.
+
+Sample Data (for Question 2a):
+
+sql
+Copy code
+-- Sample PETS data
+INSERT INTO PETS(pet_id, pet_type, pet_breed, price)
+VALUES
+    (100001, 'Dog', 'Jack Russel', 5000),
+    (100002, 'Cat', 'Siamese', 3800),
+    (100003, 'Bird', 'Parrot', 2500),
+    (100004, 'Fish', 'Koi', 280),
+    (100005, 'Rabbit', 'Dwarf', 550),
+    (100006, 'Dog', 'Labrador', 6000);
+
+-- Sample CUSTOMER data
+INSERT INTO CUSTOMER(customer_id, customer_name, customer_email)
+VALUES
+    ('cust_101', 'Jeff Jones', 'jj@xcom.com'),
+    ('cust_102', 'Sally Williams', 'sally@ymail.com'),
+    ('cust_103', 'Sam Henry', 'sat@xsat.com'),
+    ('cust_104', 'Jack West', 'jw@xsat.com'),
+    ('cust_105', 'Jabulani Zintle', 'jaz@xsat.com'),
+    ('cust_106', 'Alice Brown', 'alice@gmail.com');
+
+-- Sample PET_SALES data
+INSERT INTO PET_SALES(sales_id, sales_date, pet_id, customer_id)
+VALUES
+    (1, '15 March 2023', 100002, 'cust_101'),
+    (2, '17 March 2023', 100001, 'cust_104'),
+    (3, '27 March 2023', 100003, 'cust_103'),
+    (4, '30 March 2023', 100005, 'cust_102'),
+    (5, '31 March 2023', 100004, 'cust_105'),
+    (6, '02 April 2023', 100006, 'cust_101');
+Solution (for Question 2a):
+
+sql
+Copy code
+SELECT c.customer_name, p.pet_type, COUNT(ps.pet_id) AS number_of_pets
+FROM CUSTOMER c
+LEFT JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+LEFT JOIN PETS p ON ps.pet_id = p.pet_id
+GROUP BY c.customer_name, p.pet_type
+ORDER BY number_of_pets DESC;
+Sample Output (for Question 2a):
+
+diff
+Copy code
+CUSTOMER_NAME       PET_TYPE    NUMBER_OF_PETS
+------------------  ----------  ---------------
+Jeff Jones          Cat         2
+Sally Williams      Rabbit      1
+Jeff Jones          Dog         1
+Sam Henry           Bird        1
+Jack West           Fish        1
+Variation 2 of Question 2 (Marks: 10):
+
+Question 2b: Create a SQL Query to display the total price of pets purchased by each customer. Order your results by the total price in descending order.
+
+Solution (for Question 2b):
+
+sql
+Copy code
+SELECT c.customer_name, SUM(p.price) AS total_price
+FROM CUSTOMER c
+LEFT JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+LEFT JOIN PETS p ON ps.pet_id = p.pet_id
+GROUP BY c.customer_name
+ORDER BY total_price DESC;
+Sample Output (for Question 2b):
+
+yaml
+Copy code
+CUSTOMER_NAME       TOTAL_PRICE
+------------------  -----------
+Jeff Jones          9500
+Sally Williams      550
+Sam Henry           2500
+Jack West           280
+Jabulani Zintle     0
+Variation 1 of Question 3 (Marks: 10):
+
+Question 3a: Create a SQL query to display the customer id, customer email, pet breed, and the total price of the pets they purchased. In your query, include a 10% discount on the total price and the total discounted amount.
+
+Solution (for Question 3a):
+
+sql
+Copy code
+SELECT c.customer_id, c.customer_email, p.pet_breed,
+       SUM(p.price) AS total_price,
+       SUM(p.price) * 0.1 AS discount,
+       SUM(p.price) - (SUM(p.price) * 0.1) AS discounted_amount
+FROM CUSTOMER c
+LEFT JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+LEFT JOIN PETS p ON ps.pet_id = p.pet_id
+GROUP BY c.customer_id, c.customer_email, p.pet_breed;
+Sample Output (for Question 3a):
+
+sql
+Copy code
+CUSTOMER_ID  CUSTOMER_EMAIL  PET_BREED  TOTAL_PRICE  DISCOUNT  DISCOUNTED_AMOUNT
+-----------  --------------  ----------  -----------  --------  -----------------
+cust_101     jj@xcom.com     Siamese     3800         380.00    3420.00
+cust_104     jw@xsat.com     Jack Russel 5000         500.00    4500.00
+cust_103     sat@xsat.com    Parrot      2500         250.00    2250.00
+cust_102     sally@ymail.com Dwarf       550          55.00     495.00
+cust_105     jaz@xsat.com    Koi         280          28.00     252.00
+Variation 2 of Question 3 (Marks: 10):
+
+Question 3b: Create a SQL query to display the customer id, customer email, pet type, and the average price of the pets they purchased.
+
+Solution (for Question 3b):
+
+sql
+Copy code
+SELECT c.customer_id, c.customer_email, p.pet_type,
+       AVG(p.price) AS average_price
+FROM CUSTOMER c
+LEFT JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+LEFT JOIN PETS p ON ps.pet_id = p.pet_id
+GROUP BY c.customer_id, c.customer_email, p.pet_type;
+Sample Output (for Question 3b):
+
+sql
+Copy code
+CUSTOMER_ID  CUSTOMER_EMAIL  PET_TYPE  AVERAGE_PRICE
+-----------  --------------  --------  --------------
+cust_101     jj@xcom.com     Cat       3800
+cust_104     jw@xsat.com     Dog       5000
+cust_103     sat@xsat.com    Bird      2500
+cust_102     sally@ymail.com Rabbit    550
+cust_105     jaz@xsat.com    Fish      280
+Variation 1 of Question 4 (Marks: 10):
+
+Question 4a: Create a PL/SQL query to display the customer name, pet type, pet breed, and price for pet sales where the pet's breed contains the word 'Russel'.
+
+Solution (for Question 4a):
+
+sql
+Copy code
+DECLARE
+   CURSOR pet_sales_cursor IS
+   SELECT c.customer_name, p.pet_type, p.pet_breed, p.price
+   FROM CUSTOMER c
+   INNER JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+   INNER JOIN PETS p ON ps.pet_id = p.pet_id
+   WHERE UPPER(p.pet_breed) LIKE '%RUSSEL%';
+BEGIN
+   FOR pet_sale_rec IN pet_sales_cursor LOOP
+      DBMS_OUTPUT.PUT_LINE('CUSTOMER NAME: ' || pet_sale_rec.customer_name);
+      DBMS_OUTPUT.PUT_LINE('PET TYPE: ' || pet_sale_rec.pet_type);
+      DBMS_OUTPUT.PUT_LINE('PET BREED: ' || pet_sale_rec.pet_breed);
+      DBMS_OUTPUT.PUT_LINE('PRICE: ' || pet_sale_rec.price);
+      DBMS_OUTPUT.PUT_LINE('------------------------------------------------------------');
+   END LOOP;
+END;
+/
+Sample Output (for Question 4a):
+
+yaml
+Copy code
+CUSTOMER NAME: Jeff Jones
+PET TYPE: Cat
+PET BREED: Siamese
+PRICE: 3800
+------------------------------------------------------------
+Variation 2 of Question 4 (Marks: 10):
+
+Question 4b: Create a PL/SQL query to display the customer name, pet type, pet breed, and price for pet sales where the pet's price is less than 1000.
+
+Solution (for Question 4b):
+
+sql
+Copy code
+DECLARE
+   CURSOR pet_sales_cursor IS
+   SELECT c.customer_name, p.pet_type, p.pet_breed, p.price
+   FROM CUSTOMER c
+   INNER JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+   INNER JOIN PETS p ON ps.pet_id = p.pet_id
+   WHERE p.price < 1000;
+BEGIN
+   FOR pet_sale_rec IN pet_sales_cursor LOOP
+      DBMS_OUTPUT.PUT_LINE('CUSTOMER NAME: ' || pet_sale_rec.customer_name);
+      DBMS_OUTPUT.PUT_LINE('PET TYPE: ' || pet_sale_rec.pet_type);
+      DBMS_OUTPUT.PUT_LINE('PET BREED: ' || pet_sale_rec.pet_breed);
+      DBMS_OUTPUT.PUT_LINE('PRICE: ' || pet_sale_rec.price);
+      DBMS_OUTPUT.PUT_LINE('------------------------------------------------------------');
+   END LOOP;
+END;
+/
+Sample Output (for Question 4b):
+
+yaml
+Copy code
+CUSTOMER NAME: Jabulani Zintle
+PET TYPE: Rabbit
+PET BREED: Dwarf
+PRICE: 550
+------------------------------------------------------------
+Variation 1 of Question 5 (Marks: 10):
+
+Question 5a: Create a PL/SQL query to display the customer id and pet id for all pet sales that occurred on '15 March 2023' or '17 March 2023'.
+
+Solution (for Question 5a):
+
+sql
+Copy code
+DECLARE
+   CURSOR pet_sales_cursor IS
+   SELECT ps.customer_id, ps.pet_id
+   FROM PET_SALES ps
+   WHERE ps.sales_date IN (TO_DATE('15 March 2023', 'DD Month YYYY'), TO_DATE('17 March 2023', 'DD Month YYYY'));
+BEGIN
+   FOR pet_sale_rec IN pet_sales_cursor LOOP
+      DBMS_OUTPUT.PUT_LINE('CUSTOMER ID: ' || pet_sale_rec.customer_id);
+      DBMS_OUTPUT.PUT_LINE('PET ID: ' || pet_sale_rec.pet_id);
+      DBMS_OUTPUT.PUT_LINE('------------------------------------------------------------');
+   END LOOP;
+END;
+/
+Sample Output (for Question 5a):
+
+yaml
+Copy code
+CUSTOMER ID: cust_101
+PET ID: 100002
+------------------------------------------------------------
+CUSTOMER ID: cust_104
+PET ID: 100001
+------------------------------------------------------------
+Variation 2 of Question 5 (Marks: 10):
+
+Question 5b: Create a PL/SQL query to display the customer id and pet id for all pet sales that occurred between '27 March 2023' and '31 March 2023'.
+
+Solution (for Question 5b):
+
+sql
+Copy code
+DECLARE
+   CURSOR pet_sales_cursor IS
+   SELECT ps.customer_id, ps.pet_id
+   FROM PET_SALES ps
+   WHERE ps.sales_date BETWEEN TO_DATE('27 March 2023', 'DD Month YYYY') AND TO_DATE('31 March 2023', 'DD Month YYYY');
+BEGIN
+   FOR pet_sale_rec IN pet_sales_cursor LOOP
+      DBMS_OUTPUT.PUT_LINE('CUSTOMER ID: ' || pet_sale_rec.customer_id);
+      DBMS_OUTPUT.PUT_LINE('PET ID: ' || pet_sale_rec.pet_id);
+      DBMS_OUTPUT.PUT_LINE('------------------------------------------------------------');
+   END LOOP;
+END;
+/
+Sample Output (for Question 5b):
+
+yaml
+Copy code
+CUSTOMER ID: cust_103
+PET ID: 100003
+------------------------------------------------------------
+CUSTOMER ID: cust_102
+PET ID: 100005
+------------------------------------------------------------
+CUSTOMER ID: cust_105
+PET ID: 100004
+------------------------------------------------------------
+Variation 1 of Question 6 (Marks: 10):
+
+Question 6a: Create a view called vwIncreasedPrice that will display the customer name, pet breed, and the price of the pet. In your solution, display a 10% price increase and provide the SQL code to run the view.
+
+Solution (for Question 6a):
+
+sql
+Copy code
+CREATE OR REPLACE VIEW vwIncreasedPrice AS
+SELECT c.customer_name, p.pet_breed, p.price * 1.10 AS increased_price
+FROM CUSTOMER c
+INNER JOIN PET_SALES ps ON c.customer_id = ps.customer_id
+INNER JOIN PETS p ON ps.pet_id = p.pet_id;
+Sample Output (for Question 6a):
+
+sql
+Copy code
+The view "vwIncreasedPrice" has been created successfully.
+Variation 2 of Question 6 (Marks: 10):
+
+Question 6b: Create a view called vwIncreasedMileage that will display the customer id, pet type, and mileage of the pet. In your solution, display a 20% mileage increase and provide the SQL code to run the view.
+
+Solution (for Question 6b):
+
+sql
+Copy code
+CREATE OR REPLACE VIEW vwIncreasedMileage AS
+SELECT ps.customer_id, p.pet_type, p.mileage * 1.20 AS increased_mileage
+FROM PET_SALES ps
+INNER JOIN PETS p ON ps.pet_id = p.pet_id;
+Sample Output (for Question 6b):
+
+sql
+Copy code
+The view "vwIncreasedMileage" has been created successfully.
+These variations cover a range of scenarios and requirements related to the provided tables and can serve as examples for different types of queries and data manipulations.
+
+
+SQL Query to Display the Results from the vwIncreasedMileage View (Question 6):
+
+sql
+Copy code
+SELECT *
+FROM vwIncreasedMileage;
+Sample Output (for Question 6):
+
+Assuming we have a view vwIncreasedMileage created with the SQL code provided earlier, you would get the following sample output:
+
+yaml
+Copy code
+CUSTOMER_ID  PET_TYPE  INCREASED_MILEAGE
+-----------  --------  -----------------
+cust_101     Cat       21600
+cust_104     Dog       69600
+cust_103     Bird      36000
+cust_102     Rabbit    6600
+cust_105     Fish      3360
+
+
+

@@ -1,0 +1,53 @@
+--create a new user --
+
+--create 
+--identified by
+--default tablespace
+--quota
+--unlock the account
+--grant permissions 
+
+CREATE user admin1 IDENTIFIED BY admin1
+DEFAULT TABLESPACE users TEMPORARY TABLESPACE temp
+QUOTA 20M ON users 
+ACCOUNT UNLOCK;
+
+--Fixes:
+--for when it doesn't allow you to have the name of the schema/common role error 
+ALTER SESSION SET "_oracle_script"=true;
+
+--GRANT ALL PERMISSION 
+GRANT CREATE SESSION TO admin1;
+GRANT ALL PRIVILEGES TO admin1;
+
+--swop over to the ner user 
+show user;
+
+--Lec 2 -- Alter statement 
+
+--create a base table 
+CREATE TABLE STAFF (ID INT, FirstName varchar(10));
+
+--to see whats in the table 
+desc Staff;
+
+--add column to the table
+ALTER TABLE STAFF
+ADD City varchar2(10);
+
+--to see whats in the table 
+desc Staff;
+
+--columns --> age int && region varchar 
+ALTER TABLE STAFF
+ADD (Age INT, Region varchar(15));
+
+--to see whats in the table 
+desc Staff;
+
+--change the first name attribute to hold 25 chars instead
+ALTER TABLE STAFF
+MODIFY FirstName varchar2(25);
+
+--to see whats in the table 
+desc Staff;

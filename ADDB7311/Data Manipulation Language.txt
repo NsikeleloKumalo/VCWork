@@ -1,0 +1,62 @@
+Data Manipulation Language 
+
+INTRO 
+-Ad new rows to a table 
+- modify existing rows in a table 
+- remove existing rows from a table 
+- Multiple DML statements performing a logical task is called transaction 
+-Use COMMIT command to save changes 
+-Use ROLLBACK command to undo the changes 
+
+Statements 
+Insert : make new data records 
+Update : Update existing records 
+Delete : deleting existing records 
+Merge : Combination of insert and update 
+
+INSERT:
+insert all
+  into EMPLOYEES (employee_id, first_name, surname, email)
+    values('EMP_1', 'Jeff', 'Hendricks', 'jh@yahoo.com')
+  into EMPLOYEES (employee_id, first_name, surname, email)
+   values('EMP_2', 'John', 'Abelton', 'johna@gmail.com')
+  into EMPLOYEES (employee_id, first_name, surname, email)
+   values('EMP_3', 'Sam', 'Goodwill', 'samgo@isat.co.za')
+  Select * from dual;
+COMMIT;
+
+OR 
+
+insert into Employee(ID,  First_Name, Last_Name, Start_Date,End_Date,Salary,City,Description)
+values ('01','Jason',    'Martin',  to_date('19960725','YYYYMMDD'), to_date('20060725','YYYYMMDD'), 1234.56, 'Toronto',  'Programmer');
+
+--To see all the records
+SELECT * FROM ***;
+
+UPDATE:
+
+update Employees set DeptId =30 where EmpId =101; 
+
+update Employees set MobileNo ='0681797016',LastName='Dubey',DateOfJoining='20-Dec-16' where EmpId =101; 
+
+DELETE:
+delete from Employees
+where EmpId = 102;
+
+ //Its is not permanent unless u commit in order to be able to  rollback
+
+
+MERGE:
+desc copy
+merge into copy_emp c
+ using Employees e
+ on (e.empid = c.empid)
+ when matched then
+ update set
+ c.firstname = e.firstname,
+c.lastname = e.lastname,
+ c.mobileno = e.mobileno,
+ c.deptid = e.deptid
+when not matched then
+ insert values (e.empid, e.firstname, e.lastname, e.mobileno, e.deptid);
+

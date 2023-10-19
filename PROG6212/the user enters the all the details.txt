@@ -1,0 +1,1 @@
+the user enters the all the details you need to take whats in the module XML file and use it to calculate the calcStudyHours
